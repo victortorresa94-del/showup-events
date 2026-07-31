@@ -7,9 +7,9 @@
 
 ---
 
-## 0. Resumen ejecutivo — las 12 decisiones
+## 0. Resumen ejecutivo — las 14 decisiones
 
-Si solo se leen doce líneas, que sean estas.
+Si solo se leen catorce líneas, que sean estas. **Y si solo se lee una, que sea la 13: el nombre de la marca es el mayor riesgo del proyecto y hay que resolverlo antes que nada.**
 
 | # | Decisión | Por qué |
 |---|---|---|
@@ -24,7 +24,9 @@ Si solo se leen doce líneas, que sean estas.
 | 9 | **El mapa de contenidos GEO son 20 preguntas conversacionales, no 20 keywords.** | Sección 6. Es el entregable central de este documento. |
 | 10 | **La ficha de Google Business Profile es más importante para IA que cualquier artículo.** | Solo hay ~45% de solapamiento entre quien gana el pack local de Google y quien sale recomendado por una IA. Son dos partidos distintos. |
 | 11 | **El activo defendible es un dataset propio de precios reales.** Tres capas, sección 8. | Es lo único que un LLM tiene que citar por narices: no existe en ningún otro sitio y no se puede copiar sin hacer el trabajo. |
-| 12 | **Se mide con un panel fijo de 40 prompts, 3 ejecuciones cada uno, una vez al mes.** Y con una pregunta nueva en el brief: *"¿cómo nos has encontrado?"*. | La variabilidad de los motores generativos hace que medir una vez sea medir ruido. Sección 7. |
+| 12 | **Se mide con un panel fijo de 20 prompts, 3 ejecuciones cada uno, una vez al mes.** Y con una pregunta nueva en el brief: *"¿cómo nos has encontrado?"*. | La variabilidad de los motores generativos hace que medir una vez sea medir ruido. Sección 7. |
+| 13 | **🔴 El nombre es el problema nº 1. Se adopta un descriptor público fijo: `Show Up Events · Música en directo y artistas para eventos`.** El nombre NO se cambia; se desambigua. | `Show Up` es un phrasal verb inglés de altísima frecuencia con homónimos internacionales y huella digital cero. Para un desambiguador de entidades es el peor escenario posible. **Sección 2.1, y es bloqueante.** |
+| 14 | **El vocabulario del sector (txaranga, charanga, orquesta de verbena, elektrotxaranga, banda tributo, monologuista vs humorista) es la mejor oportunidad GEO del plan.** | Son términos españoles y regionales **sin definición canónica publicada ni un solo precio público**. Verificado en esta investigación. Baratos de escribir, citables durante años. §3.5 y §6.4. |
 
 **Marco temporal honesto:** las menciones de entidad tardan **30–90 días** en aparecer en respuestas generativas después de existir. El dataset propio tarda **4–6 meses** en construirse y otros 3 en ser citado. Nadie sale citado en ChatGPT en tres semanas con un dominio de cero meses. Quien lo prometa, miente — igual que en SEO clásico.
 
@@ -748,6 +750,7 @@ Por eso el cuadro de mando tiene tres capas y **la primera es manual**.
 
 | # | KPI | Cómo se mide | Objetivo año 1 |
 |---|---|---|---|
+| **0** | **Nivel de desambiguación de entidad** (escala 0–3 de §2.1.6) | Test manual de 3 preguntas en 4 asistentes, mensual. 5 minutos | Nivel 0 → **nivel 1 mes 3, nivel 2 mes 6, nivel 3 mes 12** |
 | **1** | **Tasa de mención sobre el panel de 20 prompts** (% de respuestas donde aparece Show Up Events) | Auditoría manual, 3 ejecuciones × 3 motores × 20 prompts, mensual | 0% → **25%** a los 12 meses |
 | **2** | **Dominios únicos que mencionan "Show Up Events"** | Búsqueda `"Show Up Events" -site:showupevents.es` + alerta | **25 dominios** |
 | **3** | **Briefs con origen "una IA me lo recomendó"** | **Pregunta nueva en el brief** (ver 7.5) | **10% de los briefs** |
@@ -804,6 +807,7 @@ Una tabla, siete filas, la misma cada mes:
 
 ```
 MES · Show Up Events — Panel GEO
+0. Nivel de desambiguación (0-3), por asistente: GPT __ / Perplexity __ / Gemini __ / Claude __
 1. Tasa de mención (20 prompts × 3 motores × 3 ejecuciones): __%   [mes anterior: __%]
 2. Dominios únicos que nos mencionan: __                          [nuevos este mes: __]
 3. Briefs con origen "IA": __ de __                               [__%]
@@ -842,7 +846,9 @@ Tres activos, en orden de facilidad de construcción.
 
 1. **Presupuestos propios cerrados.** Cada evento contratado es un dato. Anonimizado y agregado, es la base.
 2. **Presupuestos propios NO cerrados.** Igual de valiosos, y nadie los usa: son precios pedidos al mercado que revelan el rango real.
-3. **Encuesta anual anónima a artistas.** 150–300 respuestas de músicos, magos, monologuistas y DJs españoles sobre lo que cobran de verdad. **Esta es la joya.** Se distribuye por las redes del sector y a través de los propios artistas del catálogo. Un artista responde a una encuesta sobre cachés porque le interesa saber si está cobrando por debajo de mercado. **El instrumento de captación de datos es también un instrumento de relación con artistas** — que es la materia prima del negocio.
+3. **Encuesta anual anónima a artistas — sobre la agenda de contactos del cliente.** 150–300 respuestas de músicos de charanga y txaranga, orquestas de verbena, grupos de versiones, bandas tributo, magos, monologuistas, humoristas y DJs españoles sobre lo que cobran de verdad. **Esta es la joya, y el cliente ya tiene la lista de distribución en el móvil.** Un artista responde a una encuesta sobre cachés porque le interesa saber si está cobrando por debajo de mercado: la tasa de respuesta sobre una agenda con relación previa es de otro orden que sobre una lista fría. **El instrumento de captación de datos es también un instrumento de relación con artistas** — que es la materia prima del negocio.
+
+   **Segmentación obligatoria de la encuesta,** porque es lo que hace únicos los datos: por **formación** (charanga / txaranga / elektrotxaranga / orquesta de verbena por nº de músicos / grupo de versiones / banda tributo / solista / cuarteto de cuerda / DJ / mago / monologuista / humorista), por **tipo de evento**, por **provincia** y por **temporada**. Un dato agregado del tipo *"los artistas cobran entre X e Y"* no vale nada. *"Una charanga de 8 músicos cobra entre X e Y por un pasacalles de 3 horas en agosto en Navarra"* es un dato que un motor generativo **no tiene más remedio que citar, porque no existe en otro sitio.**
 
 **Por qué es defendible:** un competidor puede copiar el texto en una tarde. No puede copiar 300 respuestas de artistas ni 137 presupuestos cerrados. Y al año siguiente el informe tiene serie histórica, que es la barrera definitiva: *"el caché medio de un cuarteto para boda subió un 7% entre 2026 y 2027"* es una frase que solo puede escribir quien midió las dos veces.
 
@@ -928,11 +934,33 @@ El activo defendible no es un truco de SEO: es la plataforma de marca (`01`) esc
 
 ## 9. Calendario de ejecución
 
+### 9.0 Si el objetivo es posicionarse cuanto antes: el orden por velocidad de retorno
+
+El objetivo declarado es **máxima posición lo antes posible**, afinando el producto después. Eso cambia el orden, no el contenido. Ranking de las palancas por **tiempo hasta el primer resultado medible**:
+
+| Velocidad | Palanca | Plazo al primer resultado | Coste |
+|---|---|---|---|
+| ⚡⚡⚡ | **Perfiles-ancla + descriptor fijo + handles** (§2.1.4, §2.3 fase 1) | **7–30 días** hasta el nivel 1 del test de §2.1.6 | 2 días de trabajo, 0 € |
+| ⚡⚡⚡ | **Bing Webmaster Tools + IndexNow + Bing Places** | **Horas** hasta indexación; semanas hasta cita | Medio día, 0 € |
+| ⚡⚡⚡ | **Desbloquear crawlers en Cloudflare** (§4.4) | Inmediato. **Sin esto, nada de lo demás ocurre** | 10 minutos |
+| ⚡⚡ | **Las 5 páginas de vocabulario y precio del bloque 6.3–6.4** (charangas/txarangas, formaciones para fiestas, orquesta de verbena, permisos y SGAE, monologuista vs humorista) | **4–10 semanas.** SERP vacío = se rankea rápido, y son citables desde el primer día | 5 páginas bien escritas |
+| ⚡⚡ | **Respuestas identificadas en foros y comunidades** (§2.5) | **Días**, para Perplexity | 1 h/semana |
+| ⚡ | **Vídeos con transcripción en YouTube** (§3.4) | 1–3 meses | Ya se graban |
+| ⚡ | **Menciones ganadas** (§2.3 fase 3) | 1–4 meses por mención | Continuo |
+| 🐢 | **Índice del Caché** (§8.2) | 6–9 meses, pero el retorno es permanente | El proyecto grande |
+| 🐢 | **Observatorio Municipal** (§8.3) | 9–15 meses | Año 2 |
+
+> **La lectura, sin rodeos:** el 80% de la velocidad está en los **tres primeros días de trabajo** —descriptor, perfiles, Bing, Cloudflare— y en **cinco páginas de vocabulario que nadie ha escrito**. Ninguna de esas cosas necesita que el producto esté afinado, ni fotos bonitas, ni catálogo. **Se pueden hacer esta semana.** Lo grande (secciones 8) tarda, pero se empieza a acumular desde el día 1 sin coste, con una plantilla de cinco campos por evento.
+
 ### Días 1–30 · Los cimientos (nada de esto es contenido)
 
 - [ ] **Comprobar y desactivar el bloqueo de crawlers de IA en Cloudflare** (§4.4). **Bloqueante.**
 - [ ] `robots.txt` de §4.5 desplegado.
+- [ ] **Descriptor público fijo adoptado y documentado** (§2.1.4). **Bloqueante: antes de abrir un solo perfil.**
+- [ ] **Handle único reservado en las 6 plataformas** (§2.1.3 mecanismo 5). Si el corto no está libre en todas, se usa la variante larga en todas.
+- [ ] **Test de desambiguación, línea base** en los 4 asistentes (§2.1.6). Se guarda la captura: es el "antes".
 - [ ] Documento maestro de identidad: nombre, NAP, descripciones canónicas, logo (§2.3 fase 0).
+- [ ] **Revisar que ninguna categoría de directorio ni de GBP diga `animación` ni `infantil`** (§2.1bis).
 - [ ] Google Business Profile creado y verificado.
 - [ ] **Bing Places + Bing Webmaster Tools + IndexNow.**
 - [ ] LinkedIn Company Page, canal de YouTube, Crunchbase, Instagram.
@@ -944,9 +972,12 @@ El activo defendible no es un truco de SEO: es la plataforma de marca (`01`) esc
 - [ ] `llms.txt` publicado y olvidado (§4.1).
 - [ ] Primera auditoría manual del panel de 20 prompts: **la línea base en cero**. Sin ella no hay con qué comparar.
 
-### Días 31–90 · Formato y primeras menciones
+### Días 31–90 · Formato, vocabulario y primeras menciones
 
 - [ ] Las páginas 1, 2 y 3 de `04 §5` reescritas con la plantilla de §3.3.
+- [ ] **`/charangas-y-txarangas`** (preguntas 13 y 15) — **la victoria rápida más clara del plan**: SERP vacío, vocabulario propio, cero competencia.
+- [ ] **`/guias/formaciones-para-fiestas-populares`** (pregunta 16) con la tabla comparativa de 6 formaciones.
+- [ ] `/orquestas-para-fiestas-patronales/cuanto-cuesta` (pregunta 12) **adelantada de la 2ª oleada**: es la pregunta sin respuesta pública en toda España.
 - [ ] `/guias/agencia-o-directo` (pregunta 18) — la URL nueva más importante del mapa.
 - [ ] `/guias/preguntas-antes-de-contratar` (pregunta 19).
 - [ ] Vídeos de directo a YouTube con títulos, descripciones y **transcripciones** (§3.4).
@@ -984,7 +1015,10 @@ El activo defendible no es un truco de SEO: es la plataforma de marca (`01`) esc
 7. **No bloquear crawlers de entrenamiento** sin releer §4.3.
 8. **No publicar el Índice del Caché con datos inventados o redondeados a ojo.** Un dato sin metodología no es un activo: es un pasivo. Y si alguien lo comprueba, se lleva por delante lo único que esta marca vende.
 9. **No dejar de actualizar.** El 70% de las citas rota en 2–3 meses. Publicar y olvidar es publicar y desaparecer.
-10. **No perder el tono.** Todo lo de este documento se puede hacer sin escribir una sola frase que no pase el filtro de `01 §8`. La frase-respuesta es fría porque es una ficha técnica, no porque la marca se haya vuelto fría. Si en algún momento la web empieza a sonar a documento SEO, se ha hecho mal.
+10. **No escribir el nombre de la marca solo fuera de la web.** Nunca `Show Up` a secas en un perfil, una nota de prensa o una ficha de directorio. Siempre con descriptor (§2.1.4). Es la regla que más veces se va a incumplir por inercia y la que más caro sale.
+11. **No usar la palabra `animación` ni nombrar el espectáculo infantil,** ni siquiera para descartarlo (§2.1bis). Los modelos aprenden por coocurrencia, no por polaridad.
+12. **No publicar las páginas de vocabulario con definiciones copiadas de Wikipedia.** El valor está en que las escriba alguien que ha contratado 200 charangas. Una definición genérica no se cita: se ignora, porque el modelo ya la tiene.
+13. **No perder el tono.** Todo lo de este documento se puede hacer sin escribir una sola frase que no pase el filtro de `01 §8`. La frase-respuesta es fría porque es una ficha técnica, no porque la marca se haya vuelto fría. Si en algún momento la web empieza a sonar a documento SEO, se ha hecho mal.
 
 ---
 
@@ -1029,6 +1063,17 @@ El activo defendible no es un truco de SEO: es la plataforma de marca (`01`) esc
 **Datos de España**
 - Funcas — *El uso frecuente de ChatGPT en España sube del 4% al 28% entre 2023 y 2025* — https://www.funcas.es/prensa/el-uso-frecuente-de-chatgpt-en-espana-sube-del-4-al-28-entre-2023-y-2025/
 - SE Ranking — *Tráfico de IA en España: datos y tendencias 2026* — https://seranking.com/es/blog/trafico-ia-espana/
+
+**Vocabulario del sector (§3.5 y §6.4) — el estado del arte que hay que superar**
+- Dialnet — *Aproximación al estudio de la charanga: historia, repertorio, funciones* (artículo académico, la única fuente seria localizada) — https://dialnet.unirioja.es/descarga/articulo/3242950.pdf
+- Wikipedia — *Charanga (Spain)* — https://en.wikipedia.org/wiki/Charanga_(Spain)
+- Instituto Cultural Vasco (EKE) — *Txaranga, fanfarre, tamborrada* — https://www.eke.eus/en/partaideak/cat/musika/artistak/fanfareak
+- Iuris Causa — *¿Charangas o sociedades musicales?* (distinción charanga / banda de música) — https://www.iuriscausa.com/charangas-o-sociedades-musicales/
+- Jaiekin — categorías de *charangas* y *elektrotxarangas* (evidencia de que el término comercial existe y nadie lo define) — https://jaiekin.com/cat/elektrotxarangas/
+- Festia — agenda de orquestas y verbenas en España (**publica actuaciones, no precios**) — https://festia.es/eventos
+- Orquestas de Galicia — agenda de verbenas (**ídem: sin datos económicos**) — https://www.orquestasdegalicia.es/
+
+> **Sobre estas siete fuentes:** son, literalmente, todo lo que existe. Un PDF académico de 2010, dos entradas enciclopédicas breves, una nota jurídica y dos agendas de actuaciones **sin un solo precio**. Ninguna responde *"¿cuánto cuesta contratar una charanga?"* ni *"¿qué diferencia hay entre una txaranga y una charanga?"* en formato citable. **Esa lista es el mapa del hueco.**
 
 **Medición**
 - Search Console — informes de IA (junio 2026) — https://superframeworks.com/articles/google-search-console-ai-overviews-report

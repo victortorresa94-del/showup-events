@@ -1,8 +1,14 @@
 # Show Up — Mapa de demanda del sector
 
 > **Documento 01 de la serie SEO.** Sustituye y amplía la sección 1 de `docs/04-arquitectura-seo.md`.
-> Aquí no se decide arquitectura ni URLs: aquí se decide **qué busca la gente, cuánta gente, cuándo y con qué palabras exactas**.
-> Todo lo demás (árbol de URLs, interlinking, schema) se construye encima de esto.
+> Aquí no se decide arquitectura ni URLs: se decide **qué busca la gente, cuánta, cuándo, con qué palabras y dónde está el hueco**.
+>
+> **Este documento parte de tres correcciones al encargo original, y son sustanciales:**
+> 1. **Esto no es un negocio de bodas.** Las bodas son **un segmento más**, y ni siquiera el mejor. El eje son cinco segmentos y todos se dimensionan con el mismo rigor.
+> 2. **El activo real de Show Up no es un catálogo: es una agenda de contactos en música en vivo** — txarangas, charangas, orquestas de verbena, grupos de versiones, músicos de todo tipo. La promesa *"pide lo que sea y te lo buscamos"* es creíble porque es literalmente su red. La estrategia SEO tiene que apoyarse ahí, no en bodas.
+> 3. **Fuera payasos y animación infantil.** No entran en el posicionamiento y no se recomiendan en ningún punto de este mapa, ni siquiera cuando el dato dice que hay volumen.
+>
+> El entregable central es la **sección 1: la matriz segmento × tipo de artista**. Todo lo demás la sostiene.
 
 ---
 
@@ -10,343 +16,591 @@
 
 ### 0.1 De dónde salen los datos
 
-No hay Ahrefs ni Semrush en este proyecto todavía, y decirte un número exacto de volumen que no puedo verificar sería exactamente lo que hace el resto del sector. Así que esto es lo que se ha hecho:
+No hay Ahrefs ni Semrush en este proyecto todavía, y darte un volumen exacto que no puedo verificar sería exactamente lo que hace el resto del sector. Esto es lo que se ha hecho en su lugar:
 
 | Método | Qué aporta | Fiabilidad |
 |---|---|---|
-| **Observación de SERP** (quién rankea, con qué tipo de página, cuántos anuncios hay) | La señal más honesta de dinero: si hay 4 anuncios de pago sobre el orgánico, hay demanda comercial real | **Alta** |
-| **Taxonomía de los agregadores** (Espectalium, Partfy, Celebrents, La Factoría del Show, Artistealo, Bodas.net) | Un agregador solo crea una categoría si le entra tráfico. Su árbol de categorías **es** el mapa de demanda del sector | **Alta** |
-| **Existencia de página en Cronoshare** (`/cuanto-cuesta/X`) | Cronoshare crea páginas de precio por volumen de solicitudes reales. Si existe `/cuanto-cuesta/charanga`, hay demanda de precio de charanga | **Alta** |
-| **Lenguaje de foros** (comunidad.bodas.net) y bloques de FAQ de los que ya rankean | Las palabras literales, no las que usaría un profesional | **Alta** para redacción, **nula** para volumen |
-| **Estacionalidad estructural** (INE, calendario litúrgico, ciclo presupuestario municipal) | Cuándo se busca. Es lo más fiable de todo porque no depende de Google | **Muy alta** |
+| **Observación de SERP** (quién rankea, con qué tipo de página, cuántos anuncios hay) | La señal más honesta de dinero: si hay 4 anuncios sobre el orgánico, hay demanda comercial real | **Alta** |
+| **Taxonomía de los agregadores** (Espectalium, Partfy, Celebrents, La Factoría del Show, Artistealo, Bodas.net, Eventzone) | Un agregador solo crea una categoría si le entra tráfico. Su árbol de categorías **es** el mapa de demanda del sector | **Alta** |
+| **Existencia de verticales especializados** (charangas.info, jaiekin.com, orquestasdegalicia.es, mariachis.es) | Un dominio vertical vive solo si su nicho tiene volumen sostenido. Su existencia prueba la demanda; su debilidad marca el hueco | **Alta** |
+| **Existencia de página en Cronoshare** (`/cuanto-cuesta/X`) | Cronoshare crea páginas de precio por solicitudes reales. Si existe `/cuanto-cuesta/charanga`, hay demanda de precio de charanga | **Alta** |
+| **Lenguaje de foros** (comunidad.bodas.net) y bloques FAQ de los que rankean | Las palabras literales, no las de un profesional | **Alta** para redacción, **nula** para volumen |
+| **Estacionalidad estructural** (INE, calendario festivo, ciclo presupuestario municipal, calendario litúrgico) | Cuándo se busca. Lo más fiable de todo porque no depende de Google | **Muy alta** |
 | **Bandas de volumen estimadas** | Orden de magnitud | **Media.** Validar con Keyword Planner antes de comprometer presupuesto |
 
-### 0.2 La escala de volumen que se usa aquí
+### 0.2 La escala de volumen
 
-Los números exactos no importan. Lo que importa es **en qué banda está una keyword**, porque la banda determina la estrategia.
+Los números exactos no importan. Importa **en qué banda está una keyword**, porque la banda determina la estrategia.
 
-| Banda | Búsquedas/mes (España, es-ES) | Qué significa para un dominio nuevo |
+| Banda | Búsquedas/mes (España, es-ES) | Qué significa con dominio de cero autoridad |
 |---|---|---|
 | **A · Muy alto** | > 5.000 | Cerrado. Aquí no se entra en 12 meses. |
 | **B · Alto** | 1.000 – 5.000 | Objetivo de año 2. Se ataca por cola, nunca de frente. |
 | **C · Medio** | 300 – 1.000 | Ganable en 8–14 meses con contenido superior. |
 | **D · Bajo** | 100 – 300 | **La zona de trabajo del año 1.** |
 | **E · Nicho** | 10 – 100 | Ganable en 3–6 meses. Convierte brutal. Aquí está el negocio. |
-| **F · Residual** | < 10 | Solo si es parte de un patrón replicable (geo, nombre de artista). |
-
-> **Regla de Romuald aplicada:** con dominio de 0 autoridad, todo el plan del año 1 vive en las bandas **D y E**. Cualquiera que te venda la banda A el primer año te está vendiendo humo. El 20% de páginas que te va a dar el 80% del tráfico convertible del año 1 son páginas de banda D/E con intención comercial.
+| **F · Residual** | < 10 | Solo si es parte de un patrón replicable (geo, nombre de artista, urgencia). |
 
 ### 0.3 La regla que ordena todo el documento
 
 > **Volumen sin intención es tráfico. Intención sin volumen es dinero.**
 
-`canciones para la entrada de la novia` tiene 20 veces más volumen que `cuánto cuesta una orquesta para las fiestas del pueblo`. La segunda vale 40 veces más. Todo el documento está ordenado por esa lógica, no por volumen.
+`canciones para la entrada de la novia` tiene veinte veces más volumen que `cuánto cuesta una orquesta para las fiestas del pueblo`. La segunda vale cuarenta veces más. Todo aquí está ordenado por esa lógica.
+
+### 0.4 Punto de partida verificado
+
+Huella digital del dominio: **cero**. No hay historial, no hay penalizaciones, no hay backlinks, no hay marca. Eso es una ventaja y una condena a la vez: no hay nada que arreglar, y no hay nada sobre lo que apoyarse. Con ese punto de partida, **el primer año se juega íntegramente en bandas D, E y F**, y el criterio de "debilidad de la competencia" pesa más que ningún otro. La matriz de la sección 1 está construida sobre esa premisa.
 
 ---
 
-## 1. Racimo completo de keywords por intención
+## 1. LA MATRIZ · Dónde está el hueco, con datos
 
-### 1.1 TRANSACCIONAL — quien va a contratar ya
+**Este es el entregable principal.** Cada celda es una combinación de **segmento de cliente × tipo de artista**. Cada una se puntúa con cuatro criterios de 1 a 5.
 
-Señal de intención: verbo de contratación (`contratar`, `alquilar`, `buscar`), o sustantivo de servicio + destinatario (`para bodas`, `para eventos`).
+### 1.1 Los cuatro criterios
 
-#### 1.1.1 Cabecera de música y eventos (bandas A–B)
-
-| Keyword | Banda | Quién manda en el SERP | ¿Atacar en año 1? |
+| Criterio | Qué mide | 1 = | 5 = |
 |---|---|---|---|
-| grupos musicales para bodas | A | Bodas.net, Supermúsica, Fillevents | No |
-| música para bodas | A | Bodas.net, agregadores | No |
-| musicos para bodas | A | Bodas.net, Supermúsica | No |
-| contratar artistas para eventos | A | Espectalium, ContratarArtistas | No |
-| artistas para eventos | A | Espectalium, La Factoría del Show | No |
-| dj para bodas | B | Bodas.net, DJs individuales, Cronoshare | Solo por comparativa |
-| grupos de versiones | B | Partfy, Celebrents, La Factoría | Sí, por cola |
-| orquestas para bodas | B | Bodas.net, agencias gallegas | Solo por cola |
-| música en directo para bodas | B | Mixto: agregadores + bandas propias | **Sí (pilar)** |
-| grupo de música para bodas | B | Bodas.net | Por cola |
-| animación para eventos | B | Espectalium, Partfy | No (vertical distinto) |
-| espectáculos para eventos | B | Espectalium, Todofiesta | No |
-| contratar grupo de música | B | Agregadores | Por cola |
+| **V · Volumen** | Búsquedas/mes reales de esa combinación en España | Residual (<10) | Muy alto (>5.000) |
+| **D · Debilidad de la competencia** | Lo flojo que está el SERP: quién rankea, con qué calidad, con qué autoridad | Bodas.net / Espectalium con 10 años | Nadie ha escrito nada decente |
+| **L · Valor comercial del lead** | Ticket × recurrencia × probabilidad de cierre | <300 €, una vez, cierre incierto | >5.000 €, anual, cierre alto |
+| **R · Rapidez de ranking** | Meses hasta top 10 con dominio nuevo y contenido superior | 14+ meses | 3–5 meses |
 
-#### 1.1.2 Media y larga: el terreno de juego real (bandas C–E)
+**Índice = V×1,0 + D×1,5 + L×1,5 + R×1,0** · Máximo teórico: 25,0
 
-| Keyword | Banda | Competencia | Ticket medio | Decisión |
-|---|---|---|---|---|
-| grupo de versiones para bodas | C | Media | 1.800–3.500 € | **Sí** |
-| banda de versiones para bodas | D | Media-baja | 1.800–3.500 € | **Sí** |
-| contratar banda para boda | D | Media | 1.800–3.500 € | **Sí** |
-| grupo para boda | C | Media | 1.800–3.500 € | **Sí** (variante coloquial, ver 2.1) |
-| música en directo para boda | C | Media | — | **Sí** |
-| cuarteto de cuerda para boda | D | Media-baja | 600–1.200 € | **Sí** |
-| trío de cuerda para boda | E | Baja | 500–900 € | **Sí** |
-| violinista para boda | D | Media-baja | 350–700 € | **Sí** |
-| saxofonista para boda | E | Baja | 400–800 € | **Sí** |
-| cantante para ceremonia de boda | D | Media | 400–900 € | **Sí** |
-| música para ceremonia civil | D | Media | — | **Sí** |
-| música para ceremonia religiosa | D | Media | 170–1.470 € ¹ | **Sí** |
-| coro góspel para boda | E | **Baja** | 900–2.000 € | **Sí. Hueco claro.** |
-| dúo acústico para boda | E | Baja | 600–1.200 € | **Sí** |
-| solista para cóctel de boda | E | Baja | 600–1.000 € | **Sí** |
-| grupo de jazz para boda | E | Baja | 800–1.800 € | **Sí** |
-| mariachis para boda | D | Media (nicho consolidado) ² | 450–1.200 € | Evaluar |
-| charanga para boda | E | Baja | 400–800 € ³ | **Sí** |
-| dj y saxofonista para boda | E | **Muy baja** | 900–1.600 € | **Sí. Formato de moda.** |
-| grupo para boda pequeña | E | **Muy baja** | 600–1.500 € | **Sí** |
-| música para boda en el campo | E | Muy baja | — | **Sí** |
-| música para boda íntima | E | Muy baja | — | **Sí** |
+> **Por qué esos pesos.** Con dominio de cero autoridad, la competencia y el valor del lead deciden si el proyecto es viable; el volumen y la velocidad solo deciden cuándo llega el dinero. Un índice alto con volumen bajo es un negocio pequeño que se gana **seguro**. Un índice bajo con volumen alto es una web bonita sin clientes. **Léelo siempre junto a la columna de ticket.**
 
-¹ Rango de Cronoshare para música de ceremonia religiosa.
-² Nicho con dominios verticales fuertes (mariachis.es). Se entra solo si hay artista real.
-³ Rango de charanga: 150–400 €/h de media nacional según Cronoshare.
+### 1.2 La matriz completa, ordenada
 
-#### 1.1.3 Empresa (B2B) — menos volumen, más margen
+**Segmentos:** `AYTO` = ayuntamiento y comisión de fiestas · `EMP` = empresa · `BOD` = bodas · `BAR` = bares, pubs y salas · `PRIV` = privados
 
-| Keyword | Banda | Competencia | Ticket | Decisión |
-|---|---|---|---|---|
-| artistas para eventos de empresa | C | Media | — | **Sí (pilar)** |
-| música para eventos de empresa | C | Media | 1.500–6.000 € | **Sí** |
-| grupo de música para cena de empresa | D | Media-baja | 1.500–3.500 € | **Sí** |
-| contratar monologuista para cena de empresa | D | **Baja** | 700–1.800 € ⁴ | **Sí. Prioritaria.** |
-| monologuista para evento de empresa | D | Baja | 700–1.800 € | **Sí** |
-| humorista para cena de empresa | D | Baja | 700–2.500 € | **Sí** |
-| mago para evento de empresa | D | Media-baja | 800–2.500 € | **Sí** |
-| mago para cena de empresa | E | **Baja** | 800–2.500 € | **Sí** |
-| espectáculo para cena de empresa | D | Media-baja | — | **Sí** |
-| animación para cena de empresa | D | Media | — | Sí |
-| música para cóctel de empresa | E | Baja | 600–1.500 € | **Sí** |
-| grupo de música para convención | E | **Muy baja** | 2.000–6.000 € | **Sí** |
-| artistas para convenciones de empresa | E | Muy baja | — | **Sí** |
-| música para inauguración de local | E | Muy baja | 500–1.500 € | Sí |
-| música para presentación de producto | E | Muy baja | — | Sí |
-| dj para fiesta de empresa | D | Media | 600–1.800 € | Sí |
-| contratar artista fiesta de empresa | E | Baja | — | **Sí** |
-| espectáculo para aniversario de empresa | E | **Muy baja** | 2.000–8.000 € | **Sí** |
-| música para gala benéfica | F | Muy baja | — | Solo como sección |
-| conferenciante y humorista para convención | F | Muy baja | 3.000–15.000 € | Solo como sección |
+| # | Segmento | Tipo de artista | V | D | L | R | **Índice** | Ticket típico | Lectura |
+|---|---|---|---|---|---|---|---|---|---|
+| **1** | AYTO | **Orquesta de verbena** | 4 | 4 | 5 | 4 | **21,5** | 3.000–15.000 € | **El mejor negocio SEO del sector español.** Ticket alto, recurrencia anual, SERP ocupado por agregadores genéricos y PDFs municipales |
+| **2** | EMP | **Monologuista / humorista** | 3 | 5 | 4 | 5 | **21,5** | 700–1.800 € | Ciclo corto, cliente que repite cada año, SERP casi vacío. La conversión más rápida del mapa |
+| **3** | AYTO | **Txaranga / charanga** | 4 | 4 | 4 | 5 | **21,0** | 400–900 €/pase (× 3–6 pases) | Volumen real, verticales débiles, altísima recurrencia dentro del mismo programa de fiestas |
+| **4** | AYTO | **Banda tributo** | 3 | 4 | 4 | 4 | **19,0** | 2.500–9.000 € | Sustituto asequible del cabeza de cartel. Duda de compra sin resolver en Google |
+| **5** | AYTO | **Monologuista / humorista** | 2 | 5 | 3 | 5 | **19,0** | 1.500–5.000 € | Programación de fiestas y semanas culturales. Nadie lo ha reclamado |
+| **6** | EMP | **Mago (adulto / cerca)** | 3 | 4 | 4 | 4 | **19,0** | 800–2.500 € | Sub-segmento correcto: **adulto**, no infantil. Competencia fragmentada |
+| **7** | AYTO | **Grupo de versiones** | 4 | 3 | 4 | 3 | **17,5** | 1.500–8.000 € | El caballo de batalla de las fiestas medianas |
+| **8** | AYTO | **Batucada / pasacalles / gaiteros / dulzaineros** | 2 | 5 | 2 | 5 | **17,5** | 400–1.200 € | Folclore local. Cero competencia nacional. Multiplica por región |
+| **9** | BOD | **Txaranga / charanga** | 2 | 5 | 2 | 5 | **17,5** | 400–900 € | **Boda del norte** (Navarra, País Vasco, La Rioja, Aragón). Nadie lo trabaja |
+| **10** | BOD | **Coro góspel** | 2 | 5 | 2 | 5 | **17,5** | 900–2.000 € | Hueco puro, alta carga emocional, ticket sano |
+| **11** | AYTO | **Cabeza de cartel / artista conocido** | 3 | 3 | 5 | 2 | **17,0** | 15.000–60.000 € | Ticket enorme, ciclo largo, riesgo legal si se gestiona mal (§8) |
+| **12** | EMP | **Cabeza de cartel / famoso** | 3 | 3 | 5 | 2 | **17,0** | 15.000–60.000 € | Idem |
+| **13** | EMP | **Banda tributo** | 2 | 4 | 3 | 4 | **16,5** | 2.500–6.000 € | Aniversarios y fiestas de empresa grandes |
+| **14** | EMP | **Grupo de versiones** | 3 | 3 | 4 | 3 | **16,5** | 1.500–3.500 € | Cena de Navidad y fiesta de fin de año |
+| **15** | EMP | **Txaranga / charanga** | 1 | 5 | 2 | 5 | **16,5** | 400–900 € | *Family day*, inauguraciones, ferias de muestras. Nicho virgen |
+| **16** | BOD | **Orquesta / grupo grande** | 3 | 3 | 4 | 3 | **16,5** | 3.000–8.000 € | Bodas de Galicia, Asturias y norte. Distinto de la boda "de finca" |
+| **17** | BOD | **Monologuista** | 1 | 5 | 2 | 5 | **16,5** | 700–1.500 € | Nicho raro pero real (banquetes largos, bodas con humor) |
+| **18** | BAR | **Mago (magia de cerca en restaurante)** | 1 | 5 | 2 | 5 | **16,5** | 300–800 €/sesión | El único nicho de hostelería con búsqueda propia y recurrencia |
+| **19** | PRIV | **Monologuista** | 1 | 5 | 2 | 5 | **16,5** | 700–1.500 € | Cumpleaños grandes, jubilaciones |
+| **20** | PRIV | **Orquesta / grupo grande** | 1 | 5 | 2 | 5 | **16,5** | 2.000–5.000 € | Bodas de oro, aniversarios de 50 años. Ticket sorprendente |
+| **21** | PRIV | **Txaranga / charanga** | 3 | 4 | 2 | 4 | **16,0** | 400–900 € | Despedidas, cumpleaños sorpresa, quintos. **Volumen real** |
+| **22** | BOD | **Banda tributo** | 1 | 4 | 3 | 4 | **15,5** | 2.500–5.000 € | Bodas temáticas. Poco volumen, buen ticket |
+| **23** | AYTO | **Mago (escena)** | 2 | 4 | 2 | 4 | **15,0** | 800–2.500 € | Programación cultural municipal |
+| **24** | EMP | **Solista / dúo acústico (cóctel)** | 2 | 4 | 2 | 4 | **15,0** | 600–1.500 € | Recepciones, inauguraciones, presentaciones |
+| **25** | EMP | **Trío / cuarteto de jazz** | 2 | 4 | 2 | 4 | **15,0** | 800–1.800 € | Gala corporativa, cóctel de alto nivel |
+| **26** | BOD | **Mago (de cerca en cóctel)** | 2 | 4 | 2 | 4 | **15,0** | 800–1.800 € | Formato en crecimiento, poca competencia |
+| **27** | BAR | **Monologuista (noche de monólogos)** | 1 | 4 | 2 | 4 | **14,0** | 200–600 € | Existe, pero es outbound casi puro |
+| **28** | AYTO | **DJ / discomóvil** | 3 | 3 | 2 | 3 | **13,5** | 600–2.500 € | Mercado local muy atomizado |
+| **29** | BOD | **Grupo de versiones** | 5 | 1 | 4 | 1 | **13,5** | 1.800–3.500 € | **Volumen máximo, competencia máxima.** Bodas.net. No se gana de frente |
+| **30** | BOD | **Trío / cuarteto de cuerda** | 3 | 3 | 2 | 3 | **13,5** | 500–1.200 € | Fácil de ganar, poco dinero. Satélite |
+| **31** | PRIV | **Mago** | 3 | 3 | 2 | 3 | **13,5** | 400–1.200 € | **Solo adulto.** El infantil queda fuera por decisión de posicionamiento |
+| **32** | PRIV | **Solista / dúo** | 2 | 4 | 1 | 4 | **13,5** | 300–800 € | Ticket bajo |
+| **33** | AYTO | **Solista / dúo** | 1 | 4 | 1 | 4 | **12,5** | 300–800 € | Marginal en fiestas |
+| **34** | PRIV | **Grupo de versiones** | 2 | 3 | 2 | 3 | **12,5** | 1.000–2.500 € | — |
+| **35** | EMP | **DJ** | 3 | 2 | 2 | 3 | **12,0** | 600–1.800 € | Atomizado |
+| **36** | BOD | **Solista / dúo ceremonia** | 4 | 2 | 2 | 2 | **12,0** | 400–1.000 € | Volumen alto, competencia alta, ticket bajo |
+| **37** | BAR | **Solista / dúo / trío** | 1 | 3 | 2 | 3 | **11,5** | 150–400 € | **La búsqueda del hostelero casi no existe.** Ver §4.4 |
+| **38** | BAR | **Grupo de versiones / tributo (sala)** | 1 | 3 | 2 | 3 | **11,5** | 400–1.200 € | Idem |
+| **39** | BOD | **DJ** | 5 | 1 | 2 | 1 | **10,5** | 200–900 € | **Trampa.** Máximo volumen, mínimo margen, 4.000 competidores locales |
+| **40** | PRIV | **DJ** | 3 | 2 | 1 | 2 | **9,5** | 200–600 € | No |
+| **41** | BAR | **DJ** | 1 | 2 | 1 | 2 | **8,5** | 150–400 € | No |
 
-⁴ Show de 45–60 min para cena de empresa: 700–1.800 €. Monologuistas televisivos: +3.000 €.
+### 1.3 Lo que dice la matriz
 
-#### 1.1.4 Fiestas patronales, verbenas y ayuntamiento (B2G) — el territorio vacío
+**1. El eje del negocio SEO es AYUNTAMIENTO, no boda.**
+Cinco de las ocho mejores celdas son del segmento municipal. Ticket alto, recurrencia anual, decisión colegiada que **busca antes de decidir** (porque nadie se atreve a decidir solo con dinero público), y un SERP que nadie ha reclamado con contenido comercial serio. Es el cliente peor atendido de España en este sector y el que más paga.
 
-| Keyword | Banda | Competencia | Ticket | Decisión |
-|---|---|---|---|---|
-| contratar orquesta para fiestas | D | **Baja** | 3.000–15.000 € | **Sí (pilar)** |
-| orquestas para fiestas patronales | D | **Baja** | 3.000–15.000 € | **Sí** |
-| contratar orquesta para verbena | E | **Muy baja** | 3.000–12.000 € | **Sí** |
-| orquestas para verbenas | D | Baja (fuerte en Galicia) | 3.000–15.000 € | **Sí** |
-| grupos para fiestas de pueblo | D | Baja | 1.500–8.000 € | **Sí** |
-| contratar grupo para fiestas del pueblo | E | **Muy baja** | 1.500–8.000 € | **Sí** |
-| bandas tributo para fiestas patronales | E | **Muy baja** | 2.500–9.000 € | **Sí** |
-| contratar charanga | D | Baja | 400–900 € | **Sí** |
-| charanga para fiestas | E | Muy baja | 400–900 € | Sí |
-| pasacalles para fiestas | E | **Muy baja** | 400–1.200 € | Sí |
-| espectáculos para ayuntamientos | E | **Muy baja** | — | **Sí. Hueco.** |
-| contratar artistas para ayuntamiento | F | **Casi nula** | — | **Sí** |
-| programación de fiestas patronales | E | Muy baja | — | **Sí (informacional B2G)** |
-| espectáculo infantil para fiestas del pueblo | E | Muy baja | 500–1.500 € | Sí |
-| verbena llave en mano | F | **Nula** | 6.000–30.000 € | **Sí. Territorio virgen.** |
-| orquesta con escenario y sonido incluido | F | Nula | 6.000–25.000 € | **Sí** |
+**2. Las tres primeras celdas coinciden exactamente con el activo declarado del cliente.**
+Orquesta de verbena, monologuista de empresa y txaranga/charanga. Las dos primeras y la tercera son precisamente donde el cliente dice tener agenda real. **Eso casi nunca pasa.** Cuando el hueco de mercado y la ventaja del proveedor coinciden, no hay decisión estratégica que tomar: se ataca eso y se ataca ya.
 
-#### 1.1.5 Privados y celebraciones familiares
+**3. Bodas ocupa los puestos 9, 10, 16, 17, 22, 26, 29, 30, 36 y 39.** Es decir: en bodas, lo que funciona es **lo raro** (txaranga, góspel, orquesta del norte, monologuista, mago de cerca) y lo que no funciona es **lo obvio** (grupo de versiones, DJ, solista de ceremonia). El sector entero está peleando por las celdas 29, 36 y 39. Show Up debería estar en las 9, 10 y 16.
 
-| Keyword | Banda | Competencia | Decisión |
+**4. Bares y salas ocupa los puestos 18, 27, 37, 38 y 41.** Salvo la magia de cerca en restaurante, **no es un canal SEO de captación de clientes**. Análisis honesto y completo en §4.4 — incluida la lectura contraintuitiva de que sí es un canal SEO, pero de **captación de artistas**, que es justo el activo que hay que engordar.
+
+**5. El DJ es una trampa en los cinco segmentos.** Aparece en los puestos 28, 35, 39, 40 y 41. Volumen enorme, ticket bajo y un mercado atomizado en miles de DJs autónomos con SEO local propio. Se compite contra 4.000 dominios pequeños en lugar de contra 5 grandes. **Se entra solo por la comparativa**, que es donde Show Up puede decir lo que un DJ no dirá nunca: cuándo el DJ es la opción correcta.
+
+**6. La animación infantil no está en la matriz.** Por decisión de posicionamiento, y el dato la respalda: ticket de 85–195 €, mercado de animadores, y SERP dominado por empresas de hinchables. Aunque hubiera hueco, no pagaría el coste de adquisición ni encajaría con la marca. **Excluida, sin más.**
+
+### 1.4 Las seis celdas donde se juega el año 1
+
+Si solo se pudieran atacar seis, estas:
+
+| Prioridad | Celda | Por qué | Cuándo publicar |
 |---|---|---|---|
-| contratar mago para comunión | D | Media-baja | **Sí** |
-| animación para comunión | C | Media | Sí |
-| mago para cumpleaños | C | Media | Evaluar (ticket bajo) |
-| contratar mago infantil | C | Media | Evaluar |
-| música para bautizo | E | Baja | Sí (satélite) |
-| grupo de música para cumpleaños | D | Media-baja | Sí |
-| música para aniversario de bodas | E | **Muy baja** | **Sí** |
-| música para bodas de oro | F | **Casi nula** | **Sí. Ticket sorprendente.** |
-| contratar artista para fiesta privada | D | Media-baja | Sí |
-| música para cena en casa | F | Nula | No |
-| serenata sorpresa | E | Baja | Evaluar |
-| contratar grupo para despedida de soltera | E | Baja | No (margen bajo) |
+| **1** | AYTO × Orquesta de verbena | Índice máximo, ticket máximo, activo del cliente | **Sep–oct** (pico de búsqueda ene–abr) |
+| **2** | AYTO × Txaranga / charanga | Índice 21, rankeo rápido, activo del cliente | **Sep–oct** |
+| **3** | EMP × Monologuista | El primer euro más rápido del plan | **Jun** (pico sep–nov) |
+| **4** | AYTO × Banda tributo | Puente natural entre 1 y 2, ticket alto | **Oct–nov** |
+| **5** | EMP × Mago adulto | Complementa 3, mismo comprador, mismo ciclo | **Jul** |
+| **6** | AYTO × Grupo de versiones | El volumen de fiestas, una vez asentadas 1 y 2 | **Nov–dic** |
 
-#### 1.1.6 Patrón geográfico (multiplicador, no keywords sueltas)
-
-El patrón es `[servicio] + [modificador local]`. No es una lista de keywords: es una **plantilla que multiplica todo lo anterior**. Las combinaciones que existen de verdad:
-
-| Patrón | Ejemplo | Banda típica | Nota |
-|---|---|---|---|
-| `[servicio] + en + [capital de provincia]` | `grupos para bodas en Sevilla` | D–E | Existe en las ~25 primeras ciudades |
-| `[servicio] + [provincia]` | `orquestas Pontevedra` | E | Existe en las 50 |
-| `[servicio] + en + [zona con nombre de mercado]` | `música para bodas en el Empordà` | E–F | **La mejor relación intención/competencia del mapa** |
-| `[servicio] + [comunidad autónoma]` | `orquestas Galicia` | D | Solo tiene sentido en verbenas |
-| `[servicio] + cerca de mí` | `grupos de música cerca de mí` | C | **Depende de Google Business Profile, no de contenido** |
-
-**Zonas con nombre propio de mercado** (donde la zona bate a la provincia): Empordà, Costa Brava, Penedès, Sierra de Madrid, La Alcarria, La Rioja Alavesa, Aljarafe, Ribera del Duero, Valle del Jerte, Marina Alta, Maresme, Bierzo, Rías Baixas.
+**Bodas entra en el mes 6, no antes**, y entra por las celdas 9, 10 y 16 — no por la 29.
 
 ---
 
-### 1.2 COMERCIAL — quien está evaluando (aquí está el año 1)
+## 2. Los cinco segmentos, dimensionados
 
-Señal: la búsqueda contiene una **decisión pendiente** (precio, comparación, criterio, cantidad). Es la banda donde un dominio nuevo puede ganar porque el SERP está ocupado por contenido genérico.
+### 2.1 Cuadro comparativo
 
-#### 1.2.1 Precio — el hueco más grande del sector
+| | **AYUNTAMIENTO / COMISIÓN** | **EMPRESA** | **BODA** | **BARES Y SALAS** | **PRIVADOS** |
+|---|---|---|---|---|---|
+| **Quién busca** | Concejal de festejos, técnico de cultura, comisión de fiestas, peña, quintos | RRHH, office manager, agencia de eventos | Novia (70 %), novio, wedding planner | Dueño o encargado del local | Hijo/a que organiza el aniversario, cumpleañero |
+| **Su miedo real** | Auditoría, prensa local, que el pueblo se queje | Que su jefe pregunte "¿quién eligió esto?" | Que sea un día raro | Que no entre gente y pagar por nada | Quedar mal con la familia |
+| **Ticket por evento** | **3.000–45.000 €** (programa completo) | 1.500–8.000 € | 1.800–5.000 € | 150–600 € | 400–2.500 € |
+| **Recurrencia** | **Anual, muy alta** | **Anual, alta** | Cero | **Semanal, altísima** | Baja |
+| **Volumen de búsqueda** | Medio | Medio | **Muy alto** | **Muy bajo** | Medio |
+| **Competencia SEO** | **Baja** | Media-baja | **Brutal** | Editorial (otra intención) | Media |
+| **Estacionalidad de compra** | **Ene–abr** | **Sep–nov** | **Ene–mar** (9–14 meses antes) | Continua | Continua |
+| **Canal correcto** | **SEO + outbound institucional** | **SEO + LinkedIn** | SEO de cola + Ads | **Outbound puro** | SEO de cola |
+| **Veredicto SEO** | **Prioridad 1** | **Prioridad 2** | Prioridad 3, por lo raro | **No es canal de captación de clientes** | Prioridad 4 |
 
-Este bloque merece atención especial. **Cronoshare tiene página de precio para casi todas estas categorías y rankea con contenido genérico, sin desglose por contexto.** Ese es exactamente el hueco: nadie da rangos honestos con el porqué.
+### 2.2 Ayuntamientos y comisiones de fiestas — el segmento nº1
 
-| Keyword | Banda | Quién rankea hoy | Ganable |
+**Qué ocasiones cubre:** fiestas patronales, fiestas mayores, verbenas, ferias, romerías, Carnaval, cabalgata de Reyes, pregones, semanas culturales, fiestas de barrio, Fallas y hogueras, Moros y Cristianos, San Juan, vendimias.
+
+**El descubrimiento central de este mapa:** el concejal de festejos **no busca artistas primero. Busca cómo hacerlo sin meterse en un lío.**
+
+| Keyword | Intención real | Competencia | Quién rankea hoy |
 |---|---|---|---|
-| cuánto cuesta contratar música para una boda | C | **Cronoshare** (media nacional 300–700 €) | **Sí** |
-| cuánto cuesta un grupo de música para una boda | C | Cronoshare + blogs de bandas | **Sí** |
-| precio grupo de música boda | D | Bandas individuales | **Sí** |
-| cuánto cuesta una orquesta para una boda | D | Blogs de orquestas | **Sí** |
-| cuánto cuesta un dj para una boda | C | Cronoshare (`/cuanto-cuesta/contratar-dj-fiestas-bodas`) | **Sí** |
-| cuánto cobra un grupo de música por actuación | D | Foros, blogs de músicos | **Sí** |
-| cuánto cuesta contratar un mago | D | Cronoshare | **Sí** |
-| precio mago para eventos | D | Magos individuales | **Sí** |
-| cuánto cuesta un monologuista | D | **Cronoshare** (media 370 €, habitual 200–600 €) | **Sí** |
-| precio monologuista cena de empresa | E | Casi nadie | **Sí. Muy fácil.** |
-| cuánto cuesta contratar una charanga | D | Cronoshare (150–400 €/h) | **Sí** |
-| cuánto cuesta contratar una orquesta para las fiestas | E | **Nadie con criterio** | **Sí. El más fácil del mapa.** |
-| cuánto cuesta contratar un mariachi | D | mariachis.es (dominio vertical) | Difícil |
-| cuánto cuesta contratar un artista famoso | D | Peculiar, Espectalium | **Sí, con matices** (ver §6) |
-| caché de un grupo de música | E | Blogs de músicos | **Sí** |
-| qué incluye el caché de un grupo | F | **Nadie** | **Sí** |
-| cuánto cuesta la música de una boda en total | E | Nadie | **Sí** |
-| presupuesto música boda | D | Bodas.net (calculadora) | Parcial |
-| cuánto cuesta un cuarteto de cuerda | E | Nadie con criterio | **Sí** |
-| precio banda tributo | E | Agregadores | **Sí** |
-| cuánto cuesta traer un cantante conocido al pueblo | F | **Nadie** | **Sí. Muy alta intención B2G.** |
+| contrato menor actuación musical | "¿Puedo contratar sin licitar?" | Baja | Portales jurídicos municipales |
+| límite contrato menor servicios 2026 | Idem | Media | Blogs jurídicos |
+| fraccionamiento del contrato actuaciones musicales | "¿Me van a pillar?" | **Muy baja** | Derecholocal.es |
+| pliego de prescripciones técnicas actuación musical | "Necesito el documento" | **Muy baja** | PDFs de ayuntamientos |
+| **cómo contrata un ayuntamiento una orquesta** | Todo lo anterior junto | **Casi nula** | **Nadie** |
+| CPV servicios artísticos de orquestas (92312140) | Búsqueda de funcionario | Nula | Plataforma de Contratación del Estado |
+| certificado de estar al corriente para contratar con la administración | Trámite | Media | AEAT, gestorías |
+| seguro de responsabilidad civil espectáculos públicos | Requisito legal | Baja | Corredurías |
+| SGAE fiestas patronales quién paga | Duda económica real | Baja | Foros municipales |
+| catálogo de espectáculos diputación | Vía de financiación | **Muy baja** | Diputaciones |
+| subvención para contratar espectáculos ayuntamiento | Dinero disponible | **Muy baja** | BOP, diputaciones |
+| escenario y sonido para fiestas patronales | Producción | Baja | Empresas de sonido |
+| qué necesita el ayuntamiento para montar una verbena | Todo junto | **Nula** | Nadie |
 
-#### 1.2.2 Comparación y criterio de elección
+**Dos compradores distintos según región — y esto cambia el copy:**
+
+| Región | Quién paga la orquesta | Consecuencia |
+|---|---|---|
+| **Castilla y León, Castilla-La Mancha, Aragón, Extremadura** | **El ayuntamiento** | Comprador institucional. Manda el procedimiento, el pliego y la factura |
+| **Galicia, Asturias, Cantabria** | **La comisión de fiestas** (vecinos, con o sin subvención) | Comprador informal, decide en asamblea, cobra por cuotas y rifas. Manda el precio y la confianza |
+| **Navarra, País Vasco, La Rioja** | Mixto: ayuntamiento + **peñas y cuadrillas** | Dos compradores en la misma fiesta, con presupuestos separados |
+| **Comunidad Valenciana, Murcia** | Ayuntamiento + **comparsas, filaes, comisiones falleras** | Comprador asociativo con presupuesto propio y ciclo anual estricto |
+
+> **Consecuencia SEO:** hay que escribir **dos versiones de la misma página**. Una para el técnico municipal (procedimiento, contrato menor, pliego, factura). Otra para la comisión de fiestas (precio cerrado, qué incluye, qué pasa si llueve, cómo se paga). Son dos intenciones distintas y hoy **nadie sirve ninguna de las dos**.
+
+**Vías de financiación que casi nadie explica y que el comprador busca:** Circuito 107 (Diputación de Sevilla), Red Cultural de Guadalajara, Diputació a Escena (Castellón), E-catàleg (Diputació de Tarragona), Culturama (Málaga), Catálogo de la Red Andaluza de Teatros Públicos. Una página que explique **cómo entrar en el catálogo de tu diputación y cómo el ayuntamiento lo usa para pagar menos** es contenido enlazable desde webs municipales — es decir, **los primeros backlinks reales del dominio**.
+
+### 2.3 Empresa — el segmento nº2
+
+**Qué ocasiones cubre:** cena de Navidad, convención, kick-off de año, aniversario de empresa, entrega de premios, inauguración de sede o local, presentación de producto, family day, feria de muestras, gala benéfica, fiesta de fin de año.
 
 | Keyword | Banda | Competencia | Nota |
 |---|---|---|---|
-| dj o grupo en directo para la boda | D | **Baja** | Comparativa pura. Imán de enlaces. |
-| qué es mejor dj u orquesta para una boda | E | Baja | Variante literal |
-| orquesta o grupo de versiones | E | **Muy baja** | Duda real del comité de fiestas |
-| cuántos músicos necesito para mi boda | E | **Muy baja** | Pregunta de brief perfecta |
-| qué formato de música elegir para una boda | E | Muy baja | — |
-| grupo de versiones o tributo | F | Nula | — |
-| mago de cerca o mago de escena | F | **Nula** | Diferenciador de criterio |
-| monologuista o humorista para empresa | F | Nula | — |
-| mejor música para cena de empresa | D | Media (blogs de catering) | **Sí** |
-| qué contratar para la cena de Navidad de empresa | D | Blogs genéricos de RRHH | **Sí. Estacional.** |
-| ideas para amenizar una cena de empresa | C | Blogs de teambuilding | Sí |
-| qué espectáculo poner en las fiestas del pueblo | E | **Nadie** | **Sí** |
-| cómo elegir el grupo de música de la boda | D | Bodas.net, La Factoría | **Sí** |
-| qué preguntar antes de contratar un grupo de música | E | **Casi nadie** | **Sí** |
-| cómo saber si un grupo de música es bueno | F | Nadie | **Sí** |
-| errores al contratar música para una boda | E | Pocos | **Sí** |
-| mejores grupos de versiones de España | D | Listicles de agregadores | Evaluar |
-| agencias de contratación de artistas España | E | Espectalium, Tuset | **Sí (navegacional-comercial)** |
+| artistas para eventos de empresa | C | Media | Pilar |
+| música para eventos de empresa | C | Media | — |
+| espectáculo para cena de empresa | D | Media-baja | — |
+| **qué contratar para la cena de Navidad de empresa** | D | **Baja** | **Publicar en junio** |
+| contratar monologuista para cena de empresa | D | **Baja** | Celda nº2 de la matriz |
+| humorista para cena de empresa | D | Baja | Variante con volumen propio |
+| mago para cena de empresa | E | **Baja** | Celda nº6 |
+| grupo de música para cena de empresa | D | Media-baja | — |
+| animación para convención de empresa | D | Media | Teambuilding compite |
+| música para cóctel de empresa | E | Baja | — |
+| artistas para aniversario de empresa | E | **Muy baja** | Ticket 2.000–8.000 € |
+| espectáculo para entrega de premios | F | **Nula** | — |
+| música para inauguración de local | E | Muy baja | — |
+| música para family day | F | **Nula** | Encaja con txaranga y batucada |
+| **cómo se factura una actuación artística** | E | **Muy baja** | **Miedo administrativo real** |
+| **retención IRPF artistas factura** | D | Media (gestorías) | Alta intención B2B |
+| **quién emite la factura de un grupo de música** | F | **Nula** | Duda literal de RRHH |
+| contratar artistas con factura | E | **Muy baja** | Filtro de proveedor serio |
+| proveedor de espectáculos homologado | F | Nula | Empresas grandes |
 
-#### 1.2.3 Reviews, alternativas y comparación de proveedores
+> **Diferenciador que nadie usa:** el sector no habla de facturación, retenciones ni seguros. RRHH sí piensa en eso, y es lo primero que le va a preguntar su departamento financiero. Una sección honesta de *"cómo se paga esto y qué papeles vas a recibir"* dentro del pilar de empresa gana la venta antes de hablar del artista. Hay conocimiento propio en el proyecto (`fiscalidad-musica-espana`) para escribirla con criterio real.
 
-| Keyword | Banda | Nota |
-|---|---|---|
-| opiniones bodas.net proveedores música | E | Alta intención, contenido delicado |
-| alternativas a bodas.net | E | **Hueco. Encaja con el posicionamiento anticatálogo.** |
-| gigstarter opiniones | E | Marca de tercero, comparativa legítima |
-| supermúsica opiniones | F | Idem |
-| agencia de artistas o contratar directo | F | **Nadie.** Artículo de sinceridad brutal que encaja con la marca |
-| merece la pena una agencia de espectáculos | F | Idem |
+### 2.4 Bodas — un segmento más
 
----
+Se mantiene, pero **en su sitio**: mucho volumen, competencia brutal (Bodas.net con más de 5.900 proveedores en la categoría de música) y ticket medio. Se entra por las celdas raras de la matriz, no por la puerta principal.
 
-### 1.3 INFORMACIONAL — tráfico de captación
+| Sub-nicho | Banda | Competencia | Índice matriz | Decisión |
+|---|---|---|---|---|
+| txaranga / charanga para boda (norte) | E | **Muy baja** | 17,5 | **Sí, prioritario dentro de bodas** |
+| coro góspel para boda | E | **Muy baja** | 17,5 | **Sí** |
+| orquesta para boda (Galicia, Asturias, norte) | D | Media | 16,5 | **Sí** |
+| mago de cerca para cóctel de boda | E | Baja | 15,0 | **Sí** |
+| banda tributo para boda | F | Baja | 15,5 | Sí, como sección |
+| cuarteto de cuerda para ceremonia | D | Media-baja | 13,5 | Satélite |
+| grupo de versiones para boda | B | **Brutal** | 13,5 | Solo por cola larga y geo |
+| dj para boda | B | **Brutal** | 10,5 | Solo por comparativa |
 
-Volumen alto, conversión baja, pero **construye la autoridad temática** que hace posible rankear lo comercial. Nunca es prioridad 1, y nunca se publica antes que su pilar.
+**Cola larga de boda que sí es ganable:** `grupo para boda pequeña` · `música para boda en el campo` · `música para boda íntima` · `dj y saxofonista para boda` · `dúo acústico para boda` · `grupo de jazz para boda` · `violinista para boda` · `saxofonista para boda` · `música para ceremonia civil` · `charanga para la salida de la iglesia` · `música para boda de 50 personas`.
 
-#### 1.3.1 Boda — repertorio y momentos (el mayor volumen del mapa)
+### 2.5 Bares, pubs y salas — el análisis honesto
 
-| Keyword | Banda | Nota |
-|---|---|---|
-| canciones para la entrada de la novia | A | Volumen enorme, conversión ~0. Solo cuando haya autoridad |
-| canciones para el cóctel de boda | B | Idem |
-| música para el baile nupcial | B | Idem |
-| canciones para la ceremonia civil | B | Idem |
-| canciones para bailar en una boda | B | — |
-| música para la entrada de los novios al banquete | C | — |
-| canciones para la salida de la iglesia | C | — |
-| repertorio para boda | C | — |
-| música para el vals de los novios | C | — |
-| canciones emotivas para una boda | B | — |
-| música para el ramo | D | — |
-| playlist boda española | C | — |
-| qué música poner en la barra libre | D | — |
-| canciones que no pueden faltar en una boda | B | — |
+**Conclusión, sin rodeos: como canal de captación de clientes, el SEO aquí no funciona. Y hay una razón estructural, no de ejecución.**
 
-> **Decisión:** este subcluster es **año 2**. Es el más competido en volumen puro y el que peor convierte. Publicarlo antes de tener el pilar comercial es gastar recursos en visitas que no dejan un euro.
+Al buscar `música en directo Madrid`, `bares con música en directo Barcelona` o cualquier variante, el SERP entero es **editorial de ocio**: Time Out, thebar.com, salir.com, Madrid Secreto, blogs de hostels. Google ha decidido que esa consulta significa **"dónde voy a escuchar música"**, no **"a quién contrato para mi bar"**. Un dominio nuevo no cambia la interpretación de intención de Google. Lo intentes como lo intentes, competirás por una consulta cuyo usuario no es tu cliente.
 
-#### 1.3.2 Organización y logística de boda (convierte mejor)
+| Búsqueda | ¿Existe? | Quién la hace | ¿Sirve? |
+|---|---|---|---|
+| contratar grupo para mi bar | **No con volumen** | — | No |
+| música en directo [ciudad] | Sí, alto | **Público**, no hostelero | No |
+| bares con música en directo [ciudad] | Sí, alto | Público | No |
+| programación musical para bares | F | Muy pocos, muy cualificados | Marginal |
+| músicos para hoteles | **E, sí existe** | Cadenas hoteleras, F&B | **Sí, una página** |
+| pianista para hotel | E | Hoteles | **Sí, recurrente de temporada** |
+| magia de cerca para restaurante | E | Restaurantes | **Sí, celda nº18 de la matriz** |
+| grupo para tocar los viernes en un bar | F | Casi nadie | No |
 
-| Keyword | Banda | Nota |
-|---|---|---|
-| con cuánta antelación se contrata la música de una boda | D | **Alta señal de compra.** Los que ya rankean dicen 10–12 meses |
-| cuándo reservar la música de la boda | D | Variante |
-| cómo organizar el timing musical de una boda | E | **Nadie lo hace bien** |
-| cuánto dura la actuación de un grupo en una boda | E | Muy baja competencia |
-| qué necesita un grupo de música en una boda | E | Rider en cristiano |
-| qué es un rider técnico | D | Informacional puro |
-| hace falta permiso para música en directo en una boda | E | **Nadie.** Duda real |
-| límite de decibelios en bodas al aire libre | E | **Nadie.** Diferenciador brutal de criterio |
-| hay que pagar SGAE en una boda | D | **Duda muy buscada, mal respondida** |
-| quién paga la SGAE en un evento | D | Idem |
-| música en directo en exterior hasta qué hora | E | Nadie |
-| qué pasa si llueve el día de la boda con la música | F | Nadie |
-| contrato de actuación musical modelo | D | **Hueco. Descargable = imán de enlaces y leads** |
+**La única corrección al documento 04:** el vertical no es "cero SEO", es **"cero SEO de bar y sala, pero micro-SEO de hotel y restaurante"**. Espectalium mantiene página propia de *músicos para hoteles*, y un competidor con datos no mantiene una página que no le da tráfico. Una sola página, no un cluster.
 
-#### 1.3.3 Empresa
+#### 2.5.1 La lectura contraintuitiva: aquí sí hay SEO, pero al revés
 
-| Keyword | Banda | Nota |
-|---|---|---|
-| ideas para una cena de empresa | B | Volumen alto, competido |
-| cómo organizar una cena de empresa | B | Blogs de catering y hoteles |
-| ideas para el evento de Navidad de la empresa | C | Estacional |
-| actividades para una convención de empresa | C | Teambuilding domina |
-| cómo hacer que la gente no se vaya pronto de la cena de empresa | F | **Nadie. Es literalmente el copy de la marca.** |
-| qué hacer después de la cena de empresa | E | — |
-| protocolo cena de empresa con dirección | F | Nadie |
-| cómo se factura una actuación artística a una empresa | E | **Nadie.** B2B, resuelve el miedo administrativo |
-| retenciones de artistas factura | D | Fiscal, alta intención B2B |
+En este segmento **la búsqueda con volumen la hace el artista, no el local**:
 
-#### 1.3.4 Fiestas y ayuntamiento
+| Keyword | Banda | Competencia | Quién busca |
+|---|---|---|---|
+| dónde tocar en [ciudad] | D | Baja | **Músico** |
+| salas para músicos emergentes | E | Baja | Músico |
+| cómo conseguir bolos | D | **Baja** | Músico |
+| cómo entrar en una agencia de espectáculos | E | **Muy baja** | Músico |
+| agencias de contratación de artistas para músicos | E | **Muy baja** | Músico |
+| cuánto cobrar por un bolo | D | **Baja** | Músico |
+| cómo hacer un rider técnico | D | Baja | Músico |
+| cómo facturar un bolo | D | Media (gestorías) | Músico |
+| quiero tocar en bodas cómo empiezo | E | **Muy baja** | Músico |
+| charangas que buscan músicos | F | Nula | Músico |
 
-| Keyword | Banda | Nota |
-|---|---|---|
-| cómo organizar las fiestas de un pueblo | D | **Casi nadie con criterio** |
-| presupuesto fiestas patronales ayuntamiento | E | Nadie comercial |
-| qué necesita un ayuntamiento para contratar una orquesta | F | **Nadie. Cero competencia.** |
-| contrato menor actuación musical ayuntamiento | E | Portales jurídicos, no comerciales |
-| fraccionamiento del contrato actuaciones musicales | F | Jurídico puro. **Oportunidad de autoridad.** |
-| seguro de responsabilidad civil para un concierto | E | **Nadie del sector artístico** |
-| permisos para montar un escenario en la plaza | F | Nadie |
-| SGAE fiestas patronales ayuntamiento | E | Duda real, mal resuelta |
-| cómo se hace una programación de fiestas | F | Nadie |
+> **Y aquí está la jugada estratégica que nadie del sector ha hecho.** El activo declarado de Show Up es **la agenda de contactos**. Ese activo se engorda captando artistas. Estas keywords son de banda D–E, competencia bajísima, y llevan directamente a artistas que quieren trabajar. Una sección `/para-artistas` con tres o cuatro páginas útiles de verdad (cuánto cobrar, cómo facturar un bolo, cómo hacer un rider, cómo entrar en el circuito de verbenas) **hace crecer el activo del negocio mientras construye autoridad temática en música en vivo**, que es exactamente lo que Google necesita ver para rankear las páginas comerciales.
+>
+> Coste: bajo. Competencia: nula. Beneficio doble. **Es la recomendación menos obvia y probablemente la más rentable de este documento.**
 
-#### 1.3.5 Curiosidad y cultura (tráfico frío, uso limitado)
+### 2.6 Privados
 
-`qué es una verbena` · `origen de las fiestas patronales` · `historia de las orquestas gallegas` · `diferencia entre orquesta y grupo de versiones` · `qué es una charanga` · `qué es un pasacalles`.
+Cumpleaños grandes, aniversarios, bodas de oro y de plata, jubilaciones, despedidas, quintos, comidas familiares. Ticket medio-bajo, volumen decente, competencia media.
 
-> **Decisión:** solo `diferencia entre orquesta y grupo de versiones` merece página, porque es criterio de compra disfrazado de curiosidad. El resto, no.
+`contratar artista para fiesta privada` · `charanga para cumpleaños` · `charanga para despedida de soltero` · `música para aniversario de bodas` · `música para bodas de oro` · `contratar mago para fiesta de adultos` · `orquesta para cumpleaños de 50` · `sorpresa musical cumpleaños`.
+
+**Excluido por decisión de posicionamiento:** todo lo infantil (payasos, animación de cumpleaños de niños, hinchables, magia infantil de cumpleaños). Aunque `mago para cumpleaños` tenga banda C, el ticket es de 85–195 € y el SERP pertenece a empresas de animación. **No se toca.**
 
 ---
 
-### 1.4 NAVEGACIONAL
+## 3. TXARANGAS, CHARANGAS Y ORQUESTAS DE VERBENA · el bloque central
 
-Cuatro subtipos, y solo dos son accionables.
+Este es el segmento donde el activo del cliente y el hueco del mercado coinciden. Merece tratamiento propio y a fondo.
+
+### 3.1 Por qué es un mercado enorme y el SEO no se ha enterado
+
+Tres hechos que lo dimensionan:
+
+- **Solo en Galicia se celebran unas 2.500 fiestas entre julio y agosto**, lo que convierte la comunidad en una verbena permanente durante dos meses.
+- **Existen verticales dedicados exclusivamente a esto**: `charangas.info` (portal nacional con buscador provincial, grupo de WhatsApp de peticiones de presupuesto y canal de YouTube), `jaiekin.com` (vertical vasco-navarro), `orquestasdegalicia.es` (agenda pública de contrataciones, con app propia). Un vertical no vive sin volumen sostenido.
+- **Cronoshare tiene página propia de `/cuanto-cuesta/charanga`.** Solo crea páginas de precio donde hay solicitudes reales y recurrentes.
+
+Y sin embargo: **ninguno de esos verticales es un competidor SEO serio**. Son directorios con fichas finas, sin contenido, sin criterio y sin responder ninguna de las preguntas de compra. Es el patrón exacto que Romuald describe como *"plantillas que se ganan con contenido real"*.
+
+### 3.2 Vocabulario regional — la sección que decide el 40 % del tráfico
+
+**Este es el hallazgo operativo más importante del bloque.** No es un mismo mercado con acentos: son **cinco vocabularios distintos**, y quien busca en uno no encuentra al que escribe en otro. Un competidor que solo escribe "charanga" es invisible en Navarra. Uno que solo escribe "txaranga" es invisible en Burgos.
+
+| Término | Dónde se usa | Qué designa | Banda estimada | Nota SEO |
+|---|---|---|---|---|
+| **charanga** | Castilla y León, Castilla-La Mancha, Madrid, Aragón, Murcia, Andalucía, Extremadura, Cantabria | Grupo de viento y percusión que toca por la calle | **C–D** | El término matriz. Mayor volumen nacional |
+| **txaranga** | País Vasco, Navarra | Lo mismo | **D** | **Búsqueda con grafía vasca. Sin página propia no se capta.** Existe `txarangak` en plural euskera |
+| **xaranga** | Galicia | Lo mismo | **E–F** | Grafía gallega. Volumen bajo pero cero competencia |
+| **fanfarre / fanfarria** | Navarra (*fanfarre*), uso general (*fanfarria*) | Formación similar, a veces más formal | **E** | Variante infrautilizada |
+| **banda de música** | Todo el país | **Cosa distinta**: banda municipal, formal, procesiones y conciertos | **C** | **No confundir.** Intención distinta, comprador distinto |
+| **batucada** | Todo el país | Percusión afrobrasileña | **D** | Sustituto directo de charanga en muchos programas |
+| **gaiteros / banda de gaitas** | Asturias, Galicia | Folclore local | **D** | Fuerte en Asturias. Consolidado en centros culturales y ayuntamientos |
+| **dulzaineros** | Castilla y León, Segovia, Valladolid, Madrid rural | Folclore castellano | **E** | Cero competencia |
+| **comparsa** | Cádiz, Badajoz, Canarias, Tenerife | Carnaval | **C** estacional | Pico de enero-febrero |
+| **cercavila** | Cataluña | Pasacalles | **E** | Requiere versión catalana; ver aviso abajo |
+| **colla / muixeranga** | Comunidad Valenciana, Cataluña | Formaciones festivas | **E** | Nicho identitario |
+| **discomóvil** | Todo el país, muy fuerte en el norte y Aragón | **Competidor directo por presupuesto** | **D** | Aparece siempre como alternativa barata a la orquesta |
+| **orquesta de verbena** | Todo el país | Formación de 5–12 músicos con espectáculo, luces y sonido | **C–D** | El término de mayor valor comercial del mapa |
+| **orquesta de pueblo** | Coloquial, todo el país | Lo mismo, en el idioma del comprador | **D** | **La forma en que lo escribe la comisión de fiestas** |
+
+> **Aviso de arquitectura, no de demanda:** `cercavila`, `txarangak` y `xaranga` implican decidir si se hace versión en catalán, euskera o gallego. El documento 04 dejó cerrado que el sitio es `es-ES` únicamente y sin `hreflang`. **Esa decisión sigue siendo correcta para el año 1**, y la forma de capturar esas búsquedas sin abrir un lío de idiomas es incluir el término regional **dentro de una página en castellano** (H2, cuerpo y `alt`), como término del sector y no como traducción. `Txaranga en Navarra: qué es y qué cuesta` es una página en castellano que rankea por `txaranga`.
+
+**Colectivos que compran, y que también son keywords:** peña, cuadrilla, quintos, comisión de fiestas, comparsa, filà, casal, comisión fallera, cofradía, hermandad, asociación de vecinos, club deportivo, AMPA (no infantil: verbenas de fin de curso de padres).
+
+### 3.3 Racimo de keywords · txaranga y charanga
+
+**Transaccional**
+
+| Keyword | Banda | Competencia |
+|---|---|---|
+| contratar charanga | D | Baja |
+| charanga para fiestas | D | Baja |
+| charangas [provincia] × 50 | E–F cada una | **Muy baja** |
+| txaranga contratar | E | **Muy baja** |
+| txarangas Navarra / Bizkaia / Gipuzkoa / Álava | E | **Muy baja** |
+| charanga para boda | E | **Muy baja** |
+| charanga para despedida de soltero | D | Media |
+| charanga para cumpleaños | E | Baja |
+| charanga para quintos | F | **Nula** |
+| charanga para peñas | F | **Nula** |
+| contratar pasacalles | E | Baja |
+| contratar batucada | D | Media-baja |
+| batucada para eventos | D | Media-baja |
+| gaiteros para bodas | D | Media-baja |
+| banda de gaitas contratar | D | Baja |
+| contratar dulzaineros | E | **Muy baja** |
+| charanga para carnaval | E estacional | **Muy baja** |
+| charanga para cabalgata de reyes | E estacional | **Nula** |
+| charanga para fallas | E estacional | Baja |
+| charanga para san fermín | E estacional | **Muy baja** |
+| charanga de navidad | E estacional | **Nula** |
+| charanga para nochevieja | F | **Nula** |
+| charanga con zancudos | F | **Nula** |
+| charanga barata / económica | E | Baja |
+| charanga para fiestas patronales | D | Baja |
+
+**Comercial**
+
+`cuánto cuesta contratar una charanga` (Cronoshare, ganable) · `precio charanga por hora` · `cuánto cobra una charanga` · `cuántos músicos tiene una charanga` · `charanga o batucada` · `charanga o discomóvil` · `charanga o banda de música` · `qué charanga contratar para las fiestas` · `cuánto dura una actuación de charanga` · `cuántas horas toca una charanga`.
+
+**Informacional**
+
+`qué es una charanga` · `diferencia entre charanga y txaranga` · `diferencia entre charanga y banda de música` · `repertorio de charanga` · `canciones típicas de charanga` · `qué instrumentos lleva una charanga` · `permisos para un pasacalles por la calle` · `cómo organizar un pasacalles` · `historia de las charangas`.
+
+### 3.4 Racimo de keywords · orquesta de verbena
+
+**Transaccional**
+
+| Keyword | Banda | Competencia | Ticket |
+|---|---|---|---|
+| contratar orquesta para fiestas | D | **Baja** | 3.000–15.000 € |
+| orquestas para fiestas patronales | D | **Baja** | 3.000–15.000 € |
+| contratar orquesta para verbena | E | **Muy baja** | 3.000–12.000 € |
+| orquestas de verbena | D | Media (verticales regionales) | — |
+| orquestas Galicia / orquestas gallegas | D | **Media-alta** (orquestasdegalicia) | — |
+| orquestas Castilla y León / Asturias / Cantabria | E | **Muy baja** | — |
+| orquesta para las fiestas del pueblo | D | **Baja** | — |
+| orquesta pequeña para pueblo pequeño | F | **Nula** | 2.000–4.000 € |
+| orquesta con sonido y luces incluido | F | **Nula** | 4.000–12.000 € |
+| **verbena llave en mano** | F | **Nula** | 6.000–30.000 € |
+| orquesta y discomóvil para las fiestas | F | **Nula** | — |
+| agencia de orquestas | E | Media | — |
+| contratar orquesta económica | E | Baja | — |
+| orquesta para dos noches de fiestas | F | **Nula** | — |
+
+**Comercial — donde está el dinero fácil**
+
+| Keyword | Banda | Dato de referencia |
+|---|---|---|
+| **cuánto cuesta una orquesta para las fiestas del pueblo** | E | **3.000–5.000 €** por un bolo de 4 h con formación de 5–7 personas |
+| cuánto cobra una orquesta de pueblo | D | Idem |
+| precio orquesta verbena | E | — |
+| qué incluye el caché de una orquesta | F | Nadie lo explica |
+| cuánto cuesta la programación de unas fiestas | F | **Nula** |
+| orquesta o grupo de versiones | E | La duda literal nº1 |
+| orquesta o discomóvil | E | Duda de presupuesto ajustado |
+| cuántos músicos tiene una orquesta de verbena | F | 8–12 músicos, escenario de 20–40 m² |
+| **cuánto escenario necesita una orquesta** | F | **Nula.** Dato técnico que decide la compra |
+| qué orquesta contratar para una fiesta de pueblo | E | Baja |
+| mejores orquestas de verbena de España | D | Listicles de agregadores |
+| cuánto cuesta traer un cantante conocido al pueblo | F | **Nula. Altísima intención B2G** |
+
+**Informacional B2G** — ver §2.2, todo el bloque de contratación pública aplica aquí.
+
+### 3.5 Estacionalidad de txarangas, charangas y verbenas
+
+**El desfase es el activo.** El evento pasa en julio y agosto; la contratación se cierra entre enero y abril. Quien publica en mayo llega un año tarde.
+
+| Mes | Qué se EJECUTA | Qué se BUSCA para contratar | Intensidad de búsqueda |
+|---|---|---|---|
+| **Enero** | Cabalgata de Reyes (charangas, pasacalles) | **Arranca el ciclo municipal.** Programación de verano, Carnaval | **Alta** |
+| **Febrero** | **Carnaval** (comparsas, charangas — pico en Cádiz, Badajoz, Canarias) | Verano, Semana Santa | **Muy alta** |
+| **Marzo** | **Fallas** (Valencia, 15–19), Carnaval tardío | **Pico de cierre de programación de verano** | **Máxima** |
+| **Abril** | Semana Santa (bandas y agrupaciones — mercado propio), Feria de Abril | Cierre de verano. **Temporada baja de verbena** | **Alta** |
+| **Mayo** | San Isidro, Cruces de Mayo, romerías | Urgencias de junio. Fechas de agosto que se han caído | Media |
+| **Junio** | **San Juan (23–24): arranca la verbena**, fin de curso | Urgencias. Huecos de agosto | Media |
+| **Julio** | **San Fermín (6–14, txarangas a destajo)**, Virgen del Carmen, fiestas del norte | Solo urgencias | **Baja** |
+| **Agosto** | **PICO ABSOLUTO.** Asunción (15), fiestas mayores en toda España, ~2.500 fiestas en Galicia jul-ago | Prácticamente nada | **Mínima** |
+| **Septiembre** | Moros y Cristianos (Alicante, Murcia), vendimias, patronales de septiembre | Nada de verbena. Arranca empresa | Baja |
+| **Octubre** | Pilar (12), fin de temporada | Carnaval, Navidad | Baja |
+| **Noviembre** | Valle | Navidad, cabalgata | Media |
+| **Diciembre** | Charangas de Navidad, pasacalles navideños, Nochevieja | Reyes, Carnaval, **y arranque del ciclo de verano** | Media-alta |
+
+**La ventana editorial que decide el año:**
+
+| Publicar en | Contenido | Pico de búsqueda que persigue |
+|---|---|---|
+| **Septiembre–octubre** | Todo el cluster de verbena, orquesta, charanga y ayuntamiento | **Enero–abril** |
+| **Octubre–noviembre** | Carnaval y Reyes (charanga, comparsa, pasacalles) | **Diciembre–febrero** |
+| **Enero–marzo** | Refuerzos geográficos por provincia | Feb–abr y arrastre a 2028 |
+| **Julio–agosto** | Nada crítico. Producción y trabajo técnico | — |
+
+> **Con dominio nuevo hay que publicar 5–6 meses antes del pico de búsqueda**, que a su vez está 4–7 meses antes del evento. En la práctica: para cazar la verbena de agosto de 2027, el contenido tiene que estar online en **septiembre de 2026**. Esa es la fecha crítica del proyecto entero.
+
+### 3.6 La ventana de urgencia — el activo contraestacional
+
+Existe un flujo constante y contraestacional: **quien se ha quedado sin artista.** Es de banda F en volumen y convierte como ninguna otra cosa, porque no hay alternativa y el precio deja de ser el criterio.
+
+| Keyword | Cuándo pica | Competencia |
+|---|---|---|
+| orquesta disponible para el sábado | Jul–ago | **Nula** |
+| charanga disponible para este fin de semana | Jun–sep | **Nula** |
+| sustituir orquesta que ha cancelado | Jul–ago | **Nula** |
+| contratar grupo de música última hora | Abr–jun, nov | **Nula** |
+| monologuista disponible en diciembre | Nov–dic | **Nula** |
+| se me ha caído el grupo de las fiestas | Jul–ago | **Nula** |
+
+Y encaja literalmente con la promesa de marca (*Aparecemos. Si no lo tenemos, lo buscamos*). Una sola página o una sección con H2 explícito dentro del pilar cubre las seis.
+
+---
+
+## 4. Racimo completo de keywords por intención
+
+### 4.1 TRANSACCIONAL
+
+#### 4.1.1 Cabecera cerrada (bandas A–B) — no atacar de frente
+
+`grupos musicales para bodas` · `música para bodas` · `musicos para bodas` · `contratar artistas para eventos` · `artistas para eventos` · `dj para bodas` · `grupos de versiones` · `orquestas para bodas` · `música en directo para bodas` · `animación para eventos` · `espectáculos para eventos` · `contratar grupo de música`.
+
+**Quién manda:** Bodas.net, Espectalium, Supermúsica, Fillevents, ContratarArtistas, La Factoría del Show. Dominios con 10+ años y miles de enlaces. **Si hacen falta ya, se compran en Ads mientras el SEO construye la cola.**
+
+#### 4.1.2 Fiestas, verbenas y ayuntamiento — ver §3.3 y §3.4
+
+El racimo completo está en el bloque central. Resumen: **~60 keywords accionables**, casi todas de banda D–F y competencia baja o nula.
+
+#### 4.1.3 Empresa
+
+`artistas para eventos de empresa` · `música para eventos de empresa` · `grupo de música para cena de empresa` · `contratar monologuista para cena de empresa` · `monologuista para evento de empresa` · `humorista para cena de empresa` · `mago para evento de empresa` · `mago para cena de empresa` · `espectáculo para cena de empresa` · `animación para cena de empresa` · `música para cóctel de empresa` · `grupo de música para convención` · `artistas para convenciones` · `música para inauguración de local` · `música para presentación de producto` · `dj para fiesta de empresa` · `contratar artista fiesta de empresa` · `espectáculo para aniversario de empresa` · `artistas para entrega de premios` · `música para family day` · `charanga para feria de muestras`.
+
+#### 4.1.4 Bodas (cola larga ganable)
+
+`grupo de versiones para bodas` · `banda de versiones para bodas` · `contratar banda para boda` · `grupo para boda` · `música en directo para boda` · `cuarteto de cuerda para boda` · `trío de cuerda para boda` · `violinista para boda` · `saxofonista para boda` · `cantante para ceremonia de boda` · `música para ceremonia civil` · `música para ceremonia religiosa` · `coro góspel para boda` · `dúo acústico para boda` · `solista para cóctel de boda` · `grupo de jazz para boda` · `charanga para boda` · `txaranga para boda` · `gaiteros para boda` · `dj y saxofonista para boda` · `grupo para boda pequeña` · `música para boda en el campo` · `música para boda íntima` · `orquesta para boda en Galicia`.
+
+#### 4.1.5 Privados
+
+`contratar artista para fiesta privada` · `charanga para cumpleaños` · `charanga para despedida de soltero` · `música para aniversario de bodas` · `música para bodas de oro` · `orquesta para cumpleaños de 50` · `contratar mago para fiesta de adultos` · `grupo de música para cumpleaños` · `sorpresa musical cumpleaños` · `contratar monologuista para jubilación`.
+
+#### 4.1.6 Patrón geográfico (multiplicador)
+
+No es una lista: es una plantilla que multiplica todo lo anterior.
+
+| Patrón | Ejemplo | Banda | Nota |
+|---|---|---|---|
+| `[servicio] + [provincia]` | `charangas Burgos`, `orquestas Zamora` | E–F | **Existe en las 50 provincias.** El multiplicador más potente del mapa para el segmento fiestas |
+| `[servicio] + en + [capital]` | `contratar orquesta en Valladolid` | D–E | Existe en las ~25 primeras |
+| `[servicio] + [comunidad]` | `orquestas de Galicia`, `txarangas de Navarra` | D | Solo tiene sentido en verbena y charanga |
+| `[servicio] + en + [zona de mercado]` | `música para bodas en el Empordà` | E–F | La mejor relación intención/competencia en bodas |
+| `[servicio] + cerca de mí` | `charangas cerca de mí` | C | **Depende de Google Business Profile, no de contenido** |
+
+> **Regla dura, sin excepción:** el patrón geográfico solo se activa **con prueba local real** (evento hecho ahí, foto propia, dato del sitio). Cuarenta páginas con el topónimo cambiado son *doorway pages* y con dominio nuevo no hay colchón de autoridad que lo aguante. En fiestas y charangas la tentación es máxima porque el patrón es replicable a 50 provincias. **Tres bien hechas antes que cuarenta clonadas.**
+
+### 4.2 COMERCIAL — aquí se gana el año 1
+
+#### 4.2.1 Precio
+
+| Keyword | Banda | Quién rankea hoy | Ganable |
+|---|---|---|---|
+| **cuánto cuesta una orquesta para las fiestas del pueblo** | E | **Nadie con criterio** | **Sí. El más fácil del mapa** |
+| cuánto cobra una orquesta de pueblo | D | Blogs de agencias | **Sí** |
+| cuánto cuesta contratar una charanga | D | Cronoshare (150–400 €/h) | **Sí** |
+| precio charanga por hora | E | Charangas individuales | **Sí** |
+| precio monologuista cena de empresa | E | **Casi nadie** | **Sí. Muy fácil** |
+| cuánto cuesta un monologuista | D | Cronoshare (media 370 €) | **Sí** |
+| cuánto cuesta contratar un mago | D | Cronoshare | **Sí** |
+| precio mago para eventos | D | Magos individuales | **Sí** |
+| precio banda tributo | E | Agregadores | **Sí** |
+| cuánto cuesta un grupo de música para una boda | C | **Cronoshare** (media 300–700 €) | **Sí** |
+| cuánto cuesta contratar música para una boda | C | Cronoshare | **Sí** |
+| cuánto cuesta un dj para una boda | C | Cronoshare | Sí |
+| cuánto cobra un grupo de música por actuación | D | Foros, blogs de músicos | **Sí** |
+| caché de un grupo de música | E | Blogs | **Sí** |
+| qué incluye el caché de un grupo | F | **Nadie** | **Sí** |
+| cuánto cuesta la programación de unas fiestas | F | **Nadie** | **Sí** |
+| cuánto cuesta traer un cantante conocido al pueblo | F | **Nadie** | **Sí** |
+| cuánto cuesta contratar un artista famoso | D | Peculiar, Espectalium | Sí, con matices (§8) |
+| cuánto cuesta un cuarteto de cuerda | E | Nadie con criterio | **Sí** |
+| presupuesto música boda | D | Bodas.net (calculadora) | Parcial |
+
+#### 4.2.2 Comparación y criterio
+
+| Keyword | Banda | Competencia |
+|---|---|---|
+| **orquesta o grupo de versiones** | E | **Muy baja.** La duda literal nº1 |
+| orquesta o discomóvil | E | **Muy baja** |
+| charanga o batucada | F | **Nula** |
+| charanga o banda de música | F | **Nula** |
+| dj o grupo en directo para la boda | D | **Baja** |
+| qué es mejor dj u orquesta | E | Baja |
+| mago de cerca o mago de escena | F | **Nula** |
+| monologuista o humorista para empresa | F | **Nula** |
+| mago o monologuista para cena de empresa | F | **Nula** |
+| grupo de versiones o tributo | F | **Nula** |
+| **qué espectáculo poner en las fiestas del pueblo** | E | **Nadie** |
+| qué contratar para la cena de Navidad de empresa | D | Blogs genéricos |
+| mejor música para cena de empresa | D | Blogs de catering |
+| cuántos músicos necesito para mi boda | E | **Muy baja** |
+| cómo elegir el grupo de música de la boda | D | Bodas.net |
+| qué preguntar antes de contratar un grupo | E | **Casi nadie** |
+| cómo saber si un grupo de música es bueno | F | **Nadie** |
+| errores al contratar música para una boda | E | Pocos |
+| errores al programar unas fiestas | F | **Nadie** |
+| agencias de contratación de artistas España | E | Espectalium, Tuset |
+| **alternativas a bodas.net** | E | **Hueco.** Encaja con el posicionamiento anticatálogo |
+| merece la pena una agencia de espectáculos | F | **Nadie** |
+| agencia de artistas o contratar directo | F | **Nadie** |
+
+### 4.3 INFORMACIONAL
+
+**Fiestas y ayuntamiento (prioridad alta, alta intención latente)**
+`cómo organizar las fiestas de un pueblo` · `presupuesto fiestas patronales ayuntamiento` · `qué necesita un ayuntamiento para contratar una orquesta` · `contrato menor actuación musical` · `fraccionamiento del contrato actuaciones musicales` · `pliego de prescripciones técnicas actuación musical` · `seguro de responsabilidad civil para un concierto` · `permisos para montar un escenario en la plaza` · `SGAE fiestas patronales quién paga` · `cómo se hace una programación de fiestas` · `cuánto escenario necesita una orquesta` · `qué potencia eléctrica necesita una verbena` · `cómo funciona una comisión de fiestas` · `cómo se financia una peña`.
+
+**Empresa**
+`ideas para una cena de empresa` · `cómo organizar una cena de empresa` · `ideas para el evento de Navidad de la empresa` · `actividades para una convención` · `cómo hacer que la gente no se vaya pronto de la cena de empresa` · `protocolo cena de empresa con dirección` · `cómo se factura una actuación artística` · `retenciones de artistas factura` · `quién emite la factura de un grupo de música`.
+
+**Boda — logística (convierte) vs. repertorio (no convierte)**
+
+| Convierte — **sí** | Banda | No convierte — **año 2** | Banda |
+|---|---|---|---|
+| con cuánta antelación se contrata la música de una boda | D | canciones para la entrada de la novia | A |
+| cuándo reservar la música de la boda | D | canciones para el cóctel de boda | B |
+| cómo organizar el timing musical de una boda | E | música para el baile nupcial | B |
+| cuánto dura la actuación de un grupo en una boda | E | canciones para la ceremonia civil | B |
+| qué necesita un grupo de música en una boda | E | repertorio para boda | C |
+| qué es un rider técnico | D | playlist boda española | C |
+| límite de decibelios en bodas al aire libre | E | canciones que no pueden faltar en una boda | B |
+| hay que pagar SGAE en una boda | D | música para el vals de los novios | C |
+| contrato de actuación musical modelo | D | qué música poner en la barra libre | D |
+
+> El bloque de repertorio tiene el mayor volumen del mapa y la peor conversión. **Es año 2.** Publicarlo antes de tener el pilar comercial es gastar en visitas que no dejan un euro.
+
+**Captación de artistas (ver §2.5.1)**
+`cómo conseguir bolos` · `cuánto cobrar por un bolo` · `cómo hacer un rider técnico` · `cómo facturar un bolo` · `dónde tocar en [ciudad]` · `cómo entrar en una agencia de espectáculos` · `quiero tocar en bodas cómo empiezo` · `cómo entrar en el circuito de verbenas`.
+
+### 4.4 NAVEGACIONAL
 
 | Subtipo | Ejemplos | Banda | Acción |
 |---|---|---|---|
-| **Marca propia** | `show up events`, `showup events`, `show up artistas`, `show up eventos` | F hoy → C en 24 meses | Se construye, no se caza. GBP + consistencia NAP + contenido citable |
-| **Marca de competidor** | `espectalium`, `bodas.net música`, `partfy`, `celebrents`, `gigstarter`, `supermúsica`, `la factoría del show`, `artistealo`, `contratarartistas` | C–D cada una | **Solo vía comparativa honesta**, jamás vía landing "alternativa a X" clonada |
-| **Marca de artista propio** | `las doce grupo`, `[nombre banda] contratar`, `[nombre] bolos` | E–F | **La ficha de artista es la única forma legítima de capturarlo.** Es tráfico gratis y de altísima conversión |
-| **Marca de artista de terceros** | `contratar a [famoso]` | Ver §6 | Tratamiento aparte |
-
-**Long tail navegacional que se subestima:** `[nombre del artista] + precio`, `[nombre] + caché`, `[nombre] + contacto`, `[nombre] + contratar`, `[nombre] + bodas`. Cada artista del catálogo genera 5–8 de estas. Con 6 artistas son ~40 keywords de banda F que **suman** y que convierten al 20–40 %, porque quien busca a alguien por su nombre ya ha decidido.
+| **Marca propia** | `show up events`, `showup events`, `show up artistas` | F hoy → C en 24 meses | Se construye: GBP, NAP consistente, contenido citable |
+| **Competidor** | `espectalium`, `partfy`, `celebrents`, `gigstarter`, `supermúsica`, `la factoría del show`, `artistealo`, `charangas.info`, `jaiekin`, `orquestas de galicia` | C–D cada una | **Solo vía comparativa honesta**, nunca landing "alternativa a X" clonada |
+| **Artista propio** | `[nombre banda] contratar`, `[nombre] bolos`, `[nombre] precio`, `[nombre] caché`, `[nombre] contacto` | E–F | **La ficha de artista es la única forma legítima de capturarlo.** 5–8 keywords por artista, conversión del 20–40 % |
+| **Artista de terceros** | `contratar a [famoso]` | Ver §8 | Tratamiento aparte |
 
 ---
 
-## 2. Long tail de verdad: las preguntas literales
+## 5. Long tail de verdad: las preguntas literales
 
-### 2.1 Cómo escribe la gente (y cómo escribe el sector)
+### 5.1 Cómo escribe la gente vs. cómo escribe el sector
 
-La brecha entre el lenguaje del sector y el del cliente es el mayor arbitraje de este mapa. El sector escribe *"grupos musicales para bodas"*. La novia escribe *"grupo para boda"*, en singular, sin adjetivo.
+La brecha entre ambos lenguajes es el mayor arbitraje de este mapa.
 
 | Lo que escribe el sector | Lo que escribe la persona | Quién rankea la versión de la persona |
 |---|---|---|
@@ -354,287 +608,179 @@ La brecha entre el lenguaje del sector y el del cliente es el mayor arbitraje de
 | música en directo para bodas | **musica en directo boda** (sin tilde, sin "para") | Agregadores por coincidencia |
 | contratar grupo de versiones | **grupo que toque de todo** | **Nadie** |
 | orquesta para fiestas patronales | **orquesta para las fiestas del pueblo** | **Nadie** |
-| animación infantil | **algo para entretener a los niños en la boda** | Nadie |
-| monologuista corporativo | **alguien que haga reír en la cena de empresa** | Nadie |
-| solución integral de espectáculos | **que me lo organicen todo** | Nadie |
+| formación de viento-metal | **charanga**, **txaranga** | Verticales flojos |
+| producción integral de eventos | **que me lo organicen todo** | **Nadie** |
+| monologuista corporativo | **alguien que haga reír en la cena de empresa** | **Nadie** |
+| animación de pasacalles | **que la charanga recorra el pueblo** | **Nadie** |
 
-> **Consecuencia práctica:** cada página debe contener **las dos versiones**. El H1 lleva la del sector (es la que tiene volumen medible); un H2 y el cuerpo llevan la de la persona. Ejemplo: H1 `Música en directo para bodas`, H2 `¿Grupo, dúo o DJ? Qué encaja en tu boda`, y dentro del texto, literalmente, *"si lo que buscas es un grupo para tu boda que toque de todo…"*.
+> **Consecuencia práctica:** cada página debe contener **las dos versiones**. H1 con la del sector (es la medible); un H2 y el cuerpo con la de la persona. Ejemplo: H1 `Orquestas para fiestas patronales`, H2 `Cuánto cuesta una orquesta para las fiestas del pueblo`, y en el texto, literal: *"si lo que buscáis en la comisión es una orquesta que aguante desde las once hasta las cuatro…"*.
 
-### 2.2 Preguntas de "People Also Ask" y bloques FAQ observados
+### 5.2 Preguntas de "People Also Ask" y bloques FAQ observados
 
-Extraídas de los bloques de preguntas de los que hoy rankean (Cronoshare, Bodas.net, blogs de bandas y agencias):
+**Fiestas, verbena y ayuntamiento**
+1. ¿Cuánto cuesta una orquesta para las fiestas del pueblo?
+2. ¿Qué incluye el caché de una orquesta de verbena?
+3. ¿El ayuntamiento tiene que poner el escenario?
+4. ¿Cuánto escenario necesita una orquesta de 10 músicos?
+5. ¿Se puede contratar una orquesta por contrato menor?
+6. ¿Cuál es el límite de un contrato menor de servicios?
+7. ¿Hace falta pliego para contratar un concierto?
+8. ¿Es fraccionamiento contratar tres orquestas por separado?
+9. ¿Quién paga la SGAE en las fiestas patronales?
+10. ¿Qué seguro hace falta para un concierto en la plaza?
+11. ¿Con cuánta antelación hay que cerrar las orquestas?
+12. ¿Cuánta luz (potencia) hace falta para una verbena?
+13. ¿Qué pasa si llueve? ¿Se cobra igual?
+14. ¿Cuántas horas toca una orquesta?
+15. ¿Qué diferencia hay entre una orquesta y un grupo de versiones?
 
-**Boda — precio**
-1. ¿Cuánto cuesta contratar música para una boda religiosa?
-2. ¿Cuál es la diferencia entre contratar un DJ y un grupo musical para una boda?
-3. ¿Cuándo debo contratar la música para mi boda?
-4. ¿Es mejor la misma formación musical para ceremonia y cóctel?
-5. ¿Cuánto cuesta una orquesta para una boda de 100 personas?
-6. ¿Cuánto se le da de propina a los músicos de una boda?
-7. ¿El precio incluye el equipo de sonido?
-8. ¿Cobran más por tocar en exterior?
-9. ¿Cuánto tiempo tocan? ¿Cuántos pases hacen?
-10. ¿Hay que darles de cenar a los músicos?
-
-**Boda — decisión y logística**
-11. ¿Cuántos músicos necesito para 120 invitados?
-12. ¿Se puede tener grupo en la ceremonia y DJ en la fiesta?
-13. ¿Qué pasa si el grupo se pone malo?
-14. ¿Hay que firmar contrato con el grupo de música?
-15. ¿Cuánto hay que dar de señal?
-16. ¿Se puede cambiar el repertorio?
-17. ¿Pueden tocar una canción concreta que le pida?
-18. ¿A qué hora tienen que dejar de tocar?
-19. ¿Necesito permiso del ayuntamiento para música en directo?
-20. ¿Quién paga la SGAE, yo o la finca?
+**Charanga y txaranga**
+16. ¿Cuánto cuesta contratar una charanga?
+17. ¿Cuántos músicos tiene una charanga?
+18. ¿Cuánto tiempo toca una charanga?
+19. ¿La charanga se mueve por el pueblo o toca en un sitio fijo?
+20. ¿Hace falta permiso para un pasacalles?
+21. ¿Qué diferencia hay entre charanga y txaranga?
+22. ¿Y entre charanga y banda de música?
+23. ¿La charanga trae equipo de sonido?
+24. ¿Se puede contratar una charanga solo dos horas?
 
 **Empresa**
-21. ¿Cuánto cuesta un monologuista para una cena de empresa?
-22. ¿Cuánto dura un monólogo para una cena de empresa?
-23. ¿Qué monologuista es apropiado si va a estar la dirección delante?
-24. ¿Se puede pedir que no haga chistes de un tema concreto?
-25. ¿Cómo se factura la actuación? ¿Con qué retención?
-26. ¿Es mejor mago o monologuista para una cena de empresa?
-27. ¿Cuándo hay que reservar la cena de Navidad de empresa?
-28. ¿Qué se hace después de la cena para que no se vaya la gente?
+25. ¿Cuánto cuesta un monologuista para una cena de empresa?
+26. ¿Cuánto dura un monólogo para una cena de empresa?
+27. ¿Qué monologuista es apropiado si está la dirección delante?
+28. ¿Se puede pedir que no haga chistes de un tema concreto?
+29. ¿Cómo se factura la actuación? ¿Con qué retención?
+30. ¿Es mejor mago o monologuista para una cena de empresa?
+31. ¿Cuándo hay que reservar la cena de Navidad de empresa?
+32. ¿Qué se hace después de la cena para que no se vaya la gente?
 
-**Fiestas y ayuntamiento**
-29. ¿Cuánto cuesta una orquesta para las fiestas del pueblo?
-30. ¿Qué incluye el caché de una orquesta de verbena?
-31. ¿El ayuntamiento tiene que poner el escenario?
-32. ¿Se puede contratar una orquesta por contrato menor?
-33. ¿Cuánto es el límite de un contrato menor de servicios?
-34. ¿Hace falta pliego para contratar un concierto?
-35. ¿Quién paga la SGAE en las fiestas patronales?
-36. ¿Qué seguro hace falta para un concierto en la plaza?
-37. ¿Con cuánta antelación hay que cerrar las orquestas de las fiestas?
+**Boda**
+33. ¿Cuánto cuesta contratar música para una boda religiosa?
+34. ¿Cuál es la diferencia entre contratar un DJ y un grupo musical?
+35. ¿Cuándo debo contratar la música para mi boda?
+36. ¿Es mejor la misma formación para ceremonia y cóctel?
+37. ¿Cuántos músicos necesito para 120 invitados?
+38. ¿Hay que darles de cenar a los músicos?
+39. ¿A qué hora tienen que dejar de tocar?
+40. ¿Necesito permiso del ayuntamiento para música en directo?
+41. ¿Cuánto hay que dar de señal?
+42. ¿Qué pasa si el grupo se pone malo?
 
-**Magia e infantil**
-38. ¿Cuánto cuesta un mago para una comunión?
-39. ¿Cuánto dura un espectáculo de magia infantil?
-40. ¿Qué diferencia hay entre magia de cerca y magia de escena?
-41. ¿El mago trae su propio equipo de sonido?
-42. ¿A partir de qué edad funciona la magia con niños?
-
-### 2.3 Lenguaje literal de foros
-
-De hilos de `comunidad.bodas.net` (*"Orquesta o grupo??"*, *"Precio musica???"*, *"Orquestas buenas para contratar en boda?"*) y de reseñas reales de proveedores:
+### 5.3 Lenguaje literal de foros y reseñas
 
 | Frase literal detectada | Qué revela | Cómo se usa |
 |---|---|---|
-| *"¿orquesta o grupo?"* | **La duda nº1 y nadie la ha resuelto bien.** Ni siquiera saben que son cosas distintas | Página propia. Debe explicar la diferencia sin condescendencia |
-| *"un dúo malo empieza en 300 € y una orquesta buena en 1.200 €"* | El usuario razona en **calidad × precio**, no en formato | El desglose de precio debe tener eje de calidad, no solo de tamaño |
-| *"el vocalista no apareció y el sustituto no se sabía las canciones"* | **El miedo real, literal, en una reseña real** | Es la justificación entera de la Garantía Show Up. Copiar la estructura del miedo, no la reseña |
+| *"¿orquesta o grupo?"* (hilo de comunidad.bodas.net) | **La duda nº1, y ni siquiera saben que son cosas distintas** | Página propia. Explicar la diferencia sin condescendencia |
+| *"un dúo malo empieza en 300 € y una orquesta buena en 1.200 €"* | El usuario razona en **calidad × precio**, no en formato | El desglose de precio necesita eje de calidad, no solo de tamaño |
+| *"el vocalista no apareció y el sustituto no se sabía las canciones"* (reseña real) | **El miedo, literal, en las palabras del cliente** | Es la justificación entera de la Garantía Show Up |
 | *"nos costó 1.500 € y fueron fantásticos"* | Los precios se comparten en foros. **Un rango honesto genera confianza inmediata** | Confirma la estrategia de precio abierto |
-| *"que la gente no se siente en toda la noche"* | El brief real no es musical | Ya está en el copy deck. Debe estar también en los H2 |
+| *"que la gente no se siente en toda la noche"* | El brief real no es musical | Ya está en el copy deck; debe estar también en los H2 |
 
-> **Nota de método:** los foros de bodas.net y los hilos de Reddit/Forocoches sobre el tema son **inagotables como fuente de redacción, y cero como fuente de volumen**. No se planifica con ellos: se escribe con ellos.
+### 5.4 Patrones de autocompletado a explotar
 
-### 2.4 Patrones de autocompletado a explotar
+Plantillas que generan long tail sistemática. Cada una vale como **sección H2 dentro de una página existente**, no como página nueva:
 
-Plantillas que generan long tail de forma sistemática. Cada una vale como sección H2 dentro de una página existente, **no como página nueva**:
-
-- `cuánto cuesta [artista] para [ocasión]` → 6 tipos × 5 ocasiones = 30 combinaciones
-- `[artista] para boda de [N] personas` → 50 / 100 / 150 / 200 / 300
+- `cuánto cuesta [artista] para [ocasión]` → 10 tipos × 5 segmentos = 50 combinaciones
+- `[artista] para [ocasión] de [N] personas`
 - `[artista] barato` / `[artista] económico` → tráfico de precio bajo; se capta y se reeduca
 - `mejor [artista] para [ocasión]`
+- `[artista] + [provincia]` → 50 provincias
 - `[artista] cerca de mí` → **no es contenido, es Google Business Profile**
-- `contratar [artista] última hora` / `para dentro de dos semanas` → **oro puro: urgencia máxima, cero competencia, margen alto**
-
-> `contratar grupo de música última hora` y `boda dentro de un mes sin música` son de banda F, pero convierten como ninguna otra y encajan literalmente con la promesa de marca. Merecen una sección en el pilar y un bloque en el brief.
+- `contratar [artista] última hora` / `disponible este fin de semana` → **§3.6**
 
 ---
 
-## 3. Estacionalidad mes a mes
+## 6. Estacionalidad global mes a mes
 
-### 3.1 Los cuatro relojes del sector
+### 6.1 Los cinco relojes del sector
 
-No hay una estacionalidad: hay cuatro, y solo una de ellas se parece a lo que la gente asume.
+No hay una estacionalidad: hay cinco, y solo una se parece a lo que la gente asume.
 
 | Reloj | Cuándo pasa el evento | Cuándo se BUSCA | Desfase |
 |---|---|---|---|
-| **Boda** | May–oct (≈55 % en may, jun, sep + 1ª q. oct) | **9–14 meses antes** | Gigantesco |
+| **Fiestas patronales / verbena** | Jun–sep (pico absoluto: agosto) | **Ene–abr** | 4–7 meses |
+| **Carnaval y Reyes** | Ene–feb | **Oct–dic** | 2–4 meses |
 | **Empresa / Navidad** | 1ª quincena de diciembre | **Sep–nov**, con adelanto a jul-ago | 2–4 meses |
-| **Fiestas patronales / verbena** | Jun–sep (jul-ago: ~2.500 fiestas solo en Galicia) | **Ene–abr** (ciclo presupuestario municipal) | 4–7 meses |
-| **Comunión** | **Mayo** (fines de semana 2-3, 9-10, 16-17, 23-24, 30-31 en 2026) + primeras de junio | **Ene–mar** | 2–4 meses |
+| **Boda** | May–oct (≈55 % en may, jun, sep y 1ª q. oct) | **9–14 meses antes** → pico ene–mar | Gigantesco |
+| **Privados** | Continuo | Continuo, ligero pico primaveral | Bajo |
 
-> **Esta tabla es la que manda en el calendario editorial.** El contenido debe estar **posicionado**, no publicado, cuando llega el pico de búsqueda. Con dominio nuevo eso significa publicar **5–6 meses antes del pico de búsqueda**, que a su vez está meses antes del evento. En la práctica: para captar la cena de Navidad de 2026, el contenido tenía que estar online en **junio**.
+### 6.2 Mes a mes
 
-### 3.2 Mes a mes
-
-| Mes | Qué se busca con fuerza | Qué se busca de fondo | Nota |
+| Mes | Se busca con fuerza | De fondo | Nota |
 |---|---|---|---|
-| **Enero** | **Pico anual de organización de boda** (efecto pedidas de Navidad/Nochevieja) · orquestas para fiestas patronales (arranca el ciclo municipal) · animación para comunión | Precios de todo | **El mes más importante del año.** Se decide el proveedor de una boda de septiembre |
-| **Febrero** | Boda (alto) · fiestas patronales (alto) · comuniones | Precio, comparativa | Continuación del pico |
-| **Marzo** | Boda (alto) · **cierre de comuniones de mayo** · fiestas patronales | Repertorio | Última llamada para comuniones |
-| **Abril** | Boda (medio-alto) · fiestas patronales (cierre) · Semana Santa deprime todo una semana | Logística, timing | Abril es temporada baja de verbena |
-| **Mayo** | **Comuniones se ejecutan** · bodas de última hora de junio · fiestas de mayo | Urgencia | Búsquedas de urgencia: `para dentro de dos semanas` |
-| **Junio** | Boda de urgencia · **verbenas se ejecutan** · fin de curso | Repertorio, timing | **Mes de PUBLICAR contenido de Navidad de empresa** |
-| **Julio** | Ejecución pura (bodas + verbenas) · búsqueda baja | — | Valle de búsqueda. Mes de producción de contenido |
-| **Agosto** | Ejecución · **valle absoluto de búsqueda** | — | No publicar nada crítico. Mes de trabajo técnico |
-| **Septiembre** | **Arranca fuerte cena de empresa** · bodas de 2027 · vuelta al cole | Ideas para evento de empresa | Segundo arranque del año |
-| **Octubre** | **Pico de cena de empresa** · bodas 2027 | Qué contratar, precio | Aquí se decide diciembre |
-| **Noviembre** | **Cierre de cena de empresa** · urgencias de diciembre | Urgencia, disponibilidad | `contratar monologuista última hora` |
-| **Diciembre** | Ejecución de empresa · **pedidas de mano** · fin de año | Nada comercial | Preparar el asalto de enero |
+| **Enero** | **Arranque del ciclo municipal** (verbena, orquesta, charanga) · **pico anual de organización de boda** (efecto pedidas de Navidad) · Carnaval | Precios de todo | **El mes más importante del año** |
+| **Febrero** | Fiestas patronales (alto) · Carnaval se ejecuta · boda (alto) | Precio, comparativa | Continuación del pico |
+| **Marzo** | **Pico de cierre de programación de verano** · Fallas se ejecutan · boda | Repertorio | Última llamada municipal |
+| **Abril** | Cierre de fiestas · Semana Santa deprime una semana · boda | Logística, timing | Temporada baja de verbena |
+| **Mayo** | Urgencias de junio · romerías · comuniones (segmento no prioritario) | Urgencia | Fechas caídas de agosto |
+| **Junio** | Urgencias · **arranca la verbena (San Juan)** | Timing | **Mes de PUBLICAR contenido de Navidad de empresa** |
+| **Julio** | Ejecución pura. Búsqueda mínima | — | Valle. Producción de contenido |
+| **Agosto** | **Valle absoluto de búsqueda.** Ejecución máxima | — | Trabajo técnico. No publicar nada crítico |
+| **Septiembre** | **Arranca cena de empresa** · patronales de septiembre · bodas de 2028 | Ideas de evento | **Mes de PUBLICAR todo el cluster de verbena** |
+| **Octubre** | **Pico de cena de empresa** · Carnaval y Navidad | Qué contratar, precio | Aquí se decide diciembre |
+| **Noviembre** | **Cierre de cena de empresa** · urgencias de diciembre · Reyes | Disponibilidad | `última hora` |
+| **Diciembre** | Ejecución de empresa · **pedidas de mano** · Reyes y Nochevieja | Nada comercial | Preparar el asalto de enero |
 
-### 3.3 Calendario editorial derivado
+### 6.3 Calendario editorial maestro
 
-La regla: **publicar 5 meses antes del pico de búsqueda de esa keyword.**
+Regla: **publicar 5–6 meses antes del pico de búsqueda.**
 
-| Publicar en | Contenido | Pico que persigue |
-|---|---|---|
-| **Junio–julio** | Cena de Navidad de empresa (qué contratar, cuánto cuesta, monologuista vs mago) | Sep–nov |
-| **Agosto–septiembre** | Todo el cluster de boda (pilar, precio, DJ vs grupo, antelación) | **Ene–mar** |
-| **Agosto–septiembre** | Cluster de comunión y celebraciones familiares | Ene–mar |
-| **Septiembre–octubre** | Cluster de fiestas patronales, ayuntamiento, contrato menor, verbena llave en mano | **Ene–abr** |
-| **Noviembre–diciembre** | Landings de ciudad de boda (refuerzan el pico de enero) | Ene–jun |
-| **Enero–marzo** | Contenido de repertorio y momentos de boda (informacional, año 2) | Perenne |
-| **Abril–mayo** | Actualización anual de todas las páginas de precio | Todo el año |
+| Publicar en | Contenido | Pico que persigue | Prioridad |
+|---|---|---|---|
+| **Junio–julio** | Cena de Navidad de empresa · monologuista · mago adulto · precio de empresa | Sep–nov | **1** |
+| **Septiembre–octubre** | **Todo el cluster de verbena, orquesta, charanga, txaranga y ayuntamiento** | **Ene–abr** | **1** |
+| **Octubre–noviembre** | Carnaval, Reyes, pasacalles, comparsa · banda tributo | Dic–feb | 2 |
+| **Noviembre–diciembre** | Cluster de boda (pilar, precio, comparativas) | Ene–mar | 3 |
+| **Enero–marzo** | Geo por provincia (fiestas) y por zona (bodas) — **solo con prueba local** | Continuo | 3 |
+| **Abril–mayo** | **Actualización anual de todas las páginas de precio** | Todo el año | **1** |
+| **Julio–agosto** | Nada crítico: técnico, cluster de captación de artistas, repertorio de año 2 | — | 4 |
 
-> **La página de precios se actualiza cada año en abril**, con el año en el `<title>`. Es la única concesión a la fecha en el título, y está justificada: `Cuánto cuesta un grupo de música para una boda (2027)` gana CTR frente a un resultado sin año, y Google premia la frescura en consultas de precio.
-
-### 3.4 Ventana de urgencia — el activo que nadie explota
-
-Existe un flujo constante y contraestacional: **quien se ha quedado sin artista**. Bodas a 3 semanas, monologuistas que cancelan en noviembre, orquestas que se caen en agosto.
-
-| Keyword | Cuándo pica | Competencia |
-|---|---|---|
-| contratar grupo de música última hora | Abr–jun, nov | **Nula** |
-| boda en un mes sin música | May–jun | Nula |
-| sustituir grupo de música que ha cancelado | Todo el año | **Nula** |
-| orquesta disponible para el sábado | Jul–ago | Nula |
-| monologuista disponible en diciembre | Nov–dic | Nula |
-
-Volumen ridículo. Conversión altísima. Y es **exactamente la promesa de marca** (*Aparecemos. Si no lo tenemos, lo buscamos*). Una sola página, `/urgencias` o una sección dentro del pilar con un H2 literal, cubre las cinco.
+> **La página de precios se actualiza cada año en abril**, con el año en el `<title>`. Es la única concesión a la fecha en el título y está justificada: `Cuánto cuesta una orquesta para las fiestas del pueblo (2027)` gana CTR frente a un resultado sin año, y Google premia la frescura en consultas de precio.
 
 ---
 
-## 4. Demanda por tipo de artista
+## 7. Demanda por tipo de artista
 
-### 4.1 Matriz de decisión
+### 7.1 Ranking consolidado (suma de índices en los cinco segmentos)
 
-Puntuación 1–5. **Prioridad = (Volumen + Ticket + Recurrencia) − (Competencia × 1,5)**. Es decir: se penaliza la competencia por encima de todo, porque el dominio no tiene autoridad.
+| Tipo de artista | Mejor celda | Índice máx. | Volumen global | Competencia | Veredicto |
+|---|---|---|---|---|---|
+| **Orquesta de verbena** | AYTO | **21,5** | Medio | **Baja** | **Prioridad absoluta.** Ticket, recurrencia y hueco a la vez |
+| **Monologuista / humorista** | EMP | **21,5** | Medio | **Muy baja** | **Prioridad absoluta.** Cinco segmentos, todos con SERP flojo |
+| **Txaranga / charanga** | AYTO | **21,0** | Medio-alto | **Baja** | **Prioridad absoluta.** Cinco segmentos + 50 provincias + vocabulario regional |
+| **Banda tributo** | AYTO | 19,0 | Medio | Media-baja | Muy buena. Puente entre fiestas y empresa |
+| **Mago (adulto)** | EMP | 19,0 | Medio | Media-baja | Muy buena. **Solo adulto**, nunca infantil |
+| **Grupo de versiones** | AYTO | 17,5 | **Alto** | **Alta en boda, baja en fiestas** | Se ataca por fiestas, no por boda |
+| **Batucada / gaiteros / dulzaineros** | AYTO | 17,5 | Bajo | **Muy baja** | Multiplicador regional barato |
+| **Coro góspel** | BOD | 17,5 | Bajo | **Muy baja** | Hueco puro |
+| **Cabeza de cartel / famoso** | AYTO | 17,0 | Medio | Media | Solo vía contenido informativo (§8) |
+| **Solista / dúo / trío** | EMP | 15,0 | Medio | Media | Satélite, nunca pilar |
+| **Cuarteto de cuerda** | BOD | 13,5 | Bajo | Media-baja | Satélite |
+| **DJ** | AYTO | 13,5 | **Muy alto** | **Brutal y atomizada** | **Solo por comparativa** |
+| **Animación infantil / payasos** | — | — | Medio | Alta | **EXCLUIDO por posicionamiento y por dato** |
+| **Mariachi** | PRIV | — | Medio | Alta (vertical consolidado) | **No.** mariachis.es domina |
 
-| Tipo de artista | Volumen | Competencia | Ticket | Recurrencia | **Prioridad** | Veredicto |
-|---|---|---|---|---|---|---|
-| **Grupo de versiones / orquesta de baile** | 5 | 5 | 4 | 3 | **4,5** | Pilar obligado. Se ataca por cola |
-| **Monologuista / humorista** | 3 | **2** | 3 | 4 | **7,0** | **La mejor del mapa.** SERP flojo, B2B, repite cada año |
-| **Mago** | 4 | 3 | 3 | 3 | **5,5** | Muy buena. Dos mercados distintos (adulto/infantil) |
-| **Orquesta de verbena** | 3 | **2** | **5** | **5** | **10,0** | **La mejor por ticket.** B2G, contrato recurrente anual |
-| **Banda tributo** | 3 | 3 | 4 | 3 | **5,5** | Buena. Encaja en fiestas y empresa |
-| **DJ** | 5 | 5 | 2 | 2 | **1,5** | **No atacar de frente.** Mercado atomizado, ticket bajo |
-| **Cuarteto / trío de cuerda** | 2 | **2** | 2 | 2 | **3,0** | Fácil de ganar, poco dinero. Satélite, no pilar |
-| **Coro góspel** | 2 | **1** | 3 | 2 | **5,5** | **Hueco puro.** Alta emoción, cero competencia |
-| **Charanga / pasacalles** | 3 | **2** | 2 | **4** | **4,0** | Buena. Recurrente en fiestas. Ticket bajo pero fácil |
-| **Cuentacuentos / infantil no mago** | 2 | 3 | 1 | 3 | **1,5** | **No.** Ticket bajo, mercado de animación, otra industria |
-| **Mariachi** | 3 | 4 | 2 | 2 | **1,0** | **No.** Dominio vertical consolidado (mariachis.es) |
-| **Solista de piano / jazz para hotel** | 2 | **2** | 2 | **5** | **6,0** | **Infravalorada.** Contrato de temporada, no evento suelto |
-| **Tributo a artista concreto** | 3 | 3 | 4 | 3 | **5,5** | Ver §6: la keyword es de marca ajena |
-| **Artista famoso** | 4 | 4 | **5** | 1 | **4,0** | Ver §6 |
+### 7.2 Sub-segmentación obligatoria
 
-### 4.2 Las tres conclusiones que cambian el plan
-
-**1. La música no es la mejor puerta de entrada SEO. La magia y el humor, sí.**
-La taxonomía de Espectalium lo confirma: pone *Monologuistas* como primera categoría del menú, por delante de *Músicos*. Un agregador con años de datos no ordena su menú por gusto. Y aun así, `contratar monologuista para cena de empresa` tiene un SERP de banda D con competencia baja. Es la anomalía más rentable del mapa.
-
-**2. La orquesta de verbena es el mejor negocio SEO del sector español, y no lo ha reclamado nadie.**
-Ticket de 3.000–15.000 €, cliente institucional que **repite cada año sin licitar de nuevo si quedó contento**, y un SERP ocupado por agregadores genéricos y PDFs de ayuntamientos. Es el único territorio donde una web nueva con contenido honesto puede ser el mejor resultado de Google en 6 meses.
-
-**3. El DJ es una trampa.**
-Volumen enorme (73 % de las parejas contratan DJ, según Bodas.net), ticket bajo (200–675 €), y un mercado atomizado en miles de DJs autónomos con web propia y SEO local. Se compite contra 4.000 dominios pequeños en lugar de contra 5 grandes. **Se entra solo por la comparativa** (`dj o grupo en directo`), que es donde Show Up puede decir algo que un DJ no dirá nunca: cuándo el DJ es la opción correcta.
-
-### 4.3 Sub-segmentación por tipo de artista
-
-Cada tipo se rompe en dos o tres mercados con SERP distinto. Confundirlos es el error que comete el sector:
+Cada tipo se rompe en dos o tres mercados con SERP distinto. Confundirlos es el error del sector:
 
 | Tipo | Mercado A | Mercado B | ¿Misma página? |
 |---|---|---|---|
-| Mago | **Adulto/empresa** — magia de cerca, mentalismo, 800–2.500 € | **Infantil** — comunión y cumpleaños, 85–300 € | **NO.** Intención y ticket incompatibles |
-| Monologuista | **Empresa** — 700–1.800 € | **Fiestas municipales** — 1.500–5.000 € | Misma landing, secciones distintas |
-| Grupo de versiones | **Boda** — 1.800–3.500 € | **Verbena** — 3.000–9.000 € | **NO.** Repertorio y formato distintos |
-| DJ | **Boda** | **Sala/discoteca** | Solo boda tiene demanda de contratación |
-| Cuerda | **Ceremonia** | **Cóctel corporativo** | Misma página, dos H2 |
-
-> **Decisión recomendada:** separar `magos-para-eventos` (adulto/empresa) de `magos-para-comuniones-y-cumpleanos` (infantil). Son dos negocios, dos precios y dos SERPs. Mezclarlos es lo que hace que las páginas de los agregadores no rankeen bien en ninguno de los dos.
-
----
-
-## 5. Demanda B2B y B2G
-
-Es la demanda que menos volumen tiene, menos competencia tiene y más dinero mueve. Y es **estructuralmente distinta**: el que busca no es el que disfruta, y su miedo no es que la fiesta salga mal, es **que le pidan explicaciones**.
-
-### 5.1 Los cuatro compradores institucionales
-
-| Comprador | Quién es | Qué teme | Qué busca en Google | Ticket | Ciclo |
-|---|---|---|---|---|---|
-| **RRHH / Office manager** | 28–45, mujer en el 70 % de los casos, no es su trabajo principal | Que su jefe pregunte "¿quién eligió esto?" | Precio, formato, si se factura bien | 1.500–8.000 € | Anual, sep–nov |
-| **Concejal de festejos / comisión de fiestas** | Cargo político o vecino voluntario, sin formación en contratación | Auditoría, prensa local, que el pueblo se queje | **Procedimiento legal** antes que artista | 6.000–45.000 € (programa) | Anual, ene–abr |
-| **Hotel / sala / resort** | Jefe de F&B o director de alojamiento | Programación irregular, huésped aburrido | Proveedor **de temporada**, no de evento | 400–1.200 €/actuación × 20–40 fechas | Trimestral / temporada |
-| **Agencia de eventos / wedding planner** | Profesional que subcontrata | Que le falles a ella delante de su cliente | Fiabilidad, rider, respuesta rápida | Variable | Continuo |
-
-### 5.2 Qué busca un ayuntamiento (el más valioso y el peor atendido)
-
-El concejal de festejos **no busca artistas primero**. Busca **cómo hacerlo sin meterse en un lío**. Ese es el descubrimiento central de este mapa.
-
-| Keyword | Intención real | Competencia | Quién rankea |
-|---|---|---|---|
-| contrato menor actuación musical | "¿Puedo contratar sin licitar?" | Baja | Portales jurídicos municipales |
-| límite contrato menor servicios 2026 | Idem | Media | Blogs jurídicos |
-| fraccionamiento del contrato actuaciones musicales | "¿Me van a pillar?" | **Muy baja** | Derecholocal.es |
-| pliego de prescripciones técnicas actuación musical | "Necesito el documento" | **Muy baja** | PDFs de ayuntamientos |
-| cómo contrata un ayuntamiento una orquesta | Todo lo anterior junto | **Casi nula** | **Nadie** |
-| CPV servicios artísticos de orquestas | Búsqueda técnica de funcionario | Nula | Plataforma de Contratación |
-| certificado de estar al corriente para contratar con la administración | Trámite | Media | AEAT, gestorías |
-| seguro de responsabilidad civil espectáculos públicos | Requisito legal | Baja | Correduría de seguros |
-| SGAE fiestas patronales quién paga | Duda económica real | Baja | Foros municipales |
-| catálogo de espectáculos diputación | Vía de financiación | **Muy baja** | Diputaciones |
-| subvención para contratar espectáculos ayuntamiento | Dinero disponible | **Muy baja** | BOP, diputaciones |
-
-> **La jugada:** una página que explique en cristiano **cómo contrata un ayuntamiento una actuación**, con los umbrales, el modelo de pliego, la documentación exigible y las vías de financiación provincial (Circuito 107 de Sevilla, Red Cultural de Guadalajara, Diputació a Escena de Castellón, E-catàleg de Tarragona, Culturama de Málaga, Red Andaluza de Teatros Públicos), es **contenido que ningún competidor va a escribir** porque a ninguno le apetece. Es enlazable desde webs municipales y prensa local, cero competencia, y lo lee alguien con presupuesto firmado.
-
-### 5.3 Qué busca una empresa
-
-| Keyword | Banda | Competencia | Nota |
-|---|---|---|---|
-| artistas para eventos de empresa | C | Media | Pilar |
-| espectáculo para cena de empresa | D | Media-baja | — |
-| qué contratar para la cena de Navidad de empresa | D | **Baja** | Estacional, publicar en junio |
-| animación para convención de empresa | D | Media | Teambuilding compite |
-| música para evento corporativo | D | Media | — |
-| **cómo se factura una actuación artística** | E | **Muy baja** | **Miedo administrativo real** |
-| **retención IRPF artistas factura** | D | Media (gestorías) | Alta intención B2B |
-| **quién emite la factura de un grupo de música** | F | **Nula** | Duda real de RRHH |
-| contratar artistas con factura | E | **Muy baja** | Filtro de proveedor serio |
-| proveedor de espectáculos homologado | F | Nula | Empresas grandes |
-| presupuesto artistas evento empresa | E | Baja | — |
-| ideas para el evento de fin de año de la empresa | D | Media | Estacional |
-
-> **Diferenciador brutal para B2B:** el sector no habla de facturación, retenciones ni seguros. RRHH sí piensa en eso. Una sección honesta de *"cómo se paga esto y qué papeles vas a recibir"* dentro del pilar de empresa gana la venta antes de hablar del artista. Y hay un documento en el proyecto (`fiscalidad-musica-espana`) que permite escribirla con criterio real.
-
-### 5.4 Qué busca un hotel o una sala
-
-**El hostelero apenas busca en Google**, y esa conclusión del documento 04 se confirma. Pero se matiza:
-
-| Búsqueda | ¿Existe? | Quién la hace |
-|---|---|---|
-| contratar grupo para mi bar | **No con volumen** | — |
-| música en directo [ciudad] | Sí, pero **la intención es "dónde ir"**, no "a quién contrato" | Público, no hostelero |
-| músicos para hoteles | **Sí, banda E** | Cadenas hoteleras y F&B. Espectalium tiene página propia |
-| animación hotelera empresa | Sí, banda D | Cadenas. Mercado de *staffing*, no de artistas |
-| programación musical para hotel | F | Muy pocos, pero **muy cualificados** |
-| pianista para hotel | E | **Recurrente, contrato de temporada** |
-
-> **Corrección al documento 04:** el vertical de hostelería no es *"cero SEO"*. Es *"cero SEO de sala y bar, pero sí micro-SEO de hotel"*. `músicos para hoteles` y `pianista para hotel` son búsquedas reales de banda E-F que un competidor grande (Espectalium) ya cubre con página propia — señal de que le entra tráfico. **Una sola página, no un cluster.** El resto del vertical sigue siendo outbound.
+| **Mago** | Adulto / empresa — magia de cerca, mentalismo, 800–2.500 € | Infantil — 85–300 € | **NO.** Y el B queda **fuera** |
+| **Monologuista** | Empresa — 700–1.800 € | Fiestas municipales — 1.500–5.000 € | Misma landing, dos secciones |
+| **Grupo de versiones** | Boda — 1.800–3.500 €, repertorio "de todo" | Verbena — 3.000–9.000 €, formato de escenario | **NO.** Dos páginas |
+| **Charanga** | Ayuntamiento / peña — pasacalles, varios días | Privado — despedida, cumpleaños, 2 h | Misma landing, dos secciones |
+| **Orquesta** | Verbena municipal | Boda del norte | **NO.** Dos páginas |
+| **Cuerda** | Ceremonia de boda | Cóctel corporativo | Misma página, dos H2 |
 
 ---
 
-## 6. Keywords de marca de terceros: `contratar [famoso]`
+## 8. Keywords de marca de terceros: `contratar [famoso]`
 
-### 6.1 La demanda existe y es alta
+### 8.1 La demanda existe y es alta
 
-Espectalium organiza su menú de monologuistas **por nombre propio**: Leo Harlem, Grison, Luis Piedrahita, Carlos Latre, Goyo Jiménez, Eva Soriano, Agustín Jiménez, Nerea Garmendia. La Factoría del Show tiene una sección `cantantes-famosos`. Peculiar tiene artículos de caché. Nadie hace eso sin datos de tráfico detrás.
-
-**Escala de la demanda:**
+Espectalium organiza su menú de monologuistas **por nombre propio** (Leo Harlem, Grison, Luis Piedrahita, Carlos Latre, Goyo Jiménez, Eva Soriano, Agustín Jiménez, Nerea Garmendia). La Factoría del Show mantiene sección de `cantantes-famosos`. Nadie hace eso sin datos de tráfico detrás.
 
 | Patrón | Banda por artista | Nota |
 |---|---|---|
@@ -642,143 +788,155 @@ Espectalium organiza su menú de monologuistas **por nombre propio**: Leo Harlem
 | `caché de [artista]` / `cuánto cobra [artista]` | D–E | Intención mixta: curiosidad + compra |
 | `[artista] contratar para evento` | E | Compra pura |
 | `precio [artista] concierto privado` | F | Compra pura, ticket enorme |
-| `contratar [artista] para fiestas patronales` | F | **B2G, ticket 20.000–60.000 €** |
+| **`contratar [artista] para fiestas patronales`** | F | **B2G, ticket 20.000–60.000 €** |
 
-**Rangos de caché documentados:** artistas de pequeño formato (hoteles, bares) 500–3.000 €; artistas nacionales conocidos desde ~20.000 €; grandes figuras internacionales +100.000 €. Monologuistas televisivos +3.000 €.
+**Rangos documentados:** pequeño formato (hoteles, bares) 500–3.000 €; artista nacional conocido desde ~20.000 €; gran figura internacional +100.000 €; monologuista televisivo +3.000 €.
 
-### 6.2 Legalidad: qué se puede y qué no
-
-La cuestión jurídica está resuelta en la doctrina española y comunitaria sobre uso de marca ajena en buscadores, y se resume en tres reglas:
+### 8.2 Legalidad
 
 | Práctica | ¿Legal? | Riesgo |
 |---|---|---|
-| **Contenido orgánico** que menciona al artista informativamente (`cuánto cuesta contratar a X`, con datos y contexto) | **Sí.** Uso descriptivo/informativo | Bajo |
-| Página que **afirma o insinúa representación** que no se tiene (`somos su agencia`, logo, foto oficial) | **No.** Riesgo de confusión sobre el origen | **Alto.** Competencia desleal + derecho de imagen |
-| Uso de **fotos oficiales del artista** sin licencia | **No** | **Alto.** Propiedad intelectual + derecho de imagen |
-| Keyword de marca ajena en **Google Ads** | **Zona gris.** Legal si no menoscaba la función indicadora de origen y el usuario medio entiende que el anunciante no es el titular | **Medio.** Google acepta la puja pero **no el uso en el texto del anuncio** |
-| Meter el **nombre del artista en el `<title>` y H1** de una landing comercial propia | Legal si el contenido es honesto y no simula representación | **Medio.** Es lo que hacen los agregadores |
+| **Contenido orgánico** que menciona al artista informativamente (`cuánto cuesta contratar a X`) | **Sí.** Uso descriptivo | Bajo |
+| Página que **afirma o insinúa representación** que no se tiene | **No.** Riesgo de confusión sobre el origen | **Alto.** Competencia desleal |
+| **Fotos oficiales** del artista sin licencia | **No** | **Alto.** Propiedad intelectual y derecho de imagen |
+| Keyword de marca ajena en **Google Ads** | **Zona gris.** Legal si no menoscaba la función indicadora de origen y el usuario medio entiende que el anunciante no es el titular | **Medio.** Google admite la puja pero **no el uso en el texto del anuncio** |
+| Nombre del artista en `<title>` y H1 de landing comercial propia | Legal si el contenido es honesto y no simula representación | **Medio.** Es lo que hacen los agregadores |
 
-**Regla práctica que protege la marca:** el nombre del artista puede aparecer **como objeto del contenido**, nunca **como sujeto de la oferta**. Se puede escribir *"Cuánto cuesta traer a un monologuista de televisión a las fiestas de tu pueblo, y qué alternativas hay por la mitad"*. No se puede escribir *"Contrata a Leo Harlem con nosotros"* sin tenerlo.
+**Regla que protege la marca:** el nombre del artista puede aparecer **como objeto del contenido**, nunca **como sujeto de la oferta**.
 
-### 6.3 ¿Merece la pena?
-
-**Para Show Up, en el año 1: parcialmente, y solo en una forma concreta.**
+### 8.3 ¿Merece la pena? Para Show Up, en el año 1: solo en una forma
 
 | Enfoque | Veredicto |
 |---|---|
-| Landing por artista famoso (estilo Espectalium) | **No.** Requiere decenas de páginas finas, roza la simulación de representación, y contradice frontalmente la plataforma de marca (*no somos un catálogo*) |
-| Google Ads sobre nombres de famosos | **No.** Coste alto, conversión baja, riesgo legal medio |
-| **Una guía honesta de cachés reales del mercado español**, con rangos por categoría (monologuista de TV, artista nacional, tributo, orquesta de primera línea), sin prometer a nadie | **SÍ.** Es contenido informacional de banda D, enlazable, muy compartible, con cero riesgo legal |
-| **Página de "el tributo que quieres, o el original"** — comparativa honesta de coste entre traer al artista original y traer su mejor tributo | **SÍ, y es la mejor idea de esta sección.** Captura la búsqueda de marca ajena por la puerta de al lado, es útil de verdad, y **acaba vendiendo lo que Show Up sí tiene** |
+| Landing por artista famoso (estilo Espectalium) | **No.** Decenas de páginas finas, roza la simulación de representación y contradice la plataforma de marca |
+| Google Ads sobre nombres de famosos | **No.** Coste alto, conversión baja, riesgo medio |
+| **Guía honesta de cachés reales del mercado español**, por categoría, sin prometer a nadie | **Sí.** Informacional de banda D, enlazable, compartible, riesgo cero |
+| **"El cabeza de cartel que quieres, o lo que sí cabe en el presupuesto"** — comparativa de coste entre el original y su mejor tributo, orientada a comisiones de fiestas | **SÍ, y es la mejor idea de la sección.** Captura la búsqueda de marca ajena por la puerta de al lado y acaba vendiendo lo que Show Up sí tiene |
 
-> **La jugada elegante:** quien busca `contratar a [famoso] para las fiestas` casi siempre se estrella con el precio. Una página que le diga *"eso cuesta 40.000 € más producción; por 6.000 € tienes esto otro, y esta es la diferencia real que va a notar tu público"* convierte a un buscador frustrado en un lead. Es exactamente el tono de la marca: **recomendar en contra**.
+> Quien busca `contratar a [famoso] para las fiestas` casi siempre se estrella con el precio. Una página que le diga *"eso son 40.000 € más producción; por 6.000 € tienes esto otro, y esta es la diferencia real que va a notar la plaza"* convierte a un buscador frustrado en un lead. Es literalmente el tono de la marca: **recomendar en contra**.
 
 ---
 
-## 7. El hueco: las 15 keywords prioritarias para un dominio nuevo
+## 9. Las 15 keywords prioritarias para un dominio nuevo
 
-Criterio de ordenación: **(intención comercial × facilidad de rankear) / tiempo hasta el primer euro**. No volumen. Nunca volumen.
+Criterio: **(intención comercial × facilidad de rankear) / tiempo hasta el primer euro**. No volumen. Nunca volumen. Alineado con la matriz de §1.
 
-| # | Keyword objetivo | Banda | Dif. | Ticket | Meses a top 10 | Por qué está aquí |
-|---|---|---|---|---|---|---|
-| **1** | cuánto cuesta una orquesta para las fiestas del pueblo | E | **Muy baja** | 3.000–15.000 € | 3–5 | Nadie ha escrito esto con rangos reales. Lo busca quien tiene presupuesto municipal firmado. Ticket más alto del mapa con la competencia más baja. **Es el mejor arbitraje del sector.** |
-| **2** | cómo contrata un ayuntamiento una orquesta / contrato menor actuación musical | E–F | **Casi nula** | Indirecto | 3–5 | Cero competencia comercial. Lo lee un concejal. Enlazable desde webs municipales y prensa local: **construye los primeros backlinks reales del dominio** |
-| **3** | precio monologuista cena de empresa | E | **Muy baja** | 700–1.800 € | 3–5 | Ciclo de decisión corto, cliente que repite cada año, SERP vacío. La conversión más rápida del plan |
-| **4** | cuánto cuesta un grupo de música para una boda | C | Baja-media | 1.800–3.500 € | 5–8 | El hueco clásico: solo Cronoshare con una media nacional (300–700 €) sin desglose por contexto. Volumen decente + intención de compra máxima |
-| **5** | contratar monologuista para cena de empresa | D | **Baja** | 700–1.800 € | 5–7 | Transaccional del punto 3. Espectalium lo pone el primero en su menú por algo |
-| **6** | dj o grupo en directo para la boda | D | **Baja** | Indirecto | 4–6 | Comparativa que recomienda en contra. Máxima permanencia, máximo CTR, **el mejor imán de enlaces naturales del plan** |
-| **7** | orquesta o grupo de versiones (qué diferencia hay) | E | **Muy baja** | Indirecto | 3–4 | La duda literal nº1 de los foros de bodas, sin respuesta decente en Google. Alimenta a #1 y #4 |
-| **8** | contratar orquesta para fiestas patronales | D | **Baja** | 3.000–15.000 € | 5–8 | Pilar del cluster B2G. Publicar **antes de octubre**: los ayuntamientos cierran de enero a abril |
-| **9** | mago para cena de empresa | E | **Baja** | 800–2.500 € | 4–6 | Sub-segmento correcto (adulto, no infantil). Ticket medio-alto, competencia fragmentada |
-| **10** | cuántos músicos necesito para mi boda | E | **Muy baja** | Indirecto | 3–4 | Pregunta de brief convertida en página. Convierte a brief casi directamente. Barata de escribir |
-| **11** | música en directo para bodas en [zona con nombre de mercado] | E–F | **Muy baja** | 1.800–3.500 € | 4–7 | El Empordà, la Sierra de Madrid o el Penedès baten a "Barcelona" o "Madrid" en intención y competencia. **Solo con evento real hecho allí** |
-| **12** | qué contratar para la cena de Navidad de empresa | D | Baja | 1.500–3.500 € | 5–7 | Estacional puro. **Publicar en junio.** Pico de búsqueda sep–nov |
-| **13** | coro góspel para boda | E | **Muy baja** | 900–2.000 € | 3–5 | Alta carga emocional, cero competencia especializada, ticket sano. Nadie lo ha reclamado |
-| **14** | hay que pagar SGAE en una boda / quién paga la SGAE en un evento | D | Baja | Indirecto | 4–6 | Duda muy buscada y pésimamente respondida. Contenido de autoridad que da confianza al comprador dubitativo |
-| **15** | contratar grupo de música última hora | F | **Nula** | 1.800–3.500 € | 2–4 | Volumen ridículo, conversión brutal, **y es literalmente la promesa de la marca**. Cierra el círculo entre marca y SEO |
+| # | Keyword objetivo | Celda | Banda | Dif. | Ticket | Meses a top 10 | Por qué está aquí |
+|---|---|---|---|---|---|---|---|
+| **1** | cuánto cuesta una orquesta para las fiestas del pueblo | AYTO×Orquesta | E | **Muy baja** | 3.000–15.000 € | 3–5 | Nadie ha escrito esto con rangos reales. Lo busca quien tiene presupuesto aprobado. **El mejor arbitraje del sector español** |
+| **2** | cuánto cuesta contratar una charanga / precio charanga por hora | AYTO×Charanga | D | Baja | 400–900 €×N | 3–5 | Cronoshare rankea con una media nacional sin contexto. Volumen real, activo del cliente, rankeo rápido |
+| **3** | precio monologuista cena de empresa | EMP×Monologuista | E | **Muy baja** | 700–1.800 € | 3–5 | Ciclo corto, cliente que repite, SERP vacío. **La conversión más rápida del plan** |
+| **4** | cómo contrata un ayuntamiento una orquesta / contrato menor actuación musical | AYTO×todos | E–F | **Casi nula** | Indirecto | 3–5 | Cero competencia comercial. Lo lee un concejal. **Enlazable desde webs municipales y prensa local: los primeros backlinks reales del dominio** |
+| **5** | contratar orquesta para fiestas patronales | AYTO×Orquesta | D | **Baja** | 3.000–15.000 € | 5–8 | Pilar del cluster nº1. **Publicar antes de octubre** |
+| **6** | contratar charanga / txaranga + [provincia] | AYTO×Charanga | E–F | **Muy baja** | 400–900 € | 4–6 | Patrón replicable a 50 provincias y a 4 grafías regionales. **Solo con prueba local** |
+| **7** | contratar monologuista para cena de empresa | EMP×Monologuista | D | **Baja** | 700–1.800 € | 5–7 | Transaccional del nº3. Espectalium lo pone primero en su menú por algo |
+| **8** | orquesta o grupo de versiones (qué diferencia hay) | AYTO / BOD | E | **Muy baja** | Indirecto | 3–4 | La duda literal nº1 de foros y comisiones, sin respuesta decente. Alimenta a 1, 5 y 15 |
+| **9** | mago para cena de empresa | EMP×Mago | E | **Baja** | 800–2.500 € | 4–6 | Sub-segmento correcto (adulto). Mismo comprador y mismo ciclo que el nº3 |
+| **10** | verbena llave en mano / orquesta con escenario y sonido incluido | AYTO×Orquesta | F | **Nula** | 6.000–30.000 € | 3–5 | Territorio virgen. Ticket máximo. Es exactamente lo que una comisión quiere y nadie le ofrece con ese nombre |
+| **11** | bandas tributo para fiestas patronales | AYTO×Tributo | E | **Muy baja** | 2.500–9.000 € | 4–6 | Sustituto asequible del cabeza de cartel. Duda de compra sin resolver |
+| **12** | qué contratar para la cena de Navidad de empresa | EMP×varios | D | Baja | 1.500–3.500 € | 5–7 | Estacional puro. **Publicar en junio** |
+| **13** | cuánto cuesta un grupo de música para una boda | BOD×Versiones | C | Baja-media | 1.800–3.500 € | 5–8 | El hueco clásico de bodas: solo Cronoshare con una media sin desglose. **La primera entrada seria en bodas, en el mes 6** |
+| **14** | charanga para boda / txaranga para boda | BOD×Charanga | E | **Muy baja** | 400–900 € | 3–5 | Boda del norte. Nadie lo trabaja y el cliente tiene la agenda |
+| **15** | contratar grupo de música / orquesta última hora | Transversal | F | **Nula** | 1.800–15.000 € | 2–4 | Volumen ridículo, conversión brutal, **y es literalmente la promesa de la marca**. Cierra el círculo entre marca y SEO |
 
-### 7.1 Lectura del hueco
+### 9.1 Lectura del hueco
 
-Cinco cosas saltan a la vista al mirar la tabla completa:
+1. **Diez de las quince son de fiestas o de empresa. Solo dos son de boda.** El sector entero cree que compite por "grupos para bodas" y ha dejado abandonado todo lo demás.
+2. **Nueve de las quince no son de música**: son de precio, de procedimiento, de criterio o de humor.
+3. **El primer euro llega por la 1, la 3 y la 15**, no por la 13. La 13 es la que más volumen tiene y la que más tarda. Empezar por volumen es el error clásico.
+4. **Ninguna es batible por un agregador aunque quiera.** Bodas.net no puede escribir *"con vecinos cerca, la banda completa te da problemas de decibelios"*, porque tiene miles de proveedores que se enfadarían. **La ventaja de Show Up no es SEO: es que puede decir la verdad.** El SEO solo la distribuye.
+5. **Once encajan en el pilar de precio**, coherente con la plataforma de marca (*Lo que cuesta, antes de que lo preguntes*) y con el copy deck §8. **La marca y el SEO piden lo mismo.** Eso casi nunca pasa: hay que aprovecharlo entero.
 
-1. **Nueve de las quince no son de música.** Son de precio, de procedimiento, de criterio o de humor. El sector entero cree que compite por "grupos para bodas" y ha dejado abandonado todo lo demás.
+### 9.2 Lo que NO está en la lista
 
-2. **Seis de las quince son B2G.** El ayuntamiento es el cliente peor atendido de España en este sector, y el que más paga. Ningún competidor le habla en su idioma.
-
-3. **El primer euro llega por la 1, la 3 y la 15**, no por la 4. La 4 es la que más volumen tiene y la que más tarda. Empezar por volumen es el error clásico.
-
-4. **Ninguna de las quince es batible por un agregador aunque quiera.** Bodas.net no puede escribir *"con vecinos cerca, la banda completa te da problemas de decibelios"*, porque tiene 5.900 proveedores que se enfadarían. **La ventaja de Show Up no es SEO: es que puede decir la verdad.** El SEO solo la distribuye.
-
-5. **Once de las quince encajan en el pilar de precio.** Es coherente con la plataforma de marca (`Lo que cuesta, antes de que lo preguntes`) y con el copy deck (§8 Precios). **La marca y el SEO piden lo mismo.** Eso casi nunca pasa y hay que aprovecharlo entero.
-
-### 7.2 Lo que NO está en la lista y alguien va a preguntar
-
-| Keyword | Por qué no está |
+| Keyword | Por qué no |
 |---|---|
 | `grupos musicales para bodas` | Banda A con Bodas.net delante. No se gana en 12 meses ni con presupuesto |
 | `dj para bodas` | Volumen alto, ticket bajo, 4.000 competidores locales. Trampa |
 | `canciones para la entrada de la novia` | Volumen enorme, conversión cero. Año 2 |
-| `mago para cumpleaños infantil` | Ticket 85–195 €. No paga el coste de adquisición |
-| `contratar mariachi` | Dominio vertical consolidado. No se entra sin artista propio |
-| `música en directo Madrid` | La intención es "dónde ir a escuchar", no "a quién contrato" |
-| `contratar [famoso]` como landing | Riesgo legal y contradicción con la plataforma de marca. Se ataca por la guía de cachés (§6.3) |
+| `mago para cumpleaños infantil` / payasos / animación infantil | **Excluido por posicionamiento.** Y el dato lo respalda: ticket 85–195 € |
+| `contratar mariachi` | Vertical consolidado. No se entra sin artista propio |
+| `música en directo Madrid` | Intención "dónde ir a escuchar", no "a quién contrato" |
+| `contratar [famoso]` como landing | Riesgo legal y contradicción con la marca. Se ataca por la guía de cachés (§8.3) |
+| `grupo para tocar en mi bar los viernes` | No existe con volumen. Ese canal es outbound (§2.5) |
 
 ---
 
-## 8. Qué hacer con esto mañana
+## 10. Qué hacer con esto mañana
 
-1. **Validar las 15 con Keyword Planner** (cuenta de Google Ads con campaña activa, no la versión limitada) y con una prueba de Ahrefs/Semrush. Las bandas de este documento son estimaciones fundadas; el orden de prioridad no cambiará mucho, los números sí.
-2. **Confirmar la #1 y la #2 mirando SERP en modo incógnito y desde geolocalización rural.** Son las dos apuestas fuertes y son las que menos datos duros tienen.
-3. **Cruzar este mapa con la capacidad real de servicio.** No se publica una landing de zona sin evento hecho allí (regla del doc 04, sección 2.3), y no se publica una landing de tipo de artista sin al menos un artista de ese tipo al que se pueda llamar el martes.
-4. **Bloquear en calendario las dos fechas críticas:** publicar el cluster de fiestas patronales **antes de octubre**, y el de cena de Navidad **en junio**. Si se falla esa ventana, se pierde el año entero.
-5. **Montar Google Business Profile ya.** Todo el patrón `[servicio] cerca de mí` y buena parte del geográfico se juega ahí, no en contenido, y tarda semanas en madurar.
+1. **Validar las 15 con Keyword Planner** (cuenta de Ads con campaña activa) y una prueba de Ahrefs o Semrush. Las bandas son estimaciones fundadas; el orden de prioridad no cambiará mucho, los números sí.
+2. **Confirmar la 1, la 2 y la 10 mirando SERP en incógnito y con geolocalización rural.** Son las apuestas fuertes y las que menos datos duros tienen.
+3. **Bloquear en calendario la fecha crítica del proyecto: el cluster de verbena, orquesta y charanga tiene que estar online en septiembre-octubre.** Si se falla esa ventana, se pierde el ciclo municipal entero y hay que esperar un año.
+4. **Publicar el cluster de empresa en junio.** Segunda fecha innegociable.
+5. **Cruzar el mapa con la agenda real de contactos.** No se publica una landing de tipo de artista sin al menos un contacto al que se pueda llamar el martes, ni una landing de provincia sin evento hecho allí.
+6. **Montar Google Business Profile ya.** Todo el patrón `cerca de mí` y buena parte del geográfico se juega ahí, no en contenido, y tarda semanas en madurar.
+7. **Abrir el cluster de captación de artistas (§2.5.1).** Es barato, no compite con nada y engorda el activo real del negocio mientras construye autoridad temática en música en vivo.
 
 ---
 
 ## Fuentes consultadas
 
-**Precios y demanda**
-- [Cronoshare — Cuánto cuesta contratar música para una boda (2026)](https://www.cronoshare.com/cuanto-cuesta/musica-boda) · rangos por formación, FAQ, 172.430 matrimonios/año, 4.085 M€ de sector
-- [Cronoshare — Cuánto cuesta contratar monologuistas (2026)](https://www.cronoshare.com/cuanto-cuesta/monologuista) · media 370 €, habitual 200–600 €
-- [Cronoshare — Cuánto cuesta contratar una charanga (2026)](https://www.cronoshare.com/cuanto-cuesta/charanga) · 150–400 €/h
-- [Cronoshare — Cuánto cuesta contratar a un DJ para fiestas y bodas](https://www.cronoshare.com/cuanto-cuesta/contratar-dj-fiestas-bodas)
-- [Bodas.net — Músicos para boda](https://www.bodas.net/bodas/proveedores/musica) · 73 % contratan DJ; antelación recomendada 10–12 meses
-- [Kalifornia — Cuánto cuesta contratar una orquesta o grupo de versiones](https://kalifornia.es/cuanto-cuesta-contratar-orquesta-grupo-versiones/)
-- [Paul White Band — Cuánto cuesta contratar una banda en España (2026)](https://paulwhiteband.com/cuanto-cuesta-contratar-una-banda-de-musica-para-una-boda-o-evento-en-espana/)
-- [Mariachis.es — Guía de precios 2026](https://mariachis.es/guia/blog/cuanto-cuesta-contratar-mariachi)
+**Charangas, txarangas, verbenas y orquestas**
+- [Charangas.info](https://www.charangas.info/) · portal nacional; usa las tres variantes **charangas / txarangas / xarangas**; buscador provincial, competiciones y festivales
+- [Charangas y Txarangas en País Vasco / Euskadi](https://www.charangas.info/charangas-en-el-pais-vasco)
+- [Jaiekin — Txaranga Igandea](https://jaiekin.com/charangas/txaranga-igandea/) · vertical vasco-navarro
+- [Partfy — Charangas en Navarra](https://partfy.com/charanga/navarra) y [Txaranga Berriak](https://partfy.com/txaranga-berriak) · formación de +15 músicos
+- [Navarra.net — Charangas, fanfarres y gaiteros](https://www.navarra.net/arteycultura/musica-charangas-navarra.htm) · vocabulario regional
+- [Cronoshare — Cuánto cuesta contratar una charanga (2026)](https://www.cronoshare.com/cuanto-cuesta/charanga) · 150–400 €/h; Madrid 200–600 €/h
+- [Arlequin Street Band — Precio de una charanga](https://www.arlequinband.com/charanga/precio-de-una-charanga.html) · 300–900 €/actuación, 1–3 h
+- [Eventzone — Charangas para contratar en España](https://eventzone.es/charangas) · eventos: pasacalles, peñas, quintos, patronales, Semana Santa, moros y cristianos
+- [La Factoría del Show — Charangas para fiestas locales y patronales](https://www.lafactoriadelshow.com/charangas/fiestas-locales-y-patronales/), [Gaiteros](https://www.lafactoriadelshow.com/gaiteros/), [Batucadas en Navarra](https://www.lafactoriadelshow.com/batucadas/navarra/)
+- [Paradise Events — Cuánto cobra una orquesta de pueblo](https://empresas.paradisevents.es/cuanto-cobra-una-orquesta-de-pueblo/) · **3.000–5.000 € por bolo de 4 h, formación de 5–7 personas**
+- [Hugo Espectáculos — Qué orquestas contratar para una fiesta de pueblo](https://www.hugoespectaculos.com/que-orquestas-contratar-para-una-fiesta-de-pueblo-exitosa)
+- [Espectalium — Las mejores orquestas para verbenas en España](https://www.espectalium.com/las-mejores-orquestas-para-verbenas-en-espana) · 8–12 músicos, escenario de 20–40 m²
+- [El Español (Castilla y León) — "Las orquestas de verbenas tienen futuro"](https://www.elespanol.com/castilla-y-leon/cultura/20240709/orquestas-verbenas-futuro-crecido-deben-estancarse-contrario-inviables/867913260_0.html) · **en CyL paga el ayuntamiento; en Galicia y Asturias, las comisiones**
+- [El Español / Quincemil — Cuánto cuesta contratar una orquesta en Galicia](https://www.elespanol.com/quincemil/vivir/fiestas/20250419/cuesta-contratar-orquesta-galicia/1003743713378_0.html) · abril temporada baja, may-jun fechas complicadas
+- [Diario de Pontevedra — El boom de las orquestas](https://www.diariodepontevedra.es/articulo/pontevedra/galicia-vive-resurgir-nuevo-boom-orquestas-verano/202308301703371268784.html) · **~2.500 fiestas en jul-ago solo en Galicia**
+- [Orquestas de Galicia](https://www.orquestasdegalicia.es/) · agenda pública y app
+- [Pecca — Fundar una peña para organizar fiestas](https://pecca.es/fundar-una-pena-para-organizar-fiestas-o-eventos-en-tu-barrio-pueblo-y-dinamizar-la-zona/) · financiación por cuotas
+- [Aragón Noticias — De los hinchables a las discomóviles: cuánto cuestan las fiestas de los pueblos](https://www.cartv.es/aragonnoticias/noticias/de-los-hinchables-a-las-discomoviles-cuanto-cuestan-las-fiestas-de-los-pueblos-20114)
+
+**Contratación pública (B2G)**
+- [Gobierto Contratación — CPV 92312140 Servicios artísticos de orquestas](https://contratos.gobierto.es/cpv/92312140)
+- [Derecho Local — Fraccionamiento del objeto del contrato en actuaciones musicales](https://derecholocal.es/consulta/contratacion-de-actuaciones-musicales-de-orquestas-para-fiestas-del-municipio-fraccionamiento-del-objeto-de-contrato)
+- [Derecho Local — Contrato menor o negociado sin publicidad para conciertos](https://derecholocal.es/consulta/contratacion-de-conciertos-por-el-ayuntamiento-contrato-menor-o-procedimiento-negociado-sin-publicidad)
+- [Diputación de Cáceres — Modelo de resolución de contrato menor de orquesta](https://saael.dip-caceres.es/wp-content/uploads/sites/5/2018/05/Resoluci%C3%B3n-Contratacion-Menor-de-orquesta-para-fiestas-patronales.doc)
+- [Ayuntamiento de Guadalajara — Pliego técnico de contratación de actuaciones](https://www.guadalajara.es/recursos/contratos/tecnicos/8509_204204201714258.pdf)
+- [Diputación de Sevilla — Programas culturales / Circuito 107](https://www.dipusevilla.es/temas/cultura-y-juventud/programas-culturales/)
+- [Diputación de Tarragona — E-catàleg](https://oficinatecnicadesubvenciones.es/subvenciones-para-la-contractacion-de-actividades-culturales/)
+- [Junta de Andalucía — Catálogo de la Red Andaluza de Teatros Públicos 2026](https://juntadeandalucia.es/boja/2025/118/28)
+- [Diputación de Castellón — Diputació a Escena](https://www.dipcas.es/es/actualidad/la-diputaci-n-de-castell-n-promueve-la-cultura-en-el-conjunto-de-la-provincia-con-una-nueva-edici-n-de-diputaci-a-escena)
+
+**Precios por tipo de artista**
+- [Cronoshare — Música para boda (2026)](https://www.cronoshare.com/cuanto-cuesta/musica-boda) · media 300–700 €; DJ 200–675 €; solista/dúo 250–1.000 €; trío/cuarteto 500–3.000 €; orquesta/banda 700–5.000+ €; ceremonia religiosa 170–1.470 €; 172.430 matrimonios/año; 4.085 M€ de sector
+- [Cronoshare — Monologuistas (2026)](https://www.cronoshare.com/cuanto-cuesta/monologuista) · media 370 €, habitual 200–600 €
+- [Cronoshare — DJ para fiestas y bodas](https://www.cronoshare.com/cuanto-cuesta/contratar-dj-fiestas-bodas)
+- [Celebrents — Monologuistas y humoristas](https://www.celebrents.es/barcelona/comicos-humoristas-monologuistas/) · 700–1.800 € show de 45–60 min; +3.000 € televisivos
 - [Peculiar — Cuánto cuesta contratar un artista famoso](https://peculiar.es/blog-cuanto-cuesta-contratar-artista-famoso) y [precios y cachés](https://peculiar.es/precios-cantantes-para-fiestas)
-- [Espectalium — Cuánto cobra un cantante por concierto](https://www.espectalium.com/cuanto-cobra-un-cantante-por-concierto/)
-- [Magos Pingu — precios y tarifas](https://magospingu.es/precios-magos/) · animación infantil 85–195 €
+- [Espectalium — Cuánto cobra un cantante por concierto](https://www.espectalium.com/cuanto-cobra-un-cantante-por-concierto/) · pequeño formato 500–3.000 €
+- [Kalifornia — Cuánto cuesta una orquesta o grupo de versiones](https://kalifornia.es/cuanto-cuesta-contratar-orquesta-grupo-versiones/)
+- [Paul White Band — Cuánto cuesta contratar una banda (2026)](https://paulwhiteband.com/cuanto-cuesta-contratar-una-banda-de-musica-para-una-boda-o-evento-en-espana/)
+
+**Taxonomía y competencia**
+- [Espectalium](https://www.espectalium.com/) · menú: **monologuistas primero**, luego músicos (cantantes, grupos, versiones, tributos), animaciones (magos, humoristas), famosos
+- [Partfy](https://partfy.com/) · [Celebrents](https://www.celebrents.es/) · [La Factoría del Show](https://www.lafactoriadelshow.com/) · [Artistealo](https://www.artistealo.com/) · [Supermúsica](https://supermusica.es/) · [Gigstarter](https://www.gigstarter.es/) · [Contratar Artistas](https://contratarartistas.com/) · [Eventzone](https://eventzone.es/)
+- [Espectalium — Músicos para hoteles](https://www.espectalium.com/animacion-para-eventos-y-fiestas/musicos-para-hoteles/) · confirma el micro-nicho hotelero
+- [Time Out Madrid — Bares con conciertos gratis](https://www.timeout.es/madrid/es/bares-y-pubs/bares-con-conciertos-gratis-o-casi) y [Time Out Barcelona](https://www.timeout.es/barcelona/es/bares-y-pubs/15-locales-donde-escuchar-musica-en-directo-en-barcelona) · **prueban que el SERP de "música en directo + ciudad" es editorial de ocio**
+- [Clapping — Dónde tocar en Barcelona](https://clapping.es/donde-tocar-en-barcelona) · **prueba que la búsqueda de ese vertical la hace el músico, no el local**
 
 **Lenguaje real de usuario**
 - [Foro Bodas.net — "Orquesta o grupo??"](https://comunidad.bodas.net/debates/orquesta-o-grupo--t802135)
 - [Foro Bodas.net — "Precio musica???"](https://comunidad.bodas.net/debates/precio-musica--t156834)
 - [Foro Bodas.net — "Orquestas buenas para contratar en boda?"](https://comunidad.bodas.net/debates/orquestas-buenas-para-contratar-en-boda--t47997)
 - [Opiniones de Grupo Orquesta Élite — Bodas.net](https://www.bodas.net/musica/grupo-orquesta-elite--e53142/opiniones) · reseña literal del miedo real
-
-**Taxonomía y competencia**
-- [Espectalium](https://www.espectalium.com/) · árbol de categorías y orden del menú
-- [Partfy](https://partfy.com/) · [Celebrents](https://www.celebrents.es/) · [La Factoría del Show](https://www.lafactoriadelshow.com/) · [Artistealo](https://www.artistealo.com/) · [Supermúsica](https://supermusica.es/) · [Gigstarter](https://www.gigstarter.es/) · [Contratar Artistas](https://contratarartistas.com/)
-- [Espectalium — Músicos para hoteles](https://www.espectalium.com/animacion-para-eventos-y-fiestas/musicos-para-hoteles/) · confirma demanda del vertical hotelero
+- [Bodas.net — Músicos para boda](https://www.bodas.net/bodas/proveedores/musica) · 73 % contratan DJ; antelación recomendada 10–12 meses
 
 **Estacionalidad**
 - [INE — Estadística de Matrimonios](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176999&menu=ultiDatos&idp=1254735573002) y [matrimonios por mes y provincia](https://ine.es/jaxiT3/Tabla.htm?t=37641)
-- [Boda.es — Temporada alta vs baja de bodas](https://boda.es/temporada/temporada-alta-vs-baja-bodas) · ≈55 % en may, jun, sep y 1ª q. oct
-- [Carmy Atelier — Cuándo son las comuniones en 2026](https://carmy.es/cuando-son-las-comuniones-en-2026/) · fines de semana concretos
-- [ILUNION Hotels — Cena de empresa Navidad: cuándo reservo](https://dondedormiresdespertar.es/blog/cena-de-empresa-navidad-cuando-reservo-menu-y-que-tener-en-cuenta/)
+- [Boda.es — Temporada alta vs baja](https://boda.es/temporada/temporada-alta-vs-baja-bodas) · ≈55 % en may, jun, sep y 1ª q. oct
+- [ILUNION Hotels — Cena de empresa de Navidad: cuándo reservo](https://dondedormiresdespertar.es/blog/cena-de-empresa-navidad-cuando-reservo-menu-y-que-tener-en-cuenta/)
 - [InfoHoreca — Los 3 días más solicitados para la cena de empresa](https://www.infohoreca.com/noticias/20231023/los-3-dias-mas-solicitados-para-reservar-comida-o-cena-empresa-esta-navidad/)
-- [El Español / Quincemil — Cuánto cuesta contratar una orquesta en Galicia](https://www.elespanol.com/quincemil/vivir/fiestas/20250419/cuesta-contratar-orquesta-galicia/1003743713378_0.html) · abril temporada baja, may-jun fechas complicadas
-- [Diario de Pontevedra — El boom de las orquestas](https://www.diariodepontevedra.es/articulo/pontevedra/galicia-vive-resurgir-nuevo-boom-orquestas-verano/202308301703371268784.html) · ~2.500 fiestas en jul-ago
-- [Orquestas de Galicia](https://www.orquestasdegalicia.es/) · agenda pública de contrataciones
-
-**B2G y contratación pública**
-- [Gobierto Contratación — CPV 92312140 Servicios artísticos de orquestas](https://contratos.gobierto.es/cpv/92312140)
-- [Derecho Local — Fraccionamiento del objeto del contrato en actuaciones musicales](https://derecholocal.es/consulta/contratacion-de-actuaciones-musicales-de-orquestas-para-fiestas-del-municipio-fraccionamiento-del-objeto-de-contrato)
-- [Derecho Local — Contrato menor o negociado sin publicidad para conciertos](https://derecholocal.es/consulta/contratacion-de-conciertos-por-el-ayuntamiento-contrato-menor-o-procedimiento-negociado-sin-publicidad)
-- [Diputación de Sevilla — Programas culturales / Circuito 107](https://www.dipusevilla.es/temas/cultura-y-juventud/programas-culturales/)
-- [Diputación de Tarragona — E-catàleg](https://oficinatecnicadesubvenciones.es/subvenciones-para-la-contractacion-de-actividades-culturales/)
-- [Junta de Andalucía — Catálogo de la Red Andaluza de Teatros Públicos 2026](https://juntadeandalucia.es/boja/2025/118/28)
-- [Diputación de Castellón — Diputació a Escena](https://www.dipcas.es/es/actualidad/la-diputaci-n-de-castell-n-promueve-la-cultura-en-el-conjunto-de-la-provincia-con-una-nueva-edici-n-de-diputaci-a-escena)
+- [Costa Blanca Magazin — Moros y Cristianos 2026: fechas](https://costablanca-magazin.com/es/tiempo-libre/eventos-eventos/moros-y-cristianos-costa-blanca-2026-fechas-y-festivales/) y [Alicante Out](https://alicanteout.com/fiestas-populares/moros-y-cristianos-provincia-alicante/) · concentración agosto-septiembre
 
 **Marca y legalidad**
 - [Webpositer — ¿Es legal usar marcas registradas como keywords en Ads?](https://www.webpositer.com/blog/utilizar-marcas-registradas-como-keywords-en-google-adwords.html)
@@ -787,4 +945,4 @@ Cinco cosas saltan a la vista al mirar la tabla completa:
 
 ---
 
-> **Aviso final, y va en serio.** Todas las bandas de volumen de este documento son estimaciones construidas sobre observación de SERP, taxonomía de competidores y estacionalidad estructural. **No son datos de Keyword Planner.** El orden de prioridad de la sección 7 es sólido porque descansa en competencia e intención —que sí se observan directamente—, pero antes de comprometer un euro de presupuesto hay que validar los volúmenes con herramienta. Cualquiera que te dé un número exacto de búsquedas mensuales sin enseñarte de dónde sale, te lo está inventando.
+> **Aviso final, y va en serio.** Todas las bandas de volumen son estimaciones construidas sobre observación de SERP, taxonomía de competidores, existencia de verticales especializados y estacionalidad estructural. **No son datos de Keyword Planner.** El orden de la matriz de §1 y del ranking de §9 es sólido porque descansa en competencia, ticket y recurrencia —que sí se observan directamente—, pero antes de comprometer un euro hay que validar los volúmenes con herramienta. Cualquiera que te dé un número exacto de búsquedas mensuales sin enseñarte de dónde sale, se lo está inventando.

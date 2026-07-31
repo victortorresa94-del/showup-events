@@ -4,11 +4,13 @@
 >
 > Stack asumido: **Next.js 15 (App Router) + React Server Components, desplegado en Vercel o en Node detrás de un CDN**. Todo lo que hay aquí es portable a Astro con dos cambios; nada depende de una feature propietaria.
 >
-> Contexto de partida: dominio nuevo, cero autoridad, cero enlaces, catálogo corto, dirección de arte oscura con fotografía a sangre y vídeo en el hero. Eso último es un problema de rendimiento, no un capricho: se resuelve en el §4, no se negocia con el §4.
+> Contexto de partida: dominio nuevo, cero autoridad, cero enlaces, cero huella digital, dirección de arte oscura con fotografía a sangre y vídeo en el hero. Eso último es un problema de rendimiento, no un capricho: se resuelve en el §4, no se negocia con el §4.
+>
+> **El activo del negocio es una agenda muy grande de música en vivo** — txarangas, charangas, orquestas de verbena, grupos de versiones, tributos, bandas, dúos, cuartetos de cuerda y músicos de todo tipo — más magos, monologuistas, humoristas y DJs. **Ni payasos ni animación infantil.** Eso reordena la taxonomía respecto a la v1 y se resuelve en **§1.6 (qué eje manda), §1.7 (txaranga vs charanga), §1.8 (municipios) y §1.9 (exclusiones, escala y orden de publicación)**.
 
 ---
 
-## 0. Las trece decisiones. Todo lo demás son detalles
+## 0. Las diecisiete decisiones. Todo lo demás son detalles
 
 | # | Decisión | Alternativa que se descarta |
 |---|---|---|
@@ -62,12 +64,31 @@ Tres cosas del copy deck (`06`) no cuadran con `04-arquitectura-seo.md`. Se resu
 **Slugs reservados** — ningún artista, ciudad ni guía puede llamarse así. Se valida en tiempo de build, no en revisión humana:
 
 ```
+# Marca y servicio
 artistas · brief · guias · precios · contacto · nosotros · como-funciona
-musica-para-bodas · artistas-para-eventos-de-empresa · orquestas-para-fiestas-patronales
-grupos-de-versiones · magos-para-eventos · monologuistas-para-eventos
-dj-para-bodas-y-eventos · bandas-tributo · cuartetos-de-cuerda-para-bodas
+
+# Pilares de ocasión
+musica-para-bodas · artistas-para-eventos-de-empresa
+orquestas-y-charangas-para-fiestas
+
+# Formaciones (Cluster D — ver §1.6)
+grupos-de-versiones · orquestas-para-verbenas · charangas-para-fiestas · txarangas
+bandas-tributo · duos-y-solistas-para-eventos · cuartetos-de-cuerda-para-bodas
+dj-para-bodas-y-eventos · magos-para-eventos · monologuistas-para-eventos
+humoristas-para-eventos · musicos-para-ceremonias
+
+# Sistema
 api · _next · sitemap · robots · aviso-legal · privacidad · cookies · 404 · 500
 ```
+
+**Slugs PROHIBIDOS** — no reservados para uso interno: directamente vetados. Ver §1.9.1:
+
+```
+payasos · animacion-infantil · fiestas-infantiles · hinchables · animadores
+magos-infantiles · globoflexia · cumpleanos-infantiles · castillos-hinchables
+```
+
+> **Nota de renombrado.** El pilar del cluster de fiestas pasa de `/orquestas-para-fiestas-patronales` (v1) a **`/orquestas-y-charangas-para-fiestas`**, por lo argumentado en §1.6. Como nada está publicado todavía, no hay redirección que gestionar — **y es exactamente por eso por lo que esta decisión se toma ahora y no en el mes 4.**
 
 ### 1.2 El árbol completo, con profundidad de clic
 
@@ -86,9 +107,10 @@ Profundidad = número mínimo de clics desde `/` siguiendo enlaces `<a href>` ra
 │   ├── /artistas-para-eventos-de-empresa/cena-de-navidad      │ 2
 │   ├── /artistas-para-eventos-de-empresa/cuanto-cuesta        │ 2
 │   └── /artistas-para-eventos-de-empresa/barcelona    CIUDAD  │ 2
-├── /orquestas-para-fiestas-patronales          PILAR C │ 1
-│   ├── /orquestas-para-fiestas-patronales/como-contrata-un-ayuntamiento │ 2
-│   └── /orquestas-para-fiestas-patronales/cuanto-cuesta                 │ 2
+├── /orquestas-y-charangas-para-fiestas      HUB C │ 1   ← ver §1.6: aquí manda la formación
+│   ├── …/como-contrata-un-ayuntamiento                 │ 2
+│   ├── …/cuanto-cuesta                                 │ 2
+│   └── …/[zona]                        GEO, tope de 8  │ 2   ← §1.8
 ├── /artistas                                   CATÁLOGO│ 1
 │   └── /artistas/[slug]                          FICHA │ 2
 ├── /precios                                            │ 1   ← navegación
@@ -103,9 +125,11 @@ Profundidad = número mínimo de clics desde `/` siguiendo enlaces `<a href>` ra
 │   └── /brief/gracias                        noindex   │ —
 └── /aviso-legal · /privacidad · /cookies  noindex,follow│ 1
 
-CLUSTER D · tipo de artista (raíz, profundidad 2)
-/grupos-de-versiones · /magos-para-eventos · /monologuistas-para-eventos
-/dj-para-bodas-y-eventos · /bandas-tributo · /cuartetos-de-cuerda-para-bodas
+CLUSTER D · FORMACIÓN (raíz, profundidad 2) — el núcleo de música en vivo, ver §1.6.1
+/grupos-de-versiones · /orquestas-para-verbenas · /charangas-para-fiestas · /txarangas
+/bandas-tributo · /duos-y-solistas-para-eventos · /cuartetos-de-cuerda-para-bodas
+/dj-para-bodas-y-eventos · /magos-para-eventos · /monologuistas-para-eventos
+/humoristas-para-eventos · /musicos-para-ceremonias
 ```
 
 **Cómo llega el rastreador al Cluster D si la home no lo enlaza.** Por tres rutas, todas a profundidad 2:
@@ -231,6 +255,334 @@ if (errores.length) { console.error(errores.join('\n')); process.exit(1); }
 ```
 
 Esto no es burocracia: es el único mecanismo que impide que dentro de ocho meses, con prisa, alguien añada catorce ciudades y hunda el dominio.
+
+---
+
+## 1.6 Qué eje manda en la URL: formación, ocasión o ciudad
+
+> **Actualización de encargo.** El activo real del cliente es una agenda enorme de **música en vivo**: txarangas, charangas, orquestas de verbena, grupos de versiones, tributos, bandas, dúos, cuartetos de cuerda, músicos sueltos. Más magos, monologuistas, humoristas y DJs. **Ni payasos ni animación infantil** (ver §1.9). Eso cambia el peso de los ejes respecto a la v1, que trataba el tipo de artista como transversal secundario.
+
+Hay tres ejes posibles y la tentación es elegir uno "por coherencia". Es un error: **el eje correcto es el que coincide con cómo teclea cada comprador, y este negocio tiene dos compradores radicalmente distintos.**
+
+| | Comprador novato | Comprador experto |
+|---|---|---|
+| **Quién** | Pareja que se casa. Responsable de RRHH que organiza la cena de Navidad. | Comisión de fiestas. Concejal de festejos. Peña. Presidente de la cofradía. |
+| **Cuántas veces compra esto** | Una vez en la vida / una vez al año | Todos los años, algunos varias veces por temporada |
+| **Qué teclea** | `música para bodas`, `qué contratar cena de empresa`, `cuánto cuesta un grupo para una boda` | `contratar charanga`, `orquestas para verbenas`, `txaranga para fiestas`, `precio orquesta verbena` |
+| **Sabe el nombre del formato** | **No.** No sabe la diferencia entre un trío y un cuarteto, y le da igual | **Sí.** Sabe exactamente si quiere charanga de pasacalles u orquesta de baile. Lleva 20 años contratándolo |
+| **Eje que manda en la URL** | **OCASIÓN** | **FORMACIÓN** |
+
+Esa es la conclusión completa: **el eje que manda no depende del inventario, depende de la pericia del comprador.** Quien no sabe qué comprar busca por la ocasión que tiene encima; quien sabe exactamente qué comprar busca por el nombre del producto. Construir todo por ocasión deja fuera al comprador de fiestas —que es el de ticket más alto y el SERP más vacío—. Construirlo todo por formación deja fuera a la novia, que no sabe qué es un cuarteto.
+
+### 1.6.1 El árbol revisado
+
+**Cluster A · BODA — manda la ocasión** *(sin cambios)*
+```
+/musica-para-bodas                    ← PILAR. Keyword: música en directo para bodas
+  /cuanto-cuesta · /ceremonia-coctel-y-fiesta · /dj-o-grupo-en-directo
+  /con-cuanta-antelacion-contratar · /[ciudad]
+```
+
+**Cluster B · EMPRESA — manda la ocasión** *(sin cambios)*
+```
+/artistas-para-eventos-de-empresa     ← PILAR
+  /cena-de-navidad · /cuanto-cuesta · /[ciudad]
+```
+
+**Cluster C · FIESTAS Y VERBENAS — manda la FORMACIÓN** *(reestructurado)*
+
+El pilar deja de ser la página que rankea y pasa a ser un **hub de procedimiento**. Quien rankea son las páginas de formación, porque son las que coinciden con la consulta literal del comprador.
+
+```
+/orquestas-y-charangas-para-fiestas          ← HUB del cluster. Keyword: orquestas
+                                                para fiestas patronales. Explica el
+                                                encargo completo: programación, cachés,
+                                                rider, papeles del ayuntamiento.
+  ├── /orquestas-para-verbenas               ← FORMACIÓN. orquesta de verbena,
+  │                                             orquesta para fiestas del pueblo
+  ├── /charangas-para-fiestas                ← FORMACIÓN. charanga, contratar charanga
+  ├── /txarangas                             ← FORMACIÓN (variante regional). Ver §1.7
+  ├── /bandas-tributo                        ← FORMACIÓN. Cruza con empresa y sala
+  ├── /como-contrata-un-ayuntamiento         ← PROCEDIMIENTO. SERP vacío, ticket alto
+  ├── /cuanto-cuesta                         ← PRECIO
+  └── /[provincia]                           ← GEO, con tope duro. Ver §1.8
+```
+
+**Cluster D · FORMACIÓN EN RAÍZ — el núcleo de música en vivo** *(ampliado)*
+
+Deja de ser "transversal secundario". Con la agenda que hay detrás, es el eje que más URLs sostiene y el que antes va a rankear.
+
+| URL | Keyword principal | Dificultad | Cruza con |
+|---|---|---|---|
+| `/grupos-de-versiones` | grupo de versiones, contratar grupo de versiones | Media | Boda · Empresa · Fiestas · Sala |
+| `/orquestas-para-verbenas` | orquesta de verbena, orquesta para fiestas | **Baja** | Fiestas |
+| `/charangas-para-fiestas` | charanga, contratar charanga | **Baja** | Fiestas |
+| `/txarangas` | txaranga, contratar txaranga | **Muy baja** | Fiestas (Euskadi, Navarra, Cataluña) |
+| `/bandas-tributo` | banda tributo, tributo a [grupo] | Media | Fiestas · Empresa · Sala |
+| `/duos-y-solistas-para-eventos` | dúo acústico para eventos, solista para bodas | Media-baja | Boda · Empresa |
+| `/cuartetos-de-cuerda-para-bodas` | cuarteto de cuerda para boda | **Baja** | Boda |
+| `/dj-para-bodas-y-eventos` | dj para bodas, dj para eventos | Media-alta | Boda · Empresa · Sala |
+| `/magos-para-eventos` | contratar mago para eventos | Media-baja | Empresa · Boda · Privados |
+| `/monologuistas-para-eventos` | contratar monologuista, monólogo cena de empresa | **Baja** | Empresa |
+| `/humoristas-para-eventos` | contratar humorista, humorista para fiestas | **Baja** | Fiestas · Empresa |
+| `/musicos-para-ceremonias` | música para ceremonia civil, violinista para boda | Media-baja | Boda |
+
+`/humoristas-para-eventos` y `/monologuistas-para-eventos` conviven porque **no son sinónimos en el SERP español**: `monologuista` arrastra el club de comedia y el evento de empresa; `humorista` arrastra el nombre propio de televisión y la fiesta mayor. Se aplica el mismo test que en §1.7 antes de publicarlas: si los SERPs se solapan más del 60 %, se fusionan en una y la otra se convierte en un `<h2>`.
+
+### 1.6.2 Cómo conviven los tres ejes sin canibalizarse
+
+**Regla 1 — Cada eje tiene su propio conjunto de keywords y no toca las del otro.**
+
+| Tipo de página | Ataca | **No ataca nunca** |
+|---|---|---|
+| Ocasión (`/musica-para-bodas`) | `música para bodas`, `grupo de música boda` | `charanga`, `orquesta de verbena` |
+| Formación (`/charangas-para-fiestas`) | `charanga`, `contratar charanga`, `charanga precio` | `música para fiestas patronales` (es del hub C) |
+| Ciudad (`/musica-para-bodas/barcelona`) | `grupo de música para bodas en Barcelona` | `música para bodas` a secas |
+
+**Regla 2 — Un compuesto formación+ocasión es UNA URL en raíz, nunca una carpeta.**
+
+Este es el mecanismo que permite atacar keywords compuestas de alto valor sin abrir la matriz:
+
+```
+✅  /cuartetos-de-cuerda-para-bodas       compuesto que la gente teclea literalmente
+✅  /orquestas-para-verbenas              idem
+❌  /cuartetos-de-cuerda/bodas            carpeta → invita a /cuartetos-de-cuerda/empresa,
+                                          /cuartetos-de-cuerda/barcelona… y a la matriz
+❌  /musica-para-bodas/cuartetos-de-cuerda mismo problema desde el otro lado
+```
+
+**Criterio para admitir un compuesto:** el compuesto tiene que ser la cadena que se teclea, con volumen propio y SERP propio. `cuarteto de cuerda para boda` lo es. `charanga para boda` **no** lo es (nadie contrata una charanga para una boda: es una sección de dos párrafos dentro de `/charangas-para-fiestas`, no una URL).
+
+**Regla 3 — El cruce entre ejes se hace con enlace interno, no con URL.** Cada página de formación lleva un bloque *"Para qué noche sirve"* —el mismo patrón que la ficha de artista— con enlace a los pilares de ocasión donde ese formato tiene sentido. Y cada pilar de ocasión enlaza a las formaciones que encajan, desde el párrafo donde se habla de ellas. La malla es lo que construye autoridad temática; las URLs de más sólo construyen ruido.
+
+**Regla 4 — Antes de crear cualquier URL nueva, se responde por escrito en el PR:** ¿qué consulta exacta ataca?, ¿qué otra página del sitio la ataca ya?, ¿qué 400 palabras van aquí que no valen para ninguna otra URL? Sin las tres respuestas, no se mergea.
+
+---
+
+## 1.7 Sinónimos regionales: `txaranga` / `charanga` / `xaranga`
+
+Es la decisión de arquitectura más interesante del proyecto y la que más fácil se resuelve mal.
+
+### 1.7.1 El test que decide, y no es una opinión
+
+**Se buscan los dos términos en Google España, en incógnito, y se comparan los diez primeros resultados.**
+
+- **Si el solapamiento del top 10 es alto (≥ 60 % de las mismas URLs):** Google ya trata los dos términos como la misma consulta. → **Una sola URL**, con el término principal en el `<title>` y el `<h1>`, y el secundario en un `<h2>`, en el cuerpo y en una pregunta del `FAQPage`.
+- **Si el solapamiento es bajo (< 30 %):** son dos consultas distintas con dos conjuntos de resultados distintos. → **Dos URLs.** No compiten porque no juegan en el mismo tablero.
+
+### 1.7.2 La decisión para este caso
+
+**Dos URLs: `/charangas-para-fiestas` y `/txarangas`.**
+
+El solapamiento es bajo y por razones estructurales, no anecdóticas:
+
+| | `charanga` | `txaranga` |
+|---|---|---|
+| Territorio de la consulta | Castilla, Aragón, La Rioja, Andalucía, Madrid, Levante | País Vasco, Navarra, y con la grafía `xaranga` también Cataluña y Comunidad Valenciana |
+| Quién contrata | Comisión de fiestas, peña, ayuntamiento | **Peña, cuadrilla, comparsa** — casi nunca el ayuntamiento directamente |
+| Qué se contrata | Pasacalles, animación de calle, a veces baile | Kalejira, acompañamiento de peñas, alarde, horario continuado durante varios días |
+| Formato de contratación | Por actuación o por pases | **Por días completos de fiestas**, con lógica de precio distinta |
+| Quién ocupa el SERP hoy | Agencias generalistas de espectáculos | Webs de txarangas concretas y federaciones locales |
+
+Es decir: **no es un sinónimo, es otro producto con otro comprador, otro calendario y otro precio.** Hay 500+ palabras que sólo valen para una de las dos páginas, que es exactamente el criterio de la Decisión 1.
+
+### 1.7.3 Lo que NO se hace, y por qué
+
+| Antipatrón | Qué pasa |
+|---|---|
+| **Una página con `<h1>Charangas y txarangas para fiestas</h1>`** | Un H1 con dos keywords es un H1 sin keyword. La página no es la mejor respuesta a ninguna de las dos y pierde las dos. Es el error más común con sinónimos regionales. |
+| **Dos páginas clonadas con `canonical` de `/txarangas` a `/charangas-para-fiestas`** | Lo peor de los dos mundos. Si el contenido es distinto, Google ignora el canonical y te quedas con dos páginas mal señalizadas; si es igual, has escrito una página que no sirve para nada. **El canonical no es un traductor de sinónimos.** O una página o dos, nunca "dos con canonical". |
+| **Dos páginas con el mismo texto cambiando la palabra** | Es literalmente el patrón *doorway* aplicado a la terminología en vez de a la geografía. Con un dominio nuevo, dispara el filtro. |
+| **Una tercera URL para `xaranga`** | No pasa el test: `xaranga` es la grafía catalana/valenciana de lo mismo, con volumen residual y con un SERP que ya devuelve resultados de `txaranga` y `charanga`. Va **dentro** de `/txarangas`: en el primer párrafo, en un `<h2>` (*"Xaranga, txaranga o charanga: cuál es la diferencia"*) y en el `FAQPage`. Ese H2 captura la consulta sin gastar una URL. |
+| **Redirigir `/xarangas` a `/txarangas`** | Sí se hace, pero como redirección defensiva de una URL que nunca se publica, no como estrategia de contenido. |
+
+### 1.7.4 Cómo se enlazan entre sí
+
+Enlace recíproco, una sola vez cada uno, con anchor honesto y desde el cuerpo:
+
+- En `/charangas-para-fiestas`: *"En el País Vasco, Navarra y buena parte de Cataluña a esto se le llama **txaranga**, y no es sólo el nombre: cambia el formato de contratación."* → enlaza a `/txarangas`.
+- En `/txarangas`: la simétrica → enlaza a `/charangas-para-fiestas`.
+
+Ambas enlazan hacia arriba a `/orquestas-y-charangas-para-fiestas` con anchor de la keyword del hub, dentro de las primeras 150 palabras (Regla 1 del §3.1 de `04`).
+
+### 1.7.5 El procedimiento, generalizado
+
+Este caso se va a repetir: `verbena`/`baile`, `pasacalles`/`kalejira`, `orquesta`/`grupo de baile`, `monologuista`/`humorista`, `bertsolari` en Euskadi. Se resuelve siempre igual, y queda escrito en el PR:
+
+```
+1. Buscar los dos términos en Google.es, incógnito, sin personalización.
+2. Anotar las 10 URLs de cada uno y calcular el solapamiento.
+3. ¿Solapamiento ≥ 60 %?  → UNA URL. El otro término va en H2 + cuerpo + FAQ.
+   ¿Solapamiento < 30 %?  → DOS URLs, cada una con ≥ 500 palabras exclusivas.
+   ¿Entre 30 y 60 %?      → UNA URL ahora. Se revisa a los 6 meses con datos
+                             de GSC: si la página recibe impresiones del segundo
+                             término pero con posición media > 20, se parte.
+4. NUNCA canonical entre las dos. NUNCA el mismo texto con la palabra cambiada.
+```
+
+```ts
+// content/sinonimos.ts — se documenta la decisión, con fecha y evidencia.
+// Sin esto, en el mes 9 alguien crea /xarangas "porque falta" y rompe el trabajo.
+export const SINONIMOS_RESUELTOS = [
+  { terminos: ['charanga', 'txaranga'], decision: 'dos-urls',
+    urls: ['/charangas-para-fiestas', '/txarangas'],
+    solapamiento: 0.1, revisado: '2026-08-01',
+    motivo: 'Territorio, comprador y formato de contratación distintos.' },
+  { terminos: ['txaranga', 'xaranga'], decision: 'una-url',
+    urls: ['/txarangas'], solapamiento: 0.7, revisado: '2026-08-01',
+    motivo: 'Misma consulta, grafía catalana. Va en H2 + FAQ de /txarangas.' },
+  { terminos: ['monologuista', 'humorista'], decision: 'dos-urls-provisional',
+    urls: ['/monologuistas-para-eventos', '/humoristas-para-eventos'],
+    solapamiento: 0.4, revisado: '2026-08-01',
+    motivo: 'Zona gris. Se publica primero monologuista; humorista a los 6 meses SOLO si GSC muestra impresiones no capturadas.' },
+];
+```
+
+---
+
+## 1.8 El eje "fiestas patronales por municipio": cómo se acota
+
+España tiene **8.131 municipios**. Si se generase una landing por municipio, este sitio tendría 8.131 páginas casi idénticas el día de su lanzamiento, en un dominio con cero autoridad. Es la definición de manual de *doorway pages* y el proyecto no sobreviviría al mes 3.
+
+### 1.8.1 El argumento que zanja el debate: la intención no es de compra
+
+`fiestas de [pueblo]`, `programa de fiestas de [pueblo]`, `fiestas patronales [pueblo] 2026` son consultas de **asistente**, no de contratante. Quien las hace quiere saber a qué hora es la charanga, no contratarla. El SERP lo confirma: lo ocupan la web del ayuntamiento, el programa en PDF y la prensa local.
+
+**El que contrata no busca con el nombre de su pueblo.** Ya sabe cómo se llama su pueblo. Busca `contratar orquesta fiestas patronales`, `cuánto cuesta una charanga`, `pliego actuación musical contrato menor`. Son consultas **sin modificador geográfico** o, como mucho, con provincia.
+
+Consecuencia: **el municipio no es un eje SEO. Es un eje de contenido dentro de una página.**
+
+### 1.8.2 Lo que sí se hace: municipios como contenido, no como URL
+
+El bloque *"Dónde hemos tocado"* de `/orquestas-y-charangas-para-fiestas` y de cada página de formación lista los municipios reales con año, formación y una línea de contexto:
+
+> **Alcalá de Henares** · San Juan 2025 · Las Doce en la Plaza de Cervantes, escenario de tablas, tres pases.
+> **Calahorra** · Fiestas de Septiembre 2025 · charanga de nueve, cuatro días de pasacalles con las peñas.
+> **Tafalla** · San Sebastián 2026 · txaranga contratada por la peña, no por el ayuntamiento.
+
+Esto captura la cola `[formación] + [pueblo]` de forma natural, con contenido verdadero, **sin generar una sola URL**, y además es la prueba social que necesita una comisión de fiestas para fiarse. Treinta municipios mencionados en una página real valen más que treinta páginas con el topónimo cambiado — y no pueden penalizar.
+
+### 1.8.3 Si alguna vez hay eje geográfico en este cluster: provincia, con tope duro
+
+El único nivel geográfico con intención de contratación y volumen medible es **provincia o comarca**, nunca municipio. Y aun así se acota con tres puertas y un tope:
+
+**Puerta 1 — Intención verificada.** Se busca `orquestas para fiestas en [provincia]` y se mira el SERP. Si lo que sale son **programas de fiestas y prensa local**, la consulta es de asistente: no se construye. Si salen **agencias y grupos**, es de contratación: pasa.
+
+**Puerta 2 — Prueba propia.** Al menos una actuación hecha en esa provincia, con fotos propias y, si se puede, el nombre de la comisión. Es el mismo criterio del §2.3 de `04` y es lo que impide clonar.
+
+**Puerta 3 — Capacidad real.** Formaciones que se puedan mover ahí sin que el desplazamiento se coma el margen.
+
+**Tope duro: 8 URLs geográficas en el cluster de fiestas, en 24 meses.** No es una recomendación: es una comprobación de build que rompe el despliegue.
+
+```ts
+// content/geo-fiestas.ts
+export const TOPE_GEO_FIESTAS = 8;     // NO SE SUBE SIN UNA REVISIÓN DOCUMENTADA
+
+export interface GeoFiesta {
+  slug: string;                        // 'la-rioja', 'navarra', 'ribera-del-duero'
+  nombre: string;                      // 'La Rioja'
+  tipo: 'AdministrativeArea';
+  nivel: 'provincia' | 'comarca';      // 'municipio' NO ES UN VALOR VÁLIDO
+  publicada: boolean;
+  intencionVerificada: {               // Puerta 1
+    fecha: string;
+    serpDeContratacion: boolean;       // false ⇒ no se puede publicar
+    captura: string;                   // ruta a la captura del SERP, en el repo
+  };
+  pruebaLocal: { actuaciones: string[]; municipios: string[] };  // Puerta 2
+}
+```
+
+```ts
+// scripts/validar-contenido.ts (ampliación)
+import { GEO_FIESTAS, TOPE_GEO_FIESTAS } from '../content/geo-fiestas';
+
+const publicadas = GEO_FIESTAS.filter((g) => g.publicada);
+
+if (publicadas.length > TOPE_GEO_FIESTAS)
+  errores.push(`Tope geográfico del cluster de fiestas superado: ${publicadas.length}/${TOPE_GEO_FIESTAS}. Ver seo/04-arquitectura-tecnica §1.8.`);
+
+for (const g of publicadas) {
+  // @ts-expect-error el tipo lo prohíbe; esto atrapa un JSON escrito a mano
+  if (g.nivel === 'municipio')
+    errores.push(`${g.slug}: nivel municipio prohibido. El municipio es contenido, no URL.`);
+  if (!g.intencionVerificada.serpDeContratacion)
+    errores.push(`${g.slug}: el SERP es de asistente, no de contratación. No se publica.`);
+  if (g.pruebaLocal.actuaciones.length === 0)
+    errores.push(`${g.slug}: sin actuación propia. Sin prueba, no hay página.`);
+}
+```
+
+Y la ruta, con la misma lista blanca cerrada que las ciudades de boda:
+
+```ts
+// app/orquestas-y-charangas-para-fiestas/[zona]/page.tsx
+export const dynamicParams = false;   // fuera de la lista blanca ⇒ 404 duro
+export function generateStaticParams() {
+  return GEO_FIESTAS.filter((g) => g.publicada).map((g) => ({ zona: g.slug }));
+}
+```
+
+### 1.8.4 Lo que queda descartado explícitamente
+
+| Idea | Veredicto |
+|---|---|
+| `/fiestas-patronales/[municipio]` × 8.131 | **Nunca.** |
+| "Calendario de fiestas patronales de España" con una URL por pueblo | **No.** Es un producto editorial distinto, con tráfico de asistente, conversión cercana a cero, y un coste de mantenimiento anual enorme. Atrae exactamente al visitante que no compra. Si algún día interesa, es otro proyecto y otro dominio. |
+| Una URL por peña, comparsa o cofradía | **No.** Mismo problema, menos volumen. |
+| Página por fiesta con nombre propio (San Fermín, La Mercè, El Pilar) | **Sólo si Show Up ha trabajado ahí y hay algo que contar.** Máximo 2 en 24 meses, y cuentan dentro del tope de 8. |
+
+---
+
+## 1.9 Exclusiones, escala del catálogo y orden de publicación acelerado
+
+### 1.9.1 Lo que este sitio NO es
+
+**Ni payasos, ni animación infantil, ni hinchables, ni fiestas de cumpleaños infantiles.** No es una omisión: es una decisión de posicionamiento que hay que proteger técnicamente, porque el SERP de espectáculos empuja constantemente hacia ahí.
+
+- Se añaden a los **slugs prohibidos**, validados en build: `payasos`, `animacion-infantil`, `fiestas-infantiles`, `hinchables`, `magos-infantiles`, `animadores`, `globoflexia`, `cumpleanos-infantiles`.
+- **No se escribe una página "no hacemos animación infantil"**: sería una página fina que atrae tráfico que no convierte y confunde la clasificación temática del dominio.
+- Donde sí se dice, en una línea, es en `/como-funciona` y en el `FAQPage` de la home: *"No hacemos animación infantil ni espectáculos para niños. Si es lo que buscas, te decimos a quién llamar."* Cuesta 20 palabras, cualifica al visitante y refuerza el tono de marca (*"siempre se puede decir que no"*).
+- Consecuencia de entidades: `knowsAbout` en `Organization` (§5.2) no incluye nada infantil. Lo que se declara ahí es lo que se quiere que Google asocie al dominio.
+
+### 1.9.2 La escala del catálogo: la agenda es grande, la arquitectura aguanta
+
+Con una agenda de cientos de formaciones, el catálogo puede pasar de 6 a 200 fichas en un año. Nada de este documento cambia, salvo un punto:
+
+**Cuando el catálogo supere ~60 fichas, la tentación de indexar facetas vuelve. La respuesta sigue siendo no — porque las facetas útiles ya existen y son las páginas de formación del Cluster D.**
+
+```
+❌  /artistas?tipo=charanga           faceta. noindex. Estado de interfaz.
+✅  /charangas-para-fiestas           MISMA lista de artistas + 800 palabras de
+                                      criterio editorial encima. Indexable, con
+                                      keyword propia, y es la página que un humano
+                                      querría leer antes de contratar.
+```
+
+Cada página de formación lleva, bajo el contenido editorial, **el listado real de las formaciones de ese tipo que hay en el catálogo**, generado desde el CMS con ISR. Eso convierte las 12 URLs de formación en las únicas "facetas" indexables del sitio: curadas, con contenido único, con enlace interno a las fichas, y con un número finito y controlado. La combinatoria nunca se abre.
+
+Si en el mes 18 hiciera falta una faceta más (por ejemplo `charangas de más de 10 músicos`), se promueve **a URL estática y curada**, con contenido propio, y entra en la lista blanca. Una, escrita a mano, no doscientas generadas.
+
+### 1.9.3 Orden de publicación acelerado
+
+`04-arquitectura-seo.md` §5 ordenaba los diez primeros contenidos con el catálogo genérico en mente. Con el núcleo de música en vivo y el objetivo de *"posicionarse cuanto antes"*, el orden cambia: **sube todo el cluster de fiestas y formación, porque es donde el SERP está más vacío y el ticket es más alto**, y baja el pilar de bodas, que tarda 9–12 meses en moverse haga lo que haga.
+
+| # | URL | Por qué aquí | Ventana |
+|---|---|---|---|
+| 1 | `/charangas-para-fiestas` | Consulta literal del comprador experto, SERP de agencias genéricas, ticket recurrente. Lo más rápido de rankear de todo el plan. | Ya |
+| 2 | `/orquestas-para-verbenas` | Igual, con ticket mayor. **Publicar antes de octubre**: las comisiones cierran programación entre enero y marzo. | Ya |
+| 3 | `/orquestas-y-charangas-para-fiestas/como-contrata-un-ayuntamiento` | Cero competencia. Lo lee un concejal con presupuesto. Además es contenido enlazable desde webs municipales y prensa local: el primer enlace real del dominio puede salir de aquí. | Mes 1 |
+| 4 | `/musica-para-bodas/cuanto-cuesta` | El hueco de precio sigue siendo el más grande del sector y es la primera conversión del proyecto. | Mes 2 |
+| 5 | `/txarangas` | SERP casi vacío de páginas comerciales. Territorio con contratación intensa y ninguna agencia hablándole bien. | Mes 2 |
+| 6 | `/orquestas-y-charangas-para-fiestas` (hub) | Se publica **después** de tener dos formaciones colgando: un hub sin satélites no tiene a quién enlazar. | Mes 3 |
+| 7 | `/musica-para-bodas` (PILAR A) | Tarda. Se empieza pronto precisamente por eso, pero no es lo primero. | Mes 3 |
+| 8 | `/monologuistas-para-eventos` | SERP flojo, ticket 700–3.000 €, ciclo corto. Mejor relación esfuerzo/ingreso fuera de música. | Mes 4 |
+| 9 | `/grupos-de-versiones` | Alimenta a los tres clusters a la vez. El mayor retorno por enlace interno del sitio. | Mes 4 |
+| 10 | `/orquestas-y-charangas-para-fiestas/cuanto-cuesta` | Cierra el cluster con la consulta comercial. | Mes 5 |
+
+Después: `/musica-para-bodas/barcelona`, `/artistas-para-eventos-de-empresa`, `/bandas-tributo`, `/magos-para-eventos`, `/artistas-para-eventos-de-empresa/cena-de-navidad` *(en junio)*, `/precios`, `/cuartetos-de-cuerda-para-bodas`, `/duos-y-solistas-para-eventos`.
+
+**La estacionalidad manda sobre el volumen.** Fiestas patronales se programan de enero a marzo; una página publicada en abril ha perdido el año entero. Cena de Navidad de empresa se decide de septiembre a noviembre; se publica en junio. Bodas de temporada alta se cierran de 6 a 9 meses antes. Publicar la página correcta cuatro meses tarde equivale a no publicarla.
 
 ---
 
@@ -421,7 +773,7 @@ Secuencia correcta:
 | Canonical de la faceta a `/artistas` *sin* `noindex` | El canonical se ignora cuando el contenido difiere mucho. Con 216 variantes, se ignorará en unas cuantas. |
 | Bloquear con `Disallow` **y** poner `noindex` | Se anulan: el bloqueo impide leer la etiqueta. Es una contradicción, no un cinturón y tirantes. |
 | Filtros que hacen `router.push` | Genera entradas de historial y URLs de RSC. `replaceState` a secas. |
-| Indexar facetas "porque son long tail" | Con catálogo corto no hay long tail: hay páginas vacías. Si algún día hubiera 200 artistas, se reevaluaría promoviendo **una sola** faceta de alto valor a URL estática y curada (p. ej. `/artistas` con un H2 por tipo), nunca abriendo la combinatoria. |
+| Indexar facetas "porque son long tail" | Con catálogo corto no hay long tail: hay páginas vacías. Y con catálogo largo tampoco hace falta: **las facetas útiles ya existen y son las 12 páginas de formación del Cluster D** (§1.9.2), curadas, con 800 palabras de criterio encima del listado. La combinatoria no se abre nunca; si hiciera falta una faceta más, se promueve **una**, escrita a mano, a URL estática. |
 
 ### 2.5 Paginación
 
@@ -1214,6 +1566,63 @@ export function breadcrumb(path: string, migas: { nombre: string; url?: string }
 ```
 
 > **`hasOfferCatalog` con nombres, sin `Offer` ni `price`.** Declara los formatos que existen (útil para entidades y para asistentes generativos) sin comprometer un precio. La decisión de `04` de no marcar precios se mantiene: los cachés varían por fecha, sitio y formato, y un `Offer` que no se sostiene genera reclamaciones y desconfianza. Las horquillas van en texto, en `/precios`.
+
+### 5.5.1 Página de formación — `Service` + `ItemList` de formaciones reales
+
+Es el marcado de las 12 URLs del Cluster D. Une el servicio (lo que se contrata) con el inventario real (quién hay), que es justo lo que convierte una página de formación en una faceta curada y no en una landing genérica.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://showupevents.es/charangas-para-fiestas#service",
+      "name": "Charangas para fiestas y pasacalles",
+      "serviceType": "Contratación de charangas",
+      "alternateName": ["Txaranga", "Xaranga"],
+      "description": "Charangas de 6 a 14 músicos para pasacalles, peñas y fiestas patronales. Repertorio, número de pases, horarios y precio por días de fiestas.",
+      "url": "https://showupevents.es/charangas-para-fiestas",
+      "provider": { "@id": "https://showupevents.es/#organization" },
+      "areaServed": { "@type": "Country", "name": "España" },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Comisiones de fiestas, peñas y ayuntamientos"
+      },
+      "isRelatedTo": [
+        { "@id": "https://showupevents.es/orquestas-y-charangas-para-fiestas#service" },
+        { "@id": "https://showupevents.es/txarangas#service" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://showupevents.es/charangas-para-fiestas#listado",
+      "name": "Charangas disponibles",
+      "numberOfItems": 4,
+      "itemListOrder": "https://schema.org/ItemListUnordered",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1,
+          "url": "https://showupevents.es/artistas/la-txapela",
+          "name": "La Txapela" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://showupevents.es/charangas-para-fiestas#faq",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Es lo mismo una charanga que una txaranga?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Es el mismo tipo de formación con distinto nombre según la zona: charanga en la mayor parte de España, txaranga en el País Vasco y Navarra, xaranga en Cataluña y la Comunidad Valenciana. Lo que sí cambia es el formato de contratación: la charanga se suele contratar por pases o por actuación, y la txaranga por días completos de fiestas, normalmente por una peña y no por el ayuntamiento."
+        }
+      }]
+    }
+  ]
+}
+```
+
+> **`alternateName` con las variantes, `isRelatedTo` entre las dos páginas, y una pregunta del FAQ que explica la diferencia.** Las tres cosas juntas le dicen a Google que `/charangas-para-fiestas` y `/txarangas` son entidades emparentadas pero distintas — que es exactamente la señal que hace falta para que no las trate como duplicados. **Sin `sameAs` entre ellas** (`sameAs` significaría que son la misma entidad) y **sin canonical cruzado** (§1.7.3).
 
 ### 5.6 Landing de ciudad — `Service` con `areaServed` real
 
@@ -2090,6 +2499,10 @@ Y una regla de gobierno: **no se mide el ranking.** Se mira GSC una vez al mes d
 - [ ] Cero páginas placeholder, cero "próximamente", cero lorem
 - [ ] Cero landings de ciudad sin evento propio (validado en CI)
 - [ ] Ningún CTA al brief con anchor de keyword transaccional (Regla 3 de `04` §3.1)
+- [ ] Slugs prohibidos (payasos, animación infantil…) bloqueados en build — §1.9.1
+- [ ] `content/sinonimos.ts` con la decisión txaranga/charanga documentada y su captura de SERP
+- [ ] `content/geo-fiestas.ts` con `nivel !== 'municipio'` y tope de 8 verificado en build — §1.8.3
+- [ ] Orden de publicación acelerado del §1.9.3 acordado con negocio, con las ventanas estacionales marcadas en calendario
 
 ---
 
