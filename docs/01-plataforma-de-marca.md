@@ -64,16 +64,25 @@ Todo lo que hace Show Up nace de esa frase: la web no empieza con un buscador de
 **Show Up** es la empresa que **encuentra al artista**, no la que te enseña un catálogo,
 **porque** no vendemos acceso a una lista: nos hacemos responsables de la noche.
 
-### Claim principal
-> **Dinos qué noche quieres.**
+### El claim, en dos capas
 
-Alternativas validadas contra el test de sustitución (ningún competidor podría firmarlas):
-- *No tenemos 500 artistas. Tenemos el tuyo.*
-- *Que aparezca. Y que se note.*
-- *La parte de tu evento que la gente va a recordar.*
+*(Corregido tras la revisión del departamento de copy: la versión anterior de este documento proponía un único claim, "Dinos qué noche quieres", y no pasaba su propio test de sustitución — cualquier competidor puede firmarla.)*
+
+| Capa | Frase | Qué responde | Dónde vive |
+|---|---|---|---|
+| **Gesto** | **Dinos qué noche quieres.** | *Qué hacemos.* Es una mecánica. | Hero, botón de navegación, brief. Es lo que le pedimos al cliente. |
+| **Promesa** | **Aparecemos nosotros. Quedas bien tú.** | *Por qué existimos.* Nombra el miedo real sin humillar a nadie. | Cierre de la home, footer, firma de email, valla, última diapositiva de una propuesta. |
+
+Las dos juntas son la marca entera en un renglón: **Dinos qué noche quieres. Aparecemos.**
 
 ### Prueba de sustitución
-Sustituye "Show Up" por cualquier competidor español en cualquiera de esas frases: **no funcionan**, porque todos presumen de catálogo. Si el claim se puede firmar por otro, se tira.
+Sustituye "Show Up" por cualquier competidor español. *Dinos qué noche quieres* sobrevive al cambio — por eso es mecánica, no marca. **Nadie puede decir *aparecemos* sin decir nuestro nombre**: el verbo *es* la marca. Ese es el único activo verbal que no se puede copiar, y por eso es la promesa y no el gesto.
+
+Alternativas de campaña validadas contra el mismo test:
+- *No tenemos 500 artistas. Tenemos el tuyo.*
+- *Nadie se acuerda del catering.*
+- *A los nuestros los hemos visto tocar.*
+- *Que nadie pregunte quién eligió esto.*
 
 ---
 
