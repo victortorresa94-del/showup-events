@@ -694,20 +694,37 @@ Estas tres son las más valiosas del mapa entero: son las que decide una persona
 | **19** | *"¿Qué preguntas debo hacer antes de contratar un grupo de música para mi evento?"* | **`/guias/preguntas-antes-de-contratar`** *(URL NUEVA)* | **Lista numerada de 10–12 preguntas**, cada una con "qué respuesta debe darte" y "qué respuesta es una señal de alarma". Formato lista ordenada + criterio explícito = el formato más citado que existe. Y es un imán de enlaces naturales |
 | **20** | *"¿Qué pasa si el artista que he contratado no aparece el día del evento?"* | **`/como-funciona#garantia`** *(La Garantía Show Up, `06 §4`)* | La garantía escrita como respuesta genérica al problema **antes** de contarla como propuesta propia: qué debe incluir un contrato, qué es una cláusula de sustitución, qué es razonable exigir. Luego, la garantía de Show Up como ejemplo. **El orden importa:** responder la pregunta del mundo primero y la propia después es lo que hace que un motor lo cite |
 
-### 6.6 Segunda oleada — 10 prompts más para los meses 6–12
+### 6.6 Segunda oleada — 14 prompts más para los meses 6–12
 
-Sin desarrollar, para la planificación:
+Sin desarrollar, para la planificación. Los marcados con ★ son de vocabulario y siguen la lógica del bloque 6.4: baratos de escribir, citables durante años.
 
-21. *"¿Qué es un rider técnico y qué me van a pedir?"* → `/guias/rider-tecnico`
-22. *"Mi finca tiene límite de decibelios, ¿qué música puedo poner?"* → `/musica-para-bodas#limite-decibelios` **← el que alimenta el activo C de la sección 8**
-23. *"¿Cuánto dura la actuación de un grupo en una boda?"* → `/musica-para-bodas#duracion`
-24. *"¿Hace falta contratar sonido aparte o lo lleva el grupo?"* → `/musica-para-bodas/cuanto-cuesta#sonido`
-25. *"¿Qué artistas hay para un aniversario de empresa de 25 años?"* → `/artistas-para-eventos-de-empresa#aniversarios`
-26. *"¿Cuánto cobra un DJ para una boda en España?"* → `/dj-para-bodas-y-eventos#cuanto-cuesta`
-27. *"¿Qué agencias de contratación de artistas hay en España?"* → **entidad pura**; se gana con la sección 2, no con una página
-28. *"¿Cómo sé si un grupo de versiones es bueno antes de contratarlo?"* → `/guias/preguntas-antes-de-contratar#como-evaluar`
-29. *"¿Se puede contratar un cuarteto de cuerda solo para la ceremonia?"* → `/cuartetos-de-cuerda-para-bodas`
-30. *"¿Cuánto hay que pagar de señal y cuándo se paga el resto?"* → `/como-funciona#pagos`
+21. *"¿Qué incluye el caché de un grupo de música? ¿Hay costes extra?"* → `/musica-para-bodas/cuanto-cuesta#que-incluye`
+22. *"¿Cuánto se tarda en montar el escenario de una verbena y qué potencia eléctrica hace falta?"* → `/orquestas-para-fiestas-patronales#logistica`
+23. *"Busco una banda de versiones que se sepa canciones de todas las épocas para una fiesta de empresa"* → `/grupos-de-versiones` (prompt descriptivo sin keyword: el caso de uso puro)
+24. ★ *"¿Qué diferencia hay entre una charanga y una banda de música?"* → `/charangas-y-txarangas#vs-banda`
+25. ★ *"¿Qué es una elektrotxaranga?"* → `/charangas-y-txarangas#elektrotxaranga`
+26. ★ *"¿Qué diferencia hay entre una orquesta de verbena y un grupo de versiones?"* → `/guias/formaciones-para-fiestas-populares#orquesta-vs-versiones`
+27. ★ *"¿Qué es una banda tributo y en qué se diferencia de una banda de versiones?"* → `/bandas-tributo#vs-versiones`
+28. *"¿Qué es un rider técnico y qué me van a pedir?"* → `/guias/rider-tecnico`
+29. *"Mi finca tiene límite de decibelios, ¿qué música puedo poner?"* → `/musica-para-bodas#limite-decibelios` **← el que alimenta el Activo C de §8.4**
+30. *"¿Cuánto dura la actuación de un grupo en una boda?"* → `/musica-para-bodas#duracion`
+31. *"¿Cuánto cobra un DJ para una boda en España?"* → `/dj-para-bodas-y-eventos#cuanto-cuesta`
+32. *"¿Qué agencias de contratación de artistas hay en España?"* → **entidad pura**; se gana con la sección 2, no con una página. Es el **nivel 3** del test de §2.1.6
+33. *"¿Cómo sé si un grupo de versiones es bueno antes de contratarlo?"* → `/guias/preguntas-antes-de-contratar#como-evaluar`
+34. *"¿Cuánto hay que pagar de señal y cuándo se paga el resto?"* → `/como-funciona#pagos`
+
+### 6.6bis Las tres URLs nuevas que este documento añade a `04`
+
+Son las únicas tres. Todo lo demás vive en URLs ya previstas o en H2 dentro de ellas.
+
+| URL nueva | Cluster | Preguntas que resuelve | Prioridad |
+|---|---|---|---|
+| **`/guias/agencia-o-directo`** | Guías | 18 | **Alta.** La pieza de confianza que más convierte y más se cita |
+| **`/charangas-y-txarangas`** | D (tipo de artista, raíz) | 13, 15, 24, 25 | **Alta.** SERP vacío, vocabulario propio, activo real del cliente |
+| **`/guias/formaciones-para-fiestas-populares`** | Guías | 16, 26, 27 | **Alta.** La tabla comparativa es el activo citable de más larga vida del plan |
+| *(`/guias/preguntas-antes-de-contratar` y `/orquestas-para-fiestas-patronales/permisos-seguros-y-sgae`)* | Guías / C | 19, 14 | Alta, ya justificadas arriba |
+
+Ninguna canibaliza: `/charangas-y-txarangas` ataca términos que ningún pilar toca, y `/guias/formaciones-para-fiestas-populares` es comparativa transversal, no transaccional — enlaza a `/orquestas-para-fiestas-patronales` y a `/charangas-y-txarangas` con anchor exacto, cumpliendo la Regla 1 de `04 §3.1`.
 
 ### 6.7 Cómo se auditan estas 20 preguntas
 
@@ -808,6 +825,10 @@ La última línea es la importante. **Un informe que no acaba en una decisión e
 Un motor generativo cita lo que necesita para responder. Si la respuesta a *"¿cuánto cuesta una orquesta para las fiestas de un pueblo en España?"* solo existe en un sitio, la cita es **estructural**, no competitiva: no se pierde porque un competidor escriba mejor, porque el competidor no tiene el dato.
 
 **El sector entero tiene un agujero del tamaño de un escenario: nadie publica precios reales.** `04 §0` ya lo detectó como el mayor hueco del SERP. Aquí se lleva hasta el final: no una página de precios, sino **un cuerpo de datos primarios sobre el mercado español de contratación de artistas** que no existe en ninguna parte y que Show Up está en posición única de producir porque lo genera al trabajar.
+
+> **Verificación hecha en esta investigación, y es la prueba de que el hueco existe.** Se buscaron cachés de orquestas de verbena en España. Resultado: **ninguna fuente publica tarifas, tamaños de formación ni estructura de precios.** Los buscadores devuelven literalmente la recomendación de *"contactar directamente con asociaciones de orquestas o con los ayuntamientos"*. Existen agendas de actuaciones (Festia, Orquestas de Galicia) y directorios de contratación (Partfy, Jaiekin), pero **ninguno publica el dato económico**. En un mercado de miles de contrataciones al año, el precio es información privada. **Ese vacío es el activo.**
+
+**Y aquí está la ventaja injusta de este cliente concreto:** su activo real no es la web ni el catálogo — es una **agenda de contactos enorme en música en vivo** (txarangas, charangas, orquestas de verbena, grupos de versiones, bandas tributo, solistas) más magos, monologuistas, humoristas y DJs. Esa agenda es exactamente **el instrumento de recolección de datos** que hace falta para construir lo que sigue, y es lo único de todo este plan que un competidor no puede replicar comprándolo. `01 §5` dice que Show Up "no vende acceso a una lista". Correcto: **la lista no se vende, se convierte en el dato que hace citable a la empresa.**
 
 Tres activos, en orden de facilidad de construcción.
 
