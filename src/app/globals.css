@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --grano-opacidad: 0.07;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-negro text-hueso font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Foco visible siempre — doc 03 §8. No negociable. */
+  :focus-visible {
+    outline: 2px solid theme('colors.rojo.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* iOS hace zoom en cualquier input por debajo de 16px. */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  ::selection {
+    background: theme('colors.rojo.DEFAULT');
+    color: theme('colors.negro');
+  }
+}
+
+@layer components {
+  /*
+   * GRANO EN CSS, NO INCRUSTADO EN LA IMAGEN.
+   * Enmienda C4 de docs/07: el ruido destroza la compresión AVIF y añade
+   * ~40% de peso al fichero. Generado aquí cuesta 0 bytes de red.
+   */
+  .grano::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--grano-opacidad);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* Tratamiento fotográfico de la casa — doc 03 §4. */
+  .foto-casa {
+    filter: contrast(1.25) saturate(0.75) brightness(0.8);
+  }
+
+  /*
+   * El texto NUNCA se apoya directamente sobre la foto.
+   * Contraste medido, no estimado.
+   */
+  .velo-texto {
+    background: linear-gradient(
+      to right,
+      theme('colors.negro') 0%,
+      rgb(10 10 10 / 0.92) 38%,
+      rgb(10 10 10 / 0.55) 68%,
+      rgb(10 10 10 / 0.25) 100%
+    );
+  }
+
+  .velo-inferior {
+    background: linear-gradient(to top, theme('colors.negro') 4%, transparent 62%);
+  }
+
+  .contenedor {
+    @apply mx-auto w-full max-w-contenedor px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Separación de superficies con hairline: sobre negro no existen las sombras. */
+  .hairline {
+    @apply border border-white/10;
+  }
+}
+
+@layer utilities {
+  .aparece {
+    animation: aparece 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes aparece {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Sin excepciones — doc 03 §6. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  .sin-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sin-scrollbar {
+    scrollbar-width: none;
+  }
+}
