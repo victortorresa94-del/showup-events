@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Artista } from '@/data/artistas'
 
@@ -5,24 +6,32 @@ import type { Artista } from '@/data/artistas'
  * Ficha alta y a sangre. NUNCA en rejilla de cuatro columnas (docs/01 §9):
  * la cuadrícula delata el catálogo corto, el carrusel de fichas altas no.
  *
- * El bloque de foto es hoy un marcador de posición con la luz de la casa
- * (contraluz cálido sobre negro). Al sustituirlo por fotografía real,
- * mantener `foto-casa` y el velo inferior.
+ * La foto lleva el tratamiento de la casa (`foto-casa`) y el grano por CSS,
+ * nunca incrustado en el fichero (enmienda C4 de docs/07). El texto se apoya
+ * siempre sobre el velo inferior, jamás directamente sobre la imagen.
  */
-export function TarjetaArtista({ artista }: { artista: Artista }) {
+export function TarjetaArtista({
+  artista,
+  prioridad = false,
+}: {
+  artista: Artista
+  prioridad?: boolean
+}) {
   return (
     <Link
       href={`/artistas/${artista.slug}`}
       className="group relative flex h-[26rem] w-[17rem] shrink-0 flex-col justify-end overflow-hidden rounded-lg hairline sm:h-[30rem] sm:w-[20rem]"
     >
-      <div
-        aria-hidden="true"
-        className="grano absolute inset-0 transition-transform duration-500 ease-salida group-hover:scale-[1.03]"
-        style={{
-          background:
-            'radial-gradient(120% 90% at 78% 18%, rgba(255,176,32,0.42) 0%, rgba(232,69,43,0.16) 34%, rgba(10,10,10,0) 68%), linear-gradient(200deg, #1c1712 0%, #0A0A0A 62%)',
-        }}
-      />
+      <div className="grano absolute inset-0 overflow-hidden">
+        <Image
+          src={artista.imagen}
+          alt={artista.imagenAlt}
+          fill
+          sizes="(max-width: 640px) 17rem, 20rem"
+          priority={prioridad}
+          className="foto-casa object-cover transition-transform duration-500 ease-salida group-hover:scale-[1.03]"
+        />
+      </div>
       <div aria-hidden="true" className="velo-inferior absolute inset-0" />
 
       <div className="relative p-5">

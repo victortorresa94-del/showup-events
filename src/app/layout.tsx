@@ -35,14 +35,23 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.razonSocial}`,
   },
   description:
-    'Orquestas, charangas, txarangas, grupos, magos y monologuistas para fiestas patronales, eventos de empresa y bodas en toda España. Nos cuentas la noche y te proponemos dos o tres nombres.',
+    'Orquestas, grupos de versiones, havaneres, cercaviles, magos y monologuistas para festa major, eventos de empresa y bodas en toda Cataluña. Nos cuentas la noche y te proponemos dos o tres nombres.',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'es_ES',
     siteName: SITE.razonSocial,
     url: SITE.dominio,
+    images: [
+      {
+        url: '/img/og-showup.jpg',
+        width: 1024,
+        height: 768,
+        alt: 'Plaza llena durante una nit de festa major, vista desde el lateral del escenario',
+      },
+    ],
   },
+  twitter: { card: 'summary_large_image', images: ['/img/og-showup.jpg'] },
   robots: { index: true, follow: true, 'max-image-preview': 'large' },
 }
 
@@ -58,12 +67,16 @@ function SchemaOrganizacion() {
     '@id': urlAbsoluta('/#organizacion'),
     name: SITE.razonSocial,
     alternateName: SITE.nombre,
-    description: 'Música en directo y artistas para eventos en España.',
+    description: 'Música en directo y artistas para eventos en Cataluña.',
     url: SITE.dominio,
     email: SITE.email,
     telephone: SITE.telefono,
-    areaServed: { '@type': 'Country', name: 'España' },
-    knowsLanguage: ['es-ES'],
+    // Ámbito real de servicio: Cataluña. No se declara España entera
+    // porque hoy no se puede servir, y un dato falso en el schema es la
+    // forma más barata de perder la confianza de un desambiguador.
+    areaServed: { '@type': 'AdministrativeArea', name: 'Cataluña' },
+    knowsLanguage: ['es-ES', 'ca-ES'],
+    logo: urlAbsoluta('/img/og-showup.jpg'),
   }
   return (
     <script

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CampoNoche } from '@/components/CampoNoche'
@@ -9,7 +10,7 @@ import { CLAIM } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Show Up Events · Música en directo y artistas para eventos',
   description:
-    'Orquestas, charangas, txarangas, grupos, magos y monologuistas para fiestas patronales, eventos de empresa y bodas en toda España. Nos cuentas la noche y te proponemos dos o tres nombres en 24 h.',
+    'Orquestas, grupos de versiones, havaneres, cercaviles, magos y monologuistas para festa major, eventos de empresa y bodas en toda Cataluña. Nos cuentas la noche y te proponemos dos o tres nombres en 24 h.',
   alternates: { canonical: '/' },
 }
 
@@ -91,15 +92,21 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ───────────────────────────────────────────────────────── */}
+      {/*
+        El LCP de esta página es la foto, así que va con `priority` y sin
+        vídeo: en móvil no hay vídeo, nunca (enmienda C4 de docs/07).
+      */}
       <section className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="grano absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(85% 75% at 82% 22%, rgba(255,176,32,0.5) 0%, rgba(232,69,43,0.2) 30%, rgba(10,10,10,0) 63%), linear-gradient(190deg, #1a1510 0%, #0A0A0A 58%)',
-          }}
-        />
+        <div className="grano absolute inset-0 overflow-hidden">
+          <Image
+            src="/img/hero-festa-major.jpg"
+            alt="Plaza de un pueblo llena de gente durante una nit de festa major, con guirnaldas de bombillas y el escenario iluminado al fondo"
+            fill
+            priority
+            sizes="100vw"
+            className="foto-casa object-cover"
+          />
+        </div>
         <div aria-hidden="true" className="velo-texto absolute inset-0" />
 
         <div className="contenedor relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-20 lg:min-h-[calc(100svh-5rem)]">
@@ -209,8 +216,8 @@ export default function Home() {
 
         {/* Carrusel horizontal, nunca rejilla — docs/01 §9 */}
         <div className="sin-scrollbar mt-12 flex gap-5 overflow-x-auto px-5 pb-4 sm:px-8 lg:px-12">
-          {ARTISTAS.map((a) => (
-            <TarjetaArtista key={a.slug} artista={a} />
+          {ARTISTAS.map((a, i) => (
+            <TarjetaArtista key={a.slug} artista={a} prioridad={i === 0} />
           ))}
         </div>
 

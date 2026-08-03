@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { BotonPrimario, Seccion } from '@/components/Seccion'
@@ -41,7 +42,7 @@ export default async function FichaArtista({
     description: artista.titular,
     url: urlAbsoluta(`/artistas/${artista.slug}`),
     genre: artista.formacion,
-    areaServed: { '@type': 'Country', name: 'España' },
+    areaServed: { '@type': 'AdministrativeArea', name: 'Cataluña' },
   }
 
   return (
@@ -53,14 +54,16 @@ export default async function FichaArtista({
 
       {/* ── Cabecera con el tratamiento fotográfico de la casa ─────────── */}
       <section className="relative overflow-hidden border-b border-white/10">
-        <div
-          aria-hidden="true"
-          className="grano absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(90% 80% at 75% 20%, rgba(255,176,32,0.42) 0%, rgba(232,69,43,0.16) 32%, rgba(10,10,10,0) 66%), linear-gradient(195deg, #1a1510 0%, #0A0A0A 60%)',
-          }}
-        />
+        <div className="grano absolute inset-0 overflow-hidden">
+          <Image
+            src={artista.imagen}
+            alt={artista.imagenAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="foto-casa object-cover"
+          />
+        </div>
         <div aria-hidden="true" className="velo-texto absolute inset-0" />
 
         <div className="contenedor relative py-20 lg:py-28">
@@ -86,12 +89,20 @@ export default async function FichaArtista({
 
       {/* El vídeo es lo primero que se ve, no algo enterrado (docs/02). */}
       <section className="contenedor pt-12">
-        <div className="flex aspect-video w-full items-center justify-center rounded-lg hairline bg-superficie">
-          <p className="px-6 text-center text-sm text-gris">
+        <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg hairline">
+          <Image
+            src={artista.imagen}
+            alt=""
+            fill
+            sizes="(max-width: 1440px) 100vw, 1440px"
+            className="foto-casa scale-105 object-cover opacity-40 blur-[1px]"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-negro/50" />
+          <p className="relative px-6 text-center text-sm text-gris">
             Vídeo de directo · pendiente de subir
             <br />
             <span className="text-xs">
-              Nadie en esta vertical usa vídeo. Aquí es lo primero que se ve.
+              Nadie en esta vertical usa vídeo. Aquí va a ser lo primero que se vea.
             </span>
           </p>
         </div>

@@ -20,6 +20,9 @@ export type Artista = {
   formacion: string
   /** Enlaza con FORMACIONES para el listado de la página de formación. */
   formacionSlug: string
+  /** Foto de directo con el tratamiento de la casa. Ver docs/03 §4. */
+  imagen: string
+  imagenAlt: string
   base: string
   paraQueNocheSirve: string
   sirvePara: string[]
@@ -35,6 +38,8 @@ export type Artista = {
 export const ARTISTAS: Artista[] = [
   {
     slug: 'les-dotze',
+    imagen: '/img/les-dotze.jpg',
+    imagenAlt: 'El cantante de Les Dotze a contraluz sobre el escenario, con la banda detrás',
     nombre: 'Les Dotze',
     titular: 'Del pasodoble a la rumba sin que se note la costura',
     formacion: 'Grupo de versiones',
@@ -81,6 +86,8 @@ export const ARTISTAS: Artista[] = [
   },
   {
     slug: 'orquestra-miramar',
+    imagen: '/img/orquestra-miramar.jpg',
+    imagenAlt: 'La Orquestra Miramar sobre su camión-escenario iluminado durante una nit de festa major',
     nombre: 'Orquestra Miramar',
     titular: 'La nit sencera: camión, escenario, luces y técnico incluidos',
     formacion: 'Orquesta de festa major',
@@ -122,6 +129,8 @@ export const ARTISTAS: Artista[] = [
   },
   {
     slug: 'cor-de-cala',
+    imagen: '/img/cor-de-cala.jpg',
+    imagenAlt: 'Cor de Cala cantando havaneres bajo una farola junto al puerto, con público sentado',
     nombre: 'Cor de Cala',
     titular: 'Havaneres de las de siempre. Y el rom cremat lo hacen ellos',
     formacion: 'Grupo de havaneres',
@@ -153,6 +162,8 @@ export const ARTISTAS: Artista[] = [
   },
   {
     slug: 'fanfarria-del-bages',
+    imagen: '/img/fanfarria-del-bages.jpg',
+    imagenAlt: 'La Fanfàrria del Bages tocando en una cercavila por las calles estrechas del casco antiguo',
     nombre: 'Fanfàrria del Bages',
     titular: 'Música de calle. Once metales y ni un minuto de silencio',
     formacion: 'Cercavila',
@@ -184,6 +195,8 @@ export const ARTISTAS: Artista[] = [
   },
   {
     slug: 'ramon-prats',
+    imagen: '/img/ramon-prats.jpg',
+    imagenAlt: 'Ramon Prats con el micro en la mano bajo un único foco, sobre el escenario a oscuras',
     nombre: 'Ramon Prats',
     titular: 'Monologuista. Cuarenta minutos y ni una broma sobre nadie de la sala',
     formacion: 'Monologuista',
@@ -215,6 +228,8 @@ export const ARTISTAS: Artista[] = [
   },
   {
     slug: 'marc-vela',
+    imagen: '/img/marc-vela.jpg',
+    imagenAlt: 'Marc Vela abriendo una baraja en abanico sobre una mesa durante una cena',
     nombre: 'Marc Vela',
     titular: 'Magia de cerca, mesa por mesa, sin escenario',
     formacion: 'Mago',

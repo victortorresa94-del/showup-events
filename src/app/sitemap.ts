@@ -10,6 +10,8 @@ const ESTATICAS: { ruta: string; prioridad: number }[] = [
   { ruta: '/musica-para-festa-major', prioridad: 0.9 },
   { ruta: '/guias/como-contrata-un-ayuntamiento-una-actuacion', prioridad: 0.9 },
   { ruta: '/artistas', prioridad: 0.7 },
+  // Capta músicos, no clientes: alimenta la agenda, que es el activo real.
+  { ruta: '/para-artistas', prioridad: 0.6 },
   { ruta: '/como-funciona', prioridad: 0.5 },
   { ruta: '/nosotros', prioridad: 0.4 },
   { ruta: '/contacto', prioridad: 0.4 },

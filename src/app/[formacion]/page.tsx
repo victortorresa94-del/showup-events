@@ -13,7 +13,7 @@ import { urlAbsoluta } from '@/lib/site'
  * `dynamicParams = false` es deliberado (docs/seo/04 §7): fuera de esta lista
  * la ruta devuelve 404, así que nadie puede inventarse una URL de formación
  * ni se generan páginas finas por accidente. Las rutas estáticas del proyecto
- * (/precios, /artistas, /brief…) tienen prioridad sobre este segmento.
+ * (/artistas, /brief, /como-funciona…) tienen prioridad sobre este segmento.
  */
 export const dynamicParams = false
 
@@ -58,7 +58,7 @@ export default async function PaginaFormacion({
     name: f.h1,
     description: f.description,
     url: urlAbsoluta(`/${f.slug}`),
-    areaServed: { '@type': 'Country', name: 'España' },
+    areaServed: { '@type': 'AdministrativeArea', name: 'Cataluña' },
     provider: { '@id': urlAbsoluta('/#organizacion') },
   }
 
@@ -181,7 +181,7 @@ export default async function PaginaFormacion({
           </p>
           <p className="mt-8 max-w-lectura leading-relaxed text-gris">
             Cuéntanos la noche que tienes montada y te proponemos dos o tres nombres con el porqué
-            de cada uno. Si toca en España, llegamos.
+            de cada uno. Si toca en Cataluña, llegamos.
           </p>
           <div className="mt-10">
             <BotonPrimario href="/brief">Dinos qué noche quieres</BotonPrimario>

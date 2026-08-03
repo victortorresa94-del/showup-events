@@ -87,6 +87,9 @@ export function Pie() {
             <Link href="/privacidad" className="hover:text-hueso">
               Privacidad
             </Link>
+            <Link href="/para-artistas" className="hover:text-hueso">
+              ¿Eres artista?
+            </Link>
             <span>© {new Date().getFullYear()} {SITE.razonSocial}</span>
           </div>
         </div>
