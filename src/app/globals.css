@@ -61,15 +61,37 @@
   /*
    * El texto NUNCA se apoya directamente sobre la foto.
    * Contraste medido, no estimado.
+   *
+   * El velo cambia de eje con el viewport, y no es un capricho: en móvil el
+   * texto ocupa todo el ancho, así que un degradado horizontal lo tapa todo
+   * y la foto desaparece. Vertical deja respirar la parte de abajo, que es
+   * donde está la luz del escenario.
    */
   .velo-texto {
     background: linear-gradient(
-      to right,
-      theme('colors.negro') 0%,
-      rgb(10 10 10 / 0.92) 38%,
-      rgb(10 10 10 / 0.55) 68%,
-      rgb(10 10 10 / 0.25) 100%
+      to bottom,
+      rgb(10 10 10 / 0.94) 0%,
+      rgb(10 10 10 / 0.86) 42%,
+      rgb(10 10 10 / 0.5) 72%,
+      rgb(10 10 10 / 0.72) 100%
     );
+  }
+
+  @screen lg {
+    .velo-texto {
+      background: linear-gradient(
+        to right,
+        theme('colors.negro') 0%,
+        rgb(10 10 10 / 0.92) 38%,
+        rgb(10 10 10 / 0.55) 68%,
+        rgb(10 10 10 / 0.25) 100%
+      );
+    }
+  }
+
+  /* Remate inferior: evita que la foto se corte a cuchillo contra el negro. */
+  .velo-remate {
+    background: linear-gradient(to top, theme('colors.negro') 0%, transparent 18%);
   }
 
   .velo-inferior {

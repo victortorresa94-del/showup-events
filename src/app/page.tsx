@@ -104,10 +104,11 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="foto-casa object-cover"
+            className="foto-casa object-cover object-[62%_center] lg:object-center"
           />
         </div>
         <div aria-hidden="true" className="velo-texto absolute inset-0" />
+        <div aria-hidden="true" className="velo-remate absolute inset-0" />
 
         <div className="contenedor relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-20 lg:min-h-[calc(100svh-5rem)]">
           <div className="aparece">

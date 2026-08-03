@@ -65,6 +65,7 @@ export default async function FichaArtista({
           />
         </div>
         <div aria-hidden="true" className="velo-texto absolute inset-0" />
+        <div aria-hidden="true" className="velo-remate absolute inset-0" />
 
         <div className="contenedor relative py-20 lg:py-28">
           <nav aria-label="Miga de pan" className="mb-8 text-sm text-gris">
@@ -89,19 +90,19 @@ export default async function FichaArtista({
 
       {/* El vídeo es lo primero que se ve, no algo enterrado (docs/02). */}
       <section className="contenedor pt-12">
-        <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg hairline">
-          <Image
-            src={artista.imagen}
-            alt=""
-            fill
-            sizes="(max-width: 1440px) 100vw, 1440px"
-            className="foto-casa scale-105 object-cover opacity-40 blur-[1px]"
-          />
-          <div aria-hidden="true" className="absolute inset-0 bg-negro/50" />
-          <p className="relative px-6 text-center text-sm text-gris">
+        <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 rounded-lg hairline bg-superficie">
+          <span
+            aria-hidden="true"
+            className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20"
+          >
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" aria-hidden="true">
+              <path d="M15 9L0.75 17.2272L0.75 0.772758L15 9Z" fill="currentColor" />
+            </svg>
+          </span>
+          <p className="px-6 text-center text-sm text-gris">
             Vídeo de directo · pendiente de subir
             <br />
-            <span className="text-xs">
+            <span className="text-xs text-gris/70">
               Nadie en esta vertical usa vídeo. Aquí va a ser lo primero que se vea.
             </span>
           </p>
