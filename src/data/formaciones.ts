@@ -1,17 +1,17 @@
 /**
- * Clúster D — páginas nacionales por tipo de formación. Sin eje geográfico.
+ * Clúster de formaciones — páginas nacionales por tipo de formación.
  *
- * Dos decisiones de arquitectura que vienen de docs/07 y no se tocan:
+ * DOS RESTRICCIONES DE NEGOCIO (decisión del cliente, agosto 2026):
  *
- *  · `txarangas` y `charangas-para-fiestas` son DOS URLs, nunca canonical
- *    cruzado. El solapamiento de SERP es bajo y por razones estructurales:
- *    otro comprador (peña o quintos vs. comisión), otro formato (día completo
- *    vs. pases) y otro precio. `xaranga` va como H2 dentro de txarangas,
- *    no como tercera URL.
+ *  1. NO SE PUBLICAN PRECIOS. Ninguna cifra, en ninguna página. En su lugar
+ *     se publica `queDetermina`: qué mueve el precio arriba o abajo. Sigue
+ *     capturando la intención de «cuánto cuesta» y es igual de citable, pero
+ *     sin comprometer cifras. Ver docs/08-restricciones-de-negocio.md.
  *
- *  · El tipo de artista es un eje temático NACIONAL. El territorio es un eje
- *    geográfico por segmento. No se multiplican: `/charangas/navarra` no
- *    existe ni existirá (docs/07 §4.3).
+ *  2. SOLO SE SIRVE CATALUÑA. Por eso el vocabulario es el del territorio:
+ *     festa major (no «fiestas patronales»), orquestra, cercavila (no
+ *     «pasacalles»), havaneres. No se traducen: es el nombre real de la cosa,
+ *     y es lo que la gente teclea.
  */
 export type Formacion = {
   slug: string
@@ -23,178 +23,213 @@ export type Formacion = {
   queEs: string
   cuandoFunciona: string[]
   cuandoNo: string[]
-  precio: string
+  queDetermina: string[]
   relacionadas: string[]
 }
 
 export const FORMACIONES: Formacion[] = [
   {
-    slug: 'charangas-para-fiestas',
-    nombre: 'Charangas',
-    h1: 'Charangas para fiestas patronales',
-    title: 'Charangas para fiestas patronales',
+    slug: 'orquestas-para-festa-major',
+    nombre: 'Orquestas de festa major',
+    h1: 'Orquestas para festa major',
+    title: 'Orquestas para festa major en Cataluña',
     description:
-      'Qué hace una charanga, en qué se diferencia de una orquesta de verbena, qué cuesta contratarla por día y cómo encaja en el programa de fiestas. Charangas en toda España.',
+      'Qué incluye una orquesta de festa major, en qué se diferencia de un grupo de versiones, qué necesita el municipio para que pueda montar y qué determina el presupuesto.',
     entradilla:
-      'La charanga es música de calle. No sube a un escenario: mueve a la gente de un sitio a otro y no para en todo el día.',
+      'La orquesta es la noche entera. Llega con su camión, monta su escenario, trae su técnico y hace los pases hasta la madrugada. No hay que coordinar a nadie más.',
     queEs:
-      'Una charanga es una formación de viento y percusión que toca andando, sin amplificación y sin escenario. Suele contratarse por día o por medio día, no por pases, y su trabajo es acompañar el pasacalles, la diana, el encierro o la comida popular. Se contrata por días completos porque su valor está en la continuidad: la charanga es lo que impide que la fiesta se pare entre acto y acto.',
+      'Una orquesta de festa major es un espectáculo completo, no solo un grupo de música: incluye habitualmente camión-escenario, equipo de sonido, iluminación y técnico propio. Es lo que en el sector se llama llave en mano, y es la razón por la que un municipio sin infraestructura puede montar una noche de baile sin alquilar nada por separado. Se contrata por noche, con dos o tres pases, y en Cataluña suele convivir en el programa con el ball de tarda para la gente mayor.',
     cuandoFunciona: [
-      'Pasacalles, dianas, encierros y comidas populares dentro del programa de fiestas.',
-      'Peñas y cuadrillas que quieren música propia durante todo el día.',
-      'Bodas del norte, para el tramo entre la ceremonia y el banquete.',
-    ],
-    cuandoNo: [
-      'Verbena de noche con escenario: eso es una orquesta, no una charanga. Son dos productos distintos y con precios distintos.',
-      'Sitios con límite de decibelios. Una charanga al aire libre no baja de volumen: es acústica.',
-      'Eventos de empresa en interior. No es su terreno.',
-    ],
-    precio: 'De 800 a 2.500 € por día, según número de músicos y desplazamiento.',
-    relacionadas: ['txarangas', 'orquestas-para-verbenas'],
-  },
-  {
-    slug: 'txarangas',
-    nombre: 'Txarangas',
-    h1: 'Txarangas para fiestas',
-    title: 'Txarangas para fiestas',
-    description:
-      'Qué es una txaranga, en qué se diferencia de una charanga, quién la contrata en Navarra y Euskadi y qué cuesta un día completo de calle.',
-    entradilla:
-      'Txaranga es la palabra que se usa en Navarra, Euskadi y parte de Aragón. No es solo una cuestión de idioma: cambia quién la contrata y cómo.',
-    queEs:
-      'Una txaranga es la misma familia musical que una charanga —viento, percusión y calle— pero con una diferencia que importa a la hora de contratar: en Navarra y Euskadi quien paga muchas veces no es el ayuntamiento, sino la peña, la cuadrilla o los quintos, que lo hacen de su bolsillo y cierran contrato mucho antes, a menudo en marzo. Eso cambia el precio, el formato y el calendario. En Galicia la misma figura se llama xaranga.',
-    cuandoFunciona: [
-      'Fiestas patronales en Navarra, Euskadi, La Rioja y el alto Aragón.',
-      'Peñas y quintos que contratan directamente para todos los días de fiestas.',
-      'Programas de varios días seguidos, que es como se contrata de verdad en el norte.',
-    ],
-    cuandoNo: [
-      'Contrataciones de última hora en temporada. En el norte las txarangas buenas se cierran con meses de antelación.',
-      'Eventos de interior con aforo pequeño.',
-      'Cuando lo que se busca es verbena de noche: para eso hace falta una orquesta.',
-    ],
-    precio: 'De 900 a 2.800 € por día. Los programas de varios días salen mejor de precio.',
-    relacionadas: ['charangas-para-fiestas', 'orquestas-para-verbenas'],
-  },
-  {
-    slug: 'orquestas-para-verbenas',
-    nombre: 'Orquestas de verbena',
-    h1: 'Orquestas para verbenas y fiestas patronales',
-    title: 'Orquestas para verbenas y fiestas patronales',
-    description:
-      'Qué incluye una orquesta de verbena llave en mano —escenario, sonido, luces y técnico—, cuánto cuesta y qué necesita el municipio para que pueda montar.',
-    entradilla:
-      'La orquesta es la noche. Llega con su camión, monta su escenario, trae su técnico y hace tres pases. No hay que coordinar a nadie más.',
-    queEs:
-      'Una orquesta de verbena es un espectáculo completo, no solo un grupo de música: incluye habitualmente camión-escenario, equipo de sonido, iluminación y técnico propio. Es lo que en el sector se llama llave en mano, y es la razón por la que un municipio sin infraestructura puede montar una verbena sin alquilar nada más. Se contrata por noche, con dos o tres pases hasta la madrugada.',
-    cuandoFunciona: [
-      'Verbenas de fiestas patronales con plaza abierta y público de todas las edades.',
+      'Nit de festa major en plaza abierta, con público de todas las edades a la vez.',
       'Municipios sin escenario propio: el suyo va incluido.',
-      'Programas de varias noches con precio cerrado.',
+      'Programas de varias noches, donde el precio por noche mejora.',
     ],
     cuandoNo: [
       'Plazas sin acceso para camión de doce metros. Si no entra el camión, no hay orquesta.',
-      'Salones cerrados de menos de 200 personas: el formato les queda enorme.',
+      'Espacios cerrados de menos de 200 personas: el formato les queda enorme.',
       'Bodas. Es otro producto, con otro repertorio y otro volumen.',
     ],
-    precio:
-      'De 6.000 a 30.000 € por noche según el tamaño de la orquesta y si el escenario va incluido.',
-    relacionadas: ['charangas-para-fiestas', 'grupos-de-versiones'],
+    queDetermina: [
+      'El número de músicos y de personal técnico que sube al escenario.',
+      'Si hace falta camión-escenario o el municipio ya tiene tarima montada.',
+      'La potencia eléctrica disponible: si no llega, hay que sumar generador.',
+      'El número de pases y la hora de cierre que marque la licencia.',
+      'La fecha: los fines de semana de julio y agosto son los primeros en cerrarse.',
+    ],
+    relacionadas: ['grupos-de-versiones', 'havaneres'],
   },
   {
     slug: 'grupos-de-versiones',
     nombre: 'Grupos de versiones',
-    h1: 'Grupos de versiones para eventos',
-    title: 'Grupos de versiones para eventos',
+    h1: 'Grupos de versiones para festa major y eventos',
+    title: 'Grupos de versiones para festa major y eventos',
     description:
-      'Cuándo conviene un grupo de versiones frente a una orquesta o un DJ, qué formaciones existen y qué cuesta cada una.',
+      'Cuándo conviene un grup de versions frente a una orquesta, qué formaciones existen, en qué espacios funciona cada una y qué determina el presupuesto.',
     entradilla:
-      'El formato más versátil y el más pedido. Y también el que más se contrata mal, porque el tamaño de la banda tiene que encajar con el de la sala.',
+      'El formato más versátil y el más pedido. También el que más se contrata mal, porque el tamaño de la banda tiene que encajar con el de la plaza.',
     queEs:
-      'Un grupo de versiones toca canciones conocidas con formación de banda, normalmente entre cuatro y siete músicos, en pases de 45 a 60 minutos. A diferencia de la orquesta de verbena, no trae escenario propio ni hace la noche entera: se contrata para un tramo concreto, casi siempre el del baile.',
+      'Un grupo de versiones —grup de versions— toca canciones conocidas con formación de banda, normalmente entre cuatro y siete músicos, en pases de 45 a 60 minutos. A diferencia de la orquesta, no trae escenario propio ni cubre la noche entera: se contrata para un tramo concreto, casi siempre el del baile. En una festa major es habitual que abra la noche antes de la orquesta, o que la sustituya en municipios pequeños donde no cabe una producción grande.',
     cuandoFunciona: [
+      'Nits de festa major en municipios que ya tienen tarima y sonido.',
+      'Fiestas de empresa donde hay que romper el hielo entre departamentos.',
       'Bodas de 80 a 250 personas, en la parte de baile.',
-      'Fiestas de empresa donde hay que romper el hielo.',
-      'Fiestas de ciudad con escenario ya montado.',
     ],
     cuandoNo: [
       'Ceremonias y cócteles de fondo: una banda entera se come la conversación.',
-      'Salones de menos de 60 personas con techo bajo.',
-      'Noches completas de verbena: no aguantan tres pases con el mismo material.',
+      'Espacios de menos de 60 personas con techo bajo.',
+      'Noches completas de baile: no aguantan tres pases con el mismo repertorio.',
     ],
-    precio: 'De 1.800 a 3.500 € un cuarteto; una banda de seis o siete, de 3.500 a 6.000 €.',
-    relacionadas: ['orquestas-para-verbenas', 'bandas-tributo'],
+    queDetermina: [
+      'Cuántos músicos suben: un cuarteto y un septeto no juegan en la misma liga.',
+      'Si el sitio ya tiene sonido y luces o hay que llevarlo todo.',
+      'La distancia y si la hora de final obliga a dormir fuera.',
+      'El número y la duración de los pases.',
+    ],
+    relacionadas: ['orquestas-para-festa-major', 'bandas-tributo'],
+  },
+  {
+    slug: 'havaneres',
+    nombre: 'Havaneres',
+    h1: 'Grupos de havaneres para festa major',
+    title: 'Grupos de havaneres para festa major y actos de pueblo',
+    description:
+      'Cómo funciona una cantada de havaneres, qué es el rom cremat, en qué momento del programa encaja y qué determina el presupuesto.',
+    entradilla:
+      'La havanera no es un concierto: es un acto. Se hace pronto, se hace sentado y casi siempre acaba con rom cremat.',
+    queEs:
+      'Una cantada de havaneres la interpreta un grupo de tres a cinco voces con guitarra, acordeón o bajo, en un formato acústico y de volumen contenido. Es una tradición muy asentada en la costa catalana y en buena parte del interior, y ocupa un hueco muy concreto del programa de festa major: primera hora de la noche, público sentado, de todas las edades. Muchos grupos incluyen la preparación del rom cremat como parte del acto.',
+    cuandoFunciona: [
+      'Actos de tarde-noche de festa major, antes de que empiece el baile.',
+      'Municipios de costa, donde es prácticamente obligatorio en el programa.',
+      'Actos de gente mayor y homenajes, donde una orquesta sería excesiva.',
+    ],
+    cuandoNo: [
+      'Como sustituto del baile de noche. No lo es: la gente escucha, no baila.',
+      'Espacios ruidosos o con paso de gente. Necesita atención.',
+      'Público que no conoce la tradición: fuera de contexto no se sostiene.',
+    ],
+    queDetermina: [
+      'El número de voces y de músicos del grupo.',
+      'Si se incluye la preparación del rom cremat y para cuánta gente.',
+      'Si hace falta equipo de sonido o el espacio ya lo tiene.',
+      'La fecha: en verano los grupos buenos van muy cerrados en la costa.',
+    ],
+    relacionadas: ['orquestas-para-festa-major', 'cercaviles'],
+  },
+  {
+    slug: 'cercaviles',
+    nombre: 'Cercaviles',
+    h1: 'Música de calle y cercaviles',
+    title: 'Música de calle y cercaviles para festa major',
+    description:
+      'Qué formaciones hacen cercavila, cómo se contrata la música de calle de una festa major y qué determina el presupuesto.',
+    entradilla:
+      'La cercavila es lo que impide que la fiesta se pare entre acto y acto. No sube a ningún escenario: mueve a la gente por el pueblo.',
+    queEs:
+      'La cercavila es el recorrido musical por las calles del municipio, y la hacen formaciones de viento y percusión que tocan andando, sin amplificación. Acompaña a gegants i capgrossos, abre el pregón o enlaza dos actos del programa. Se contrata por recorrido o por jornada, no por pases, y su valor está en la continuidad: es el hilo que cose el día.',
+    cuandoFunciona: [
+      'Recorridos de festa major, acompañamiento de gegants y actos de calle.',
+      'Programas de varios días donde hay que llenar las horas entre actos.',
+      'Municipios con casco antiguo, donde el recorrido a pie tiene sentido.',
+    ],
+    cuandoNo: [
+      'Noche de baile con escenario: eso es una orquesta o un grupo de versiones.',
+      'Espacios con límite de decibelios: es música acústica al aire libre y no baja de volumen.',
+      'Interiores. No es su terreno.',
+    ],
+    queDetermina: [
+      'Cuántos músicos van en la formación.',
+      'La duración del recorrido y si hay uno o varios al día.',
+      'Los días seguidos contratados: un programa completo mejora el precio por jornada.',
+      'La orografía del recorrido y si hace falta transporte entre puntos.',
+    ],
+    relacionadas: ['havaneres', 'orquestas-para-festa-major'],
   },
   {
     slug: 'bandas-tributo',
     nombre: 'Bandas tributo',
-    h1: 'Bandas tributo para fiestas y eventos',
-    title: 'Bandas tributo para fiestas y eventos',
+    h1: 'Bandas tributo para festa major y eventos',
+    title: 'Bandas tributo para festa major y eventos',
     description:
-      'Cuándo un tributo funciona mejor que un grupo de versiones, qué tributos tienen tirón real en España y qué cuesta contratarlos.',
+      'Cuándo un tributo funciona mejor que un grupo de versiones, cómo encaja en un cartel de festa major y qué determina el presupuesto.',
     entradilla:
       'Un tributo vende cartel. Es la diferencia entre poner «música en directo» en el programa y poner un nombre que la gente reconoce.',
     queEs:
-      'Una banda tributo interpreta el repertorio de un artista o grupo concreto, normalmente con puesta en escena reconocible. Para una comisión de fiestas tiene una ventaja clara sobre un grupo de versiones: se puede anunciar en el cartel y convoca por sí mismo.',
+      'Una banda tributo interpreta el repertorio de un artista o grupo concreto, con puesta en escena reconocible. Para una comissió de festes tiene una ventaja clara sobre un grupo de versiones: se puede anunciar en el cartel y convoca por sí mismo, lo que ayuda a justificar el gasto ante el pueblo.',
     cuandoFunciona: [
-      'Fiestas patronales que quieren un cabeza de cartel sin pagar caché de artista original.',
+      'Festes majors que quieren un cabeza de cartel sin pagar caché de artista original.',
       'Salas con programación y público que va a ver algo concreto.',
       'Eventos de empresa con temática o aniversario.',
     ],
     cuandoNo: [
-      'Bodas donde la mitad de los invitados no conoce al grupo homenajeado.',
+      'Bodas donde media lista de invitados no conoce al grupo homenajeado.',
       'Cócteles y ceremonias.',
-      'Programas donde ya hay una orquesta esa misma noche: compiten entre sí.',
+      'Noches en las que ya hay orquesta: compiten entre sí por el mismo público.',
     ],
-    precio: 'De 2.500 a 9.000 € según el tributo y la producción que lleve.',
-    relacionadas: ['grupos-de-versiones', 'orquestas-para-verbenas'],
+    queDetermina: [
+      'La producción que lleve: luces, vestuario y pantallas suben el presupuesto.',
+      'El número de músicos.',
+      'Si el tributo tiene tirón propio en la zona.',
+      'La fecha y la distancia.',
+    ],
+    relacionadas: ['grupos-de-versiones', 'orquestas-para-festa-major'],
   },
   {
     slug: 'monologuistas-para-eventos',
     nombre: 'Monologuistas',
     h1: 'Monologuistas para eventos de empresa',
-    title: 'Monologuistas para eventos de empresa',
+    title: 'Monologuistas para eventos de empresa y festa major',
     description:
-      'Cómo se contrata un monólogo para una cena de empresa, cuánto dura, qué necesita para funcionar y qué cuesta.',
+      'Cómo se contrata un monólogo para una cena de empresa o un acto de festa major, cuánto dura, qué necesita para funcionar y qué determina el presupuesto.',
     entradilla:
       'El monólogo es lo que pones cuando quieres que la gente se ría sin que nadie lo pase mal. Y depende más del sitio que del humorista.',
     queEs:
-      'Un monologuista actúa entre 30 y 50 minutos, con micro y foco, para un público sentado. En eventos de empresa es el formato más eficaz del postre: no obliga a nadie a participar, no necesita montaje y cabe en cualquier salón. La condición es que haya silencio: si el servicio sigue en marcha durante el monólogo, no funciona.',
+      'Un monologuista actúa entre 30 y 50 minutos, con micro y foco, para un público sentado. En eventos de empresa es el formato más eficaz del postre: no obliga a nadie a participar, no necesita montaje y cabe en cualquier sala. La condición es que haya silencio: si el servicio sigue en marcha durante el monólogo, no funciona.',
     cuandoFunciona: [
       'Cenas de empresa y de Navidad, en el momento del postre.',
       'Convenciones y entregas de premios, como corte entre bloques.',
-      'Público de más de 30 personas con jerarquía en la sala.',
+      'Actos de festa major bajo techo, cuando se quiere variar del formato musical.',
     ],
     cuandoNo: [
-      'Verbenas y plazas al aire libre: el monólogo necesita silencio y techo.',
+      'Plazas al aire libre: el monólogo necesita silencio y techo.',
       'Grupos de menos de 30 personas: se queda frío.',
       'Cuando el servicio de cena no se puede parar.',
     ],
-    precio: 'De 800 a 2.500 € según el nombre y el desplazamiento.',
+    queDetermina: [
+      'Si el nombre tiene recorrido en televisión o en salas.',
+      'La duración y si además hace de presentador del acto.',
+      'La distancia y el horario del bolo.',
+      'Si se pide material adaptado a la empresa.',
+    ],
     relacionadas: ['magos-para-eventos', 'humoristas-para-eventos'],
   },
   {
     slug: 'humoristas-para-eventos',
     nombre: 'Humoristas',
-    h1: 'Humoristas para fiestas y eventos',
-    title: 'Humoristas para fiestas y eventos',
+    h1: 'Humoristas para festa major y eventos',
+    title: 'Humoristas para festa major y eventos',
     description:
-      'Qué diferencia hay entre un humorista y un monologuista a la hora de contratar, y en qué tipo de evento funciona cada uno.',
+      'Qué diferencia hay entre un humorista y un monologuista a la hora de contratar, y en qué tipo de acto funciona cada uno.',
     entradilla:
       'En el sector no son sinónimos. El monologuista trae un texto; el humorista trae un nombre que la gente ya conoce.',
     queEs:
-      'La distinción es práctica, no académica: se contrata a un humorista cuando el nombre en sí convoca —televisión, redes, gira propia— y a un monologuista cuando lo que se compra es el formato. Cambia el caché, cambia la antelación necesaria y cambia dónde encaja dentro del programa.',
+      'La distinción es práctica, no académica: se contrata a un humorista cuando el nombre en sí convoca —televisión, redes, gira propia— y a un monologuista cuando lo que se compra es el formato. Cambia el presupuesto, cambia la antelación necesaria y cambia dónde encaja dentro del programa.',
     cuandoFunciona: [
-      'Fiestas patronales que quieren un acto de noche que no sea musical.',
+      'Festes majors que quieren un acto de noche que no sea musical.',
       'Grandes eventos de empresa con presupuesto para un nombre reconocible.',
-      'Programas donde hace falta variar y no poner música toda la semana.',
+      'Programas largos donde hace falta variar y no poner música toda la semana.',
     ],
     cuandoNo: [
-      'Aforos pequeños: el caché no sale.',
-      'Sitios sin condiciones de sonido y silencio.',
+      'Aforos pequeños: no salen las cuentas.',
+      'Espacios sin condiciones de sonido y silencio.',
       'Contrataciones con poca antelación: las agendas de los nombres conocidos van con un año.',
     ],
-    precio: 'Muy variable según el nombre. De 2.000 € a cifras de cabeza de cartel.',
+    queDetermina: [
+      'El recorrido mediático del nombre. Es el factor que más pesa, con diferencia.',
+      'La antelación con la que se cierra.',
+      'La duración del bolo y si incluye presentación del acto.',
+      'La distancia y el alojamiento.',
+    ],
     relacionadas: ['monologuistas-para-eventos'],
   },
   {
@@ -203,11 +238,11 @@ export const FORMACIONES: Formacion[] = [
     h1: 'Magos para eventos de empresa y bodas',
     title: 'Magos para eventos de empresa y bodas',
     description:
-      'Diferencia entre magia de cerca y magia de escenario, en qué momento del evento encaja cada una y qué cuesta.',
+      'Diferencia entre magia de cerca y magia de escenario, en qué momento del evento encaja cada una y qué determina el presupuesto.',
     entradilla:
       'Hay dos formatos distintos y se contratan de forma distinta. Elegir mal es la causa número uno de que un mago no funcione.',
     queEs:
-      'La magia de cerca se hace mesa por mesa, en grupos pequeños, sin escenario ni sonido: sirve para llenar los huecos —el cóctel, el postre— y no exige que nadie se calle. La magia de escenario es un espectáculo para toda la sala a la vez, con su montaje y su horario. No son intercambiables.',
+      'La magia de cerca se hace mesa por mesa, en grupos pequeños, sin escenario ni sonido: sirve para llenar los huecos —el cóctel, el postre— y no exige que nadie se calle. La magia de escenario es un espectáculo para toda la sala a la vez, con su montaje y su horario. No son intercambiables, y confundirlas es lo que hace que un buen mago parezca malo.',
     cuandoFunciona: [
       'Cenas de empresa con tiempos muertos entre servicios.',
       'Cócteles de boda mientras se hacen las fotos.',
@@ -218,7 +253,12 @@ export const FORMACIONES: Formacion[] = [
       'Más de 150 personas para un solo mago de cerca: no le da tiempo y media sala se queda fuera.',
       'Exteriores con viento o poca luz.',
     ],
-    precio: 'De 600 a 1.800 € la magia de cerca; el espectáculo de escenario, desde 1.500 €.',
+    queDetermina: [
+      'El formato: cerca o escenario. Son dos productos distintos.',
+      'Cuántas horas y cuántas mesas hay que cubrir.',
+      'Si hace falta un segundo mago para llegar a todo el aforo.',
+      'La distancia y el horario.',
+    ],
     relacionadas: ['monologuistas-para-eventos'],
   },
 ]

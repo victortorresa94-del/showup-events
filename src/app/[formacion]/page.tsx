@@ -50,13 +50,7 @@ export default async function PaginaFormacion({
     .map(formacionPorSlug)
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
 
-  const delRoster = ARTISTAS.filter((a) =>
-    f.slug.includes('charanga') || f.slug.includes('txaranga')
-      ? a.formacion === 'Txaranga'
-      : f.slug.includes('orquesta')
-        ? a.formacion === 'Orquesta de verbena'
-        : f.nombre.toLowerCase().startsWith(a.formacion.toLowerCase().slice(0, 5)),
-  )
+  const delRoster = ARTISTAS.filter((a) => a.formacionSlug === f.slug)
 
   const schema = {
     '@context': 'https://schema.org',
@@ -135,15 +129,31 @@ export default async function PaginaFormacion({
             </div>
           </div>
 
+          {/*
+            No se publican cifras (decisión de negocio). Lo que sí se publica es
+            qué mueve el presupuesto: sigue respondiendo a la intención de
+            «cuánto cuesta», es igual de citable por un motor generativo y no
+            compromete ningún caché. Ver docs/08-restricciones-de-negocio.md.
+          */}
           <div className="mt-16 max-w-lectura rounded-lg hairline bg-superficie p-7">
-            <h2 className="text-xs uppercase tracking-[0.18em] text-rojo">Qué cuesta</h2>
-            <p className="mt-4 font-editorial text-2xl leading-snug">{f.precio}</p>
-            <p className="mt-4 text-sm text-gris">
-              Horquilla orientativa. El precio final depende del desplazamiento, del número de
-              músicos y de si el sitio ya tiene sonido.{' '}
-              <Link href="/precios" className="text-hueso underline underline-offset-4">
-                Ver todos los precios
-              </Link>
+            <h2 className="text-xs uppercase tracking-[0.18em] text-rojo">
+              Qué determina el presupuesto
+            </h2>
+            <ul className="mt-6 space-y-3">
+              {f.queDetermina.map((x) => (
+                <li key={x} className="flex gap-3 leading-relaxed text-gris">
+                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-rojo" />
+                  {x}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-gris">
+              No publicamos tarifas porque cada noche es distinta y una cifra suelta engaña más de
+              lo que ayuda.{' '}
+              <Link href="/brief" className="text-hueso underline underline-offset-4">
+                Cuéntanos la tuya
+              </Link>{' '}
+              y te pasamos presupuesto cerrado por escrito, con todo desglosado.
             </p>
           </div>
         </div>

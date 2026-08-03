@@ -7,19 +7,19 @@ const COLUMNAS = [
   {
     titulo: 'Para tu noche',
     enlaces: [
-      { href: '/orquestas-y-charangas-para-fiestas', texto: 'Fiestas y verbenas' },
-      { href: '/artistas-para-eventos-de-empresa', texto: 'Eventos de empresa' },
+      { href: '/musica-para-festa-major', texto: 'Festa major' },
       { href: '/artistas', texto: 'Artistas' },
-      { href: '/precios', texto: 'Precios' },
+      { href: '/guias/como-contrata-un-ayuntamiento-una-actuacion', texto: 'Contratar desde un ayuntamiento' },
+      { href: '/brief', texto: 'Pedir una propuesta' },
     ],
   },
   {
     titulo: 'Formaciones',
     enlaces: [
-      { href: '/charangas-para-fiestas', texto: 'Charangas' },
-      { href: '/txarangas', texto: 'Txarangas' },
-      { href: '/orquestas-para-verbenas', texto: 'Orquestas de verbena' },
-      { href: '/monologuistas-para-eventos', texto: 'Monologuistas' },
+      { href: '/orquestas-para-festa-major', texto: 'Orquestas' },
+      { href: '/grupos-de-versiones', texto: 'Grupos de versiones' },
+      { href: '/havaneres', texto: 'Havaneres' },
+      { href: '/cercaviles', texto: 'Cercaviles' },
     ],
   },
   {

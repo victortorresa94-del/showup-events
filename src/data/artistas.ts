@@ -1,18 +1,25 @@
 /**
  * Roster. Datos de muestra con la estructura definitiva de la ficha.
  *
+ * ÁMBITO: solo Cataluña de momento (decisión de negocio, agosto 2026).
+ * Por eso el roster, los ejemplos y el vocabulario son del territorio.
+ *
  * La ficha es PROFUNDA a propósito (docs/01 §9): con seis artistas bien
  * contados la página se ve rica; con seis miniaturas en un grid de cuatro
  * columnas se ve vacía. La profundidad tapa el número; la cuadrícula lo delata.
  *
  * `noSirvePara` no es honestidad decorativa: es lo que hace creíble el resto.
  * Nadie se fía de quien nunca dice que no.
+ *
+ * Sin cifras de caché en ningún campo: no se publican precios.
  */
 export type Artista = {
   slug: string
   nombre: string
   titular: string
   formacion: string
+  /** Enlaza con FORMACIONES para el listado de la página de formación. */
+  formacionSlug: string
   base: string
   paraQueNocheSirve: string
   sirvePara: string[]
@@ -22,40 +29,39 @@ export type Artista = {
   repertorio: string[]
   dondeHanTocado: string[]
   tecnico: string
-  segmentos: ('fiestas' | 'empresa' | 'bodas' | 'privados')[]
+  segmentos: ('festa-major' | 'empresa' | 'bodas' | 'privados')[]
 }
 
 export const ARTISTAS: Artista[] = [
   {
-    slug: 'las-doce',
-    nombre: 'Las Doce',
-    titular: 'Del pasodoble al reguetón sin que se note la costura',
-    formacion: 'Banda de versiones',
-    base: 'Madrid',
+    slug: 'les-dotze',
+    nombre: 'Les Dotze',
+    titular: 'Del pasodoble a la rumba sin que se note la costura',
+    formacion: 'Grupo de versiones',
+    formacionSlug: 'grupos-de-versiones',
+    base: 'Vallès Occidental',
     paraQueNocheSirve:
-      'Las Doce son para cuando hay que contentar a todo el mundo a la vez y que aun así parezca que hay un criterio detrás. Son seis, cantan tres de ellos y se saben 140 canciones, pero lo que hacen bien de verdad es leer la pista: si la gente mayor sigue sentada a las doce y media, cambian el orden sobre la marcha y no lo notas.',
+      'Les Dotze son para cuando hay que contentar a todo el mundo a la vez y que aun así parezca que hay un criterio detrás. Son seis, cantan tres de ellos, y lo que hacen bien de verdad es leer la plaza: si la gente mayor sigue sentada a las doce y media, cambian el orden sobre la marcha y no lo notas.',
     sirvePara: [
-      'Bodas de 100 a 250 personas, exterior o carpa, cuando la lista de invitados va de los 20 a los 80 años.',
-      'Fiestas de pueblo y verbenas con escenario de tablas y público de pie. Es su casa.',
-      'Fiestas de empresa grandes en las que hay que romper el hielo entre departamentos que no se hablan.',
+      'Nits de festa major en municipios que ya tienen tarima y sonido montados.',
+      'Bodas de 100 a 250 personas, exterior o carpa, con invitados de 20 a 80 años.',
+      'Fiestas de empresa grandes donde hay que romper el hielo entre departamentos.',
     ],
     noSirvePara: [
-      'Un cóctel de 40 personas en una terraza. Son seis y suenan a seis: se te comen la conversación. Ahí te proponemos otra cosa y encima te sale más barato.',
+      'Un cóctel de 40 personas en una terraza. Son seis y suenan a seis: se comen la conversación. Ahí te proponemos otra cosa.',
       'Una ceremonia. No hacen ceremonia y no van a fingir que sí.',
-      'Un evento donde el brief sea «música de fondo elegante». No es lo suyo. Y si insistes, te vamos a decir que no.',
+      'Un encargo de «música de fondo elegante». No es lo suyo, y si insistes te vamos a decir que no.',
     ],
     elDetalle:
-      'Los últimos veinte minutos los hacen sin batería eléctrica, solo percusión y voces, con la gente en corro. Es el momento que la gente graba con el móvil. No lo anuncian, sale solo.',
+      'Los últimos veinte minutos los hacen sin batería eléctrica, solo percusión y voces, con la gente en corro. Es el momento que se graba con el móvil. No lo anuncian, sale solo.',
     formaciones: [
       {
         nombre: 'Sexteto completo',
-        descripcion:
-          'Voz, coros, guitarra, bajo, teclado y batería. El formato de siempre. Dos pases de 60 minutos.',
+        descripcion: 'Voz, coros, guitarra, bajo, teclado y batería. Dos pases de 60 minutos.',
       },
       {
         nombre: 'Cuarteto',
-        descripcion:
-          'Sin teclado ni coros. Baja el volumen y el precio, aguanta salas de hasta 150 personas.',
+        descripcion: 'Sin teclado ni coros. Baja el volumen, aguanta espacios de hasta 150 personas.',
       },
       {
         nombre: 'Acústico (3)',
@@ -63,131 +69,157 @@ export const ARTISTAS: Artista[] = [
           'Para cóctel o cena previa, con la misma banda que luego se enchufa. Muy socorrido si quieres un solo interlocutor toda la noche.',
       },
     ],
-    repertorio: [
-      'Rosalía',
-      'Manolo García',
-      'Estopa',
-      'Camilo Sesto',
-      'Bad Bunny',
-      'Amaral',
-      'Los Secretos',
-      'Fito',
-    ],
+    repertorio: ['Rumba catalana', 'Estopa', 'Manolo García', 'Els Catarres', 'Pop español', 'Actualidad'],
     dondeHanTocado: [
-      'Fiestas de San Juan · Alcalá de Henares',
-      'Feria de Albacete',
-      'Sala Porta Caeli · Valladolid',
+      'Festa major de Sant Cugat',
+      'Festes de Terrassa',
+      'Bodas · Vallès y Bages',
     ],
     tecnico:
-      'Necesitan un escenario de 6×4 m como mínimo y dos líneas de 16A. Si el sitio no tiene equipo, lo llevan ellos. Montan en dos horas y media y hacen prueba de sonido. Si tu finca cierra la música a la una, dínoslo ahora y ajustamos los pases.',
-    segmentos: ['fiestas', 'bodas', 'empresa'],
+      'Necesitan una tarima de 6×4 m y dos líneas de 16A. Si el espacio no tiene equipo, lo llevan ellos. Montan en dos horas y media y hacen prueba de sonido. Si el municipio cierra la música a las tres, dínoslo ahora y ajustamos los pases.',
+    segmentos: ['festa-major', 'bodas', 'empresa'],
   },
   {
-    slug: 'trikitixa-kalean',
-    nombre: 'Kalean',
-    titular: 'Txaranga de calle. Once metales y ni un minuto de silencio',
-    formacion: 'Txaranga',
-    base: 'Pamplona',
+    slug: 'orquestra-miramar',
+    nombre: 'Orquestra Miramar',
+    titular: 'La nit sencera: camión, escenario, luces y técnico incluidos',
+    formacion: 'Orquesta de festa major',
+    formacionSlug: 'orquestas-para-festa-major',
+    base: 'Maresme',
     paraQueNocheSirve:
-      'Kalean no toca en un escenario: toca andando. Es la formación que mueve a la peña desde la plaza hasta el frontón sin que nadie se descuelgue. Once músicos, repertorio de calle y la costumbre de aguantar seis horas de pasacalles con dos descansos cortos.',
+      'Miramar es lo que una comissió de festes quiere cuando dice «una orquestra»: llegan con su camión, montan su escenario, traen su técnico y hacen ball de tarda y dos pases de noche. No hay que coordinar a nadie más: el día entero es suyo.',
     sirvePara: [
-      'Fiestas patronales en Navarra, Euskadi y La Rioja, contratadas por peñas, quintos o comisión.',
-      'Pasacalles, dianas y encierros. Día completo, no por pases.',
-      'Bodas del norte, para el tramo entre la ceremonia y el banquete.',
+      'Nits de festa major en plaza abierta con público de todas las edades.',
+      'Municipios que no tienen escenario propio: el suyo va incluido.',
+      'Programas de dos o tres noches seguidas.',
     ],
     noSirvePara: [
-      'Verbena de noche con escenario. Para eso necesitas una orquesta, no una txaranga: son dos productos distintos y te lo diremos antes de que lo pagues.',
-      'Cualquier sitio con límite de decibelios. Once metales al aire libre no se bajan de volumen.',
-      'Eventos de empresa en interior. No es su terreno.',
+      'Espacios cerrados de menos de 200 personas. El formato les queda enorme.',
+      'Bodas. Es otro producto: mucho escenario y repertorio de baile.',
+      'Plazas sin acceso para camión de doce metros. Si no entra el camión, no hay orquesta.',
     ],
     elDetalle:
-      'Se saben las canciones de peña de más de cuarenta pueblos. Si nos dices el tuyo con dos semanas, llegan sabiéndose la vuestra.',
+      'El ball de tarda lo hacen con formación reducida y repertorio de siempre, y el mismo grupo se transforma para la noche. Para un municipio eso es un solo contrato en vez de dos.',
     formaciones: [
-      { nombre: 'Txaranga completa (11)', descripcion: 'El formato de fiestas. Día entero de calle.' },
-      { nombre: 'Formato reducido (7)', descripcion: 'Para pueblos pequeños y calles estrechas.' },
+      {
+        nombre: 'Orquestra completa con escenario',
+        descripcion: 'Camión-escenario, sonido, luces y técnico. Ball de tarda y dos pases de noche.',
+      },
+      {
+        nombre: 'Orquestra sin escenario',
+        descripcion: 'Si el municipio ya tiene tarima montada. Sale bastante mejor de precio.',
+      },
     ],
-    repertorio: ['Repertorio de peña', 'Pasodobles', 'Versiones de calle', 'Kalejira'],
-    dondeHanTocado: ['Fiestas de Tafalla', 'Sanfermines · peñas', 'Fiestas de Estella'],
+    repertorio: ['Ball de tarda', 'Rumba catalana', 'Cumbia', 'Pop español', 'Actualidad'],
+    dondeHanTocado: [
+      'Festes majors · Maresme y Baix Llobregat',
+      'Festa major de Mataró',
+      'Fires comarcals',
+    ],
     tecnico:
-      'No necesitan sonido ni corriente: es música acústica de calle. Sí necesitan un sitio para dejar las fundas y agua. Si el recorrido pasa por cuesta, avísanos y lo ajustamos.',
-    segmentos: ['fiestas', 'bodas'],
+      'Necesitan acceso para camión de 12 m, 63A de potencia y cuatro horas de montaje. Si el ayuntamiento no llega a esa potencia se lleva generador, y va en el presupuesto desde el principio, no como extra.',
+    segmentos: ['festa-major'],
   },
   {
-    slug: 'orquesta-marabi',
-    nombre: 'Orquesta Marabí',
-    titular: 'Verbena de las de verdad, con escenario y sonido propios',
-    formacion: 'Orquesta de verbena',
-    base: 'Valladolid',
+    slug: 'cor-de-cala',
+    nombre: 'Cor de Cala',
+    titular: 'Havaneres de las de siempre. Y el rom cremat lo hacen ellos',
+    formacion: 'Grupo de havaneres',
+    formacionSlug: 'havaneres',
+    base: 'Baix Empordà',
     paraQueNocheSirve:
-      'Marabí es lo que una comisión de fiestas quiere cuando dice «una orquesta»: llegan con su camión, montan su escenario, traen su técnico y hacen tres pases hasta las cinco. No hay que coordinar a nadie más: la noche entera es suya.',
+      'Cor de Cala es para la primera hora de la noche, con la gente sentada y de todas las edades. Cuatro voces, guitarra y acordeón, volumen de conversación. No es un concierto: es el acto que hace que un programa de festa major parezca un programa y no una lista de bolos.',
     sirvePara: [
-      'Verbenas de fiestas patronales con plaza abierta y público de todas las edades.',
-      'Pueblos que no tienen escenario propio: el suyo va incluido.',
-      'Programas de varios días, con precio cerrado por noche.',
+      'Actos de tarde-noche de festa major, antes de que empiece el baile.',
+      'Municipios de costa, donde la cantada es casi obligatoria en el programa.',
+      'Homenajes y actos de gente mayor, donde una orquesta sería excesiva.',
     ],
     noSirvePara: [
-      'Salones cerrados de menos de 200 personas. El formato les queda enorme.',
-      'Bodas. Es otro producto: mucho volumen, mucho escenario y repertorio de verbena.',
-      'Plazas sin acceso para camión de 12 metros. Si no entra el camión, no hay orquesta.',
+      'Sustituir el baile de noche. La gente escucha, no baila.',
+      'Espacios con paso de gente o ruido de barra. Necesita atención.',
+      'Público que no conoce la tradición: fuera de contexto no se sostiene.',
     ],
     elDetalle:
-      'El segundo pase lo abren siempre con la canción del pueblo si existe. Se la aprenden. Es un detalle que la comisión nota y el público también.',
+      'Preparan el rom cremat en directo mientras cantan la penúltima. Es el momento en que la plaza se calla sola, y no hace falta pedirlo.',
     formaciones: [
-      {
-        nombre: 'Orquesta completa con escenario',
-        descripcion: 'Camión-escenario, sonido, luces y técnico. Tres pases. Llave en mano.',
-      },
-      {
-        nombre: 'Orquesta sin escenario',
-        descripcion: 'Si el municipio ya tiene escenario montado. Sale bastante más barato.',
-      },
+      { nombre: 'Cuarteto de voces', descripcion: 'El formato habitual de cantada. Una hora y media.' },
+      { nombre: 'Cuarteto + rom cremat', descripcion: 'Incluye la preparación para el público asistente.' },
     ],
-    repertorio: ['Verbena clásica', 'Cumbia', 'Pop español', 'Actualidad', 'Pasodobles'],
-    dondeHanTocado: [
-      'Fiestas patronales · provincia de Valladolid',
-      'Fiestas de Medina del Campo',
-      'Ferias de Castilla y León',
-    ],
+    repertorio: ['Havaneres tradicionals', 'Cançó marinera', 'El meu avi', 'Repertori de taverna'],
+    dondeHanTocado: ['Festes majors · Costa Brava', 'Cantades · Baix Empordà', 'Actes de barri · Girona'],
     tecnico:
-      'Necesitan acceso para camión de 12 m, 63A de potencia y cuatro horas de montaje. Si el ayuntamiento no llega a esa potencia, se lleva generador y va en el presupuesto desde el principio.',
-    segmentos: ['fiestas'],
+      'Con equipo propio para público de hasta 300 personas. Si es más, hace falta el sonido del municipio. Necesitan sillas para el público: una cantada de pie no funciona.',
+    segmentos: ['festa-major', 'privados'],
+  },
+  {
+    slug: 'fanfarria-del-bages',
+    nombre: 'Fanfàrria del Bages',
+    titular: 'Música de calle. Once metales y ni un minuto de silencio',
+    formacion: 'Cercavila',
+    formacionSlug: 'cercaviles',
+    base: 'Bages',
+    paraQueNocheSirve:
+      'La Fanfàrria no toca en un escenario: toca andando. Es la formación que mueve a la gente de la plaza al pabellón sin que nadie se descuelgue, y la que acompaña a gegants i capgrossos sin que se note el esfuerzo. Once músicos y la costumbre de aguantar una jornada entera con dos descansos cortos.',
+    sirvePara: [
+      'Cercaviles, acompañamiento de gegants y actos de calle de festa major.',
+      'Programas de varios días donde hay que llenar las horas entre actos.',
+      'Municipios con casco antiguo, donde el recorrido a pie tiene sentido.',
+    ],
+    noSirvePara: [
+      'Nit de baile con escenario: eso es una orquesta, y son dos productos distintos.',
+      'Espacios con límite de decibelios. Once metales al aire libre no bajan de volumen.',
+      'Interiores y eventos de empresa. No es su terreno.',
+    ],
+    elDetalle:
+      'Se saben las canciones de más de cuarenta municipios. Si nos dices el tuyo con dos semanas, llegan sabiéndose la vuestra.',
+    formaciones: [
+      { nombre: 'Fanfàrria completa (11)', descripcion: 'El formato de festa major. Jornada entera.' },
+      { nombre: 'Formato reducido (7)', descripcion: 'Para municipios pequeños y calles estrechas.' },
+    ],
+    repertorio: ['Repertori de carrer', 'Pasodobles', 'Versions', 'Rumba'],
+    dondeHanTocado: ['Festa major de Manresa', 'Cercaviles · Bages i Osona', 'Fires de tardor'],
+    tecnico:
+      'No necesitan sonido ni corriente: es música acústica de calle. Sí necesitan un sitio para dejar las fundas y agua. Si el recorrido tiene cuesta, avísanos y lo ajustamos.',
+    segmentos: ['festa-major'],
   },
   {
     slug: 'ramon-prats',
-    nombre: 'Ramón Prats',
+    nombre: 'Ramon Prats',
     titular: 'Monologuista. Cuarenta minutos y ni una broma sobre nadie de la sala',
     formacion: 'Monologuista',
+    formacionSlug: 'monologuistas-para-eventos',
     base: 'Barcelona',
     paraQueNocheSirve:
-      'Ramón es el que pones en una cena de empresa cuando quieres que la gente se ría sin que nadie lo pase mal. No baja a la mesa, no señala a nadie, no pide voluntarios. Trabaja sobre el trabajo: reuniones, correos, jefes y el absurdo de la oficina.',
+      'Ramon es el que pones en una cena de empresa cuando quieres que la gente se ría sin que nadie lo pase mal. No baja a la mesa, no señala a nadie, no pide voluntarios. Trabaja sobre el trabajo: reuniones, correos, jefes y el absurdo de la oficina.',
     sirvePara: [
       'Cenas de empresa y de Navidad, en el momento del postre.',
       'Convenciones y entregas de premios, como corte entre bloques.',
-      'Público mixto donde hay jerarquía en la sala.',
+      'Actos de festa major bajo techo, cuando se quiere variar del formato musical.',
     ],
     noSirvePara: [
-      'Verbenas y plazas al aire libre. El monólogo necesita silencio y techo.',
+      'Plazas al aire libre. El monólogo necesita silencio y techo.',
       'Público de menos de 30 personas. Se queda frío.',
-      'Eventos donde el cliente pida «humor gamberro». No es lo suyo y lo dirá él antes que nosotros.',
+      'Encargos de «humor gamberro». No es lo suyo, y lo dirá él antes que nosotros.',
     ],
     elDetalle:
-      'Pide media hora de charla con quien organiza para meter tres o cuatro guiños internos de la empresa. No es material a medida: son cuatro frases, pero cambian la noche.',
+      'Pide media hora de charla con quien organiza para meter tres o cuatro guiños internos. No es material a medida: son cuatro frases, pero cambian la noche.',
     formaciones: [
       { nombre: 'Monólogo 40 min', descripcion: 'El formato estándar para cena de empresa.' },
       { nombre: 'Monólogo + presentación', descripcion: 'Hace también de maestro de ceremonias del acto.' },
     ],
     repertorio: ['Humor de oficina', 'Observacional', 'Actualidad sin política'],
-    dondeHanTocado: ['Cenas de empresa · Barcelona y Madrid', 'Convenciones de sector'],
+    dondeHanTocado: ['Cenas de empresa · Barcelona', 'Convenciones de sector', 'Actes de festa major'],
     tecnico:
       'Micro de mano, un foco y silencio. Si la cena sigue sirviéndose durante el monólogo, no funciona: hay que cerrar el servicio antes.',
-    segmentos: ['empresa', 'privados'],
+    segmentos: ['empresa', 'festa-major', 'privados'],
   },
   {
     slug: 'marc-vela',
     nombre: 'Marc Vela',
     titular: 'Magia de cerca, mesa por mesa, sin escenario',
     formacion: 'Mago',
-    base: 'Valencia',
+    formacionSlug: 'magos-para-eventos',
+    base: 'Barcelona',
     paraQueNocheSirve:
       'Marc trabaja en los huecos: el rato entre el cóctel y la cena, o el postre cuando la conversación se apaga. Va mesa por mesa, cinco minutos por grupo, y deja a la gente hablando de lo que acaba de ver. No necesita escenario, ni sonido, ni que nadie se calle.',
     sirvePara: [
@@ -197,7 +229,7 @@ export const ARTISTAS: Artista[] = [
     ],
     noSirvePara: [
       'Público de pie sin mesas. La magia de cerca necesita grupos quietos.',
-      'Más de 150 personas: no le da tiempo a pasar por todas y la mitad se queda fuera.',
+      'Más de 150 personas: no le da tiempo a pasar por todas y media sala se queda fuera.',
       'Espectáculo de escenario para toda la sala a la vez. Es otro formato y otro mago.',
     ],
     elDetalle:
@@ -207,40 +239,10 @@ export const ARTISTAS: Artista[] = [
       { nombre: 'Magia de cerca + cierre', descripcion: 'Termina con diez minutos para toda la sala.' },
     ],
     repertorio: ['Cartomagia', 'Magia de objetos', 'Mentalismo ligero'],
-    dondeHanTocado: ['Eventos de empresa · Levante', 'Bodas · Comunidad Valenciana'],
+    dondeHanTocado: ['Eventos de empresa · Barcelona', 'Bodas · Penedès i Empordà'],
     tecnico:
       'No necesita nada: ni sonido, ni luz especial, ni espacio. Solo saber a qué hora quieres que empiece y cuántas mesas hay.',
     segmentos: ['empresa', 'bodas', 'privados'],
-  },
-  {
-    slug: 'la-nocturna',
-    nombre: 'La Nocturna',
-    titular: 'Sexteto con vientos. De Motown a lo que suena ahora',
-    formacion: 'Grupo de versiones',
-    base: 'Valencia',
-    paraQueNocheSirve:
-      'La Nocturna es para la parte de la noche en la que ya se ha cortado la tarta y la gente lleva un rato de pie. La sección de vientos hace que la primera canción se note desde la barra: no hay que convencer a nadie de que se acerque.',
-    sirvePara: [
-      'Bodas de 90 a 250 personas donde el baile es lo importante.',
-      'Cenas de empresa grandes en hotel o finca, en dos pases de 45 minutos.',
-      'Fiestas de ciudad con escenario y público de todas las edades.',
-    ],
-    noSirvePara: [
-      'Ceremonias. Son seis y meten mucho aire: para la entrada te proponemos un dúo o un cuarteto de cuerda.',
-      'Cócteles largos de fondo. Están hechos para que los miren, no para sonar detrás de una conversación.',
-      'Salones de menos de 60 personas. Se comen la sala.',
-    ],
-    elDetalle:
-      'Saben leer una sala donde hay jefes: nada de bajar a hablar con el público ni pedir voluntarios. En empresa eso importa más de lo que parece.',
-    formaciones: [
-      { nombre: 'Sexteto con vientos', descripcion: 'El formato completo. Dos pases de 45 minutos.' },
-      { nombre: 'Trío', descripcion: 'Para salas de menos de 150. Suena mejor y deja sitio para bailar.' },
-    ],
-    repertorio: ['Motown', 'Funk', 'Pop internacional', 'Actualidad'],
-    dondeHanTocado: ['Bodas · Levante', 'Cenas de empresa · Valencia'],
-    tecnico:
-      'Hora y media de montaje y prueba de sonido con la sala vacía. Si la cena se alarga, la prueba se hace antes, no después: eso lo cuadramos nosotros con el catering.',
-    segmentos: ['bodas', 'empresa', 'fiestas'],
   },
 ]
 

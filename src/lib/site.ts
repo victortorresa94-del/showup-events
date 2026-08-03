@@ -22,12 +22,18 @@ export const SITE = {
   idioma: 'es-ES',
 } as const
 
+// Sin «Precios»: no se publican tarifas (decisión de negocio, agosto 2026).
 export const NAV = [
   { href: '/artistas', texto: 'Artistas' },
-  { href: '/orquestas-y-charangas-para-fiestas', texto: 'Fiestas' },
-  { href: '/precios', texto: 'Precios' },
+  { href: '/musica-para-festa-major', texto: 'Festa major' },
   { href: '/como-funciona', texto: 'Cómo funciona' },
 ] as const
+
+/** Ámbito de servicio actual. Solo Cataluña de momento. */
+export const AMBITO = {
+  nombre: 'Cataluña',
+  frase: 'Servimos en toda Cataluña.',
+} as const
 
 /** El claim en dos capas — docs/06 §0.1 */
 export const CLAIM = {

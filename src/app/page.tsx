@@ -66,17 +66,17 @@ const EQUIPO = [
 
 const OCASIONES = [
   {
-    href: '/orquestas-y-charangas-para-fiestas',
-    titulo: 'Fiestas de pueblo y ciudad',
-    texto: 'Escenario grande y público de todas las edades a la vez.',
+    href: '/musica-para-festa-major',
+    titulo: 'Festa major',
+    texto: 'Cercavila de día, havaneres al caer la tarde y baile hasta las tres.',
   },
   {
-    href: '/artistas-para-eventos-de-empresa',
+    href: '/monologuistas-para-eventos',
     titulo: 'Empresa',
     texto: 'Que no se vaya la gente a las once. Ese es el encargo real.',
   },
   {
-    href: '/musica-para-bodas',
+    href: '/grupos-de-versiones',
     titulo: 'Bodas',
     texto: 'Ceremonia, cóctel, cena y lo de después. Cuatro momentos, no uno.',
   },
@@ -115,7 +115,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-hueso/80">
-              Orquestas, charangas, grupos, magos y monologuistas por toda España. Tú cuentas la
+              Orquestas, grupos, havaneres, magos y monologuistas en toda Cataluña. Tú cuentas la
               noche; nosotros te damos dos o tres nombres y respondemos de que aparezcan.
             </p>
 
@@ -232,14 +232,14 @@ export default function Home() {
             Perfecto. Ahí es donde empieza nuestro trabajo.
           </p>
           <p className="mt-8 max-w-lectura leading-relaxed text-gris">
-            Dinos qué tienes en la cabeza —el tributo que viste en YouTube, una charanga para el día
-            del pregón, una orquesta que traiga su propio escenario, un cuarteto de cuerda para la
-            ceremonia, un mago que vaya mesa por mesa, un monologuista que no se pase de la raya— y
-            lo buscamos, lo escuchamos y te decimos si merece la pena.
+            Dinos qué tienes en la cabeza —el tributo que viste en YouTube, una cercavila para el
+            día del pregón, una orquesta que traiga su propio escenario, un cuarteto de cuerda para
+            la ceremonia, un mago que vaya mesa por mesa, un monologuista que no se pase de la
+            raya— y lo buscamos, lo escuchamos y te decimos si merece la pena.
           </p>
           <p className="mt-5 max-w-lectura leading-relaxed text-gris">
-            Si toca en España, llegamos. Y si te dijéramos que sí a todo tampoco te fiarías: cuando
-            algo no se puede, también te lo decimos.
+            Si toca en Cataluña, llegamos. Y si te dijéramos que sí a todo tampoco te fiarías:
+            cuando algo no se puede, también te lo decimos.
           </p>
           <div className="mt-10">
             <BotonPrimario href="/brief">Pídelo</BotonPrimario>

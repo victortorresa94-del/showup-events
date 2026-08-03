@@ -51,12 +51,12 @@ export default function PaginaArtistas() {
           </p>
           <p className="mt-8 max-w-lectura leading-relaxed text-gris">
             Lo que ves aquí es una muestra, no un inventario. Dinos qué tienes en la cabeza y lo
-            buscamos, lo escuchamos y te decimos si merece la pena. Si toca en España, llegamos.
+            buscamos, lo escuchamos y te decimos si merece la pena. Si toca en Cataluña, llegamos.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <BotonPrimario href="/brief">Pídelo</BotonPrimario>
-            <Link href="/precios" className="text-hueso underline underline-offset-4">
-              Ver precios orientativos
+            <Link href="/musica-para-festa-major" className="text-hueso underline underline-offset-4">
+              Música para festa major
             </Link>
           </div>
         </div>

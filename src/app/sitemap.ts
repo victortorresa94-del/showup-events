@@ -1,13 +1,14 @@
 import type { MetadataRoute } from 'next'
 import { ARTISTAS } from '@/data/artistas'
+import { FORMACIONES } from '@/data/formaciones'
 import { SITE } from '@/lib/site'
 
 // Solo entra lo indexable. El brief y su página de gracias nunca (docs/seo/04 §5).
+// Sin /precios: no se publican tarifas.
 const ESTATICAS: { ruta: string; prioridad: number }[] = [
   { ruta: '/', prioridad: 1 },
-  { ruta: '/orquestas-y-charangas-para-fiestas', prioridad: 0.9 },
+  { ruta: '/musica-para-festa-major', prioridad: 0.9 },
   { ruta: '/guias/como-contrata-un-ayuntamiento-una-actuacion', prioridad: 0.9 },
-  { ruta: '/precios', prioridad: 0.8 },
   { ruta: '/artistas', prioridad: 0.7 },
   { ruta: '/como-funciona', prioridad: 0.5 },
   { ruta: '/nosotros', prioridad: 0.4 },
@@ -23,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: ahora,
       changeFrequency: 'monthly' as const,
       priority: p.prioridad,
+    })),
+    ...FORMACIONES.map((f) => ({
+      url: `${SITE.dominio}/${f.slug}`,
+      lastModified: ahora,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     })),
     ...ARTISTAS.map((a) => ({
       url: `${SITE.dominio}/artistas/${a.slug}`,
