@@ -99,6 +99,52 @@
    * en vez de quedarse en textura. Funciona igual en móvil y en escritorio,
    * que es la ventaja de centrar.
    */
+  /*
+   * Foto VIVA: para las imágenes que tienen que transmitir alegría, el
+   * tratamiento de la casa las mata. Aquí apenas se toca — solo un punto de
+   * contraste. Una foto luminosa con caras alegres activa aproximación; la
+   * misma foto apagada activa lo contrario, que es justo lo que no queremos
+   * en la primera pantalla.
+   */
+  .foto-viva {
+    filter: contrast(1.06) saturate(1.05);
+  }
+
+  /*
+   * Velo del hero por franjas horizontales, no radial: oscurece arriba —donde
+   * va el titular, y donde la foto ya es cielo— y se abre en la mitad inferior
+   * para que las caras se vean enteras. El buscador es crema, así que resalta
+   * solo sobre el público sin necesidad de apagarlo.
+   */
+  .velo-hero {
+    background:
+      /*
+       * Cama de contraste bajo la columna de texto. Es una elipse muy difusa
+       * y sin borde visible: da legibilidad al copy sin apagar las caras de
+       * los lados, que son justo lo que hace que la foto funcione.
+       */
+      radial-gradient(
+        58% 46% at 50% 46%,
+        rgb(10 10 10 / 0.6) 0%,
+        rgb(10 10 10 / 0.34) 55%,
+        rgb(10 10 10 / 0) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(10 10 10 / 0.82) 0%,
+        rgb(10 10 10 / 0.6) 24%,
+        rgb(10 10 10 / 0.3) 46%,
+        rgb(10 10 10 / 0.18) 64%,
+        rgb(10 10 10 / 0.42) 86%,
+        rgb(10 10 10 / 0.74) 100%
+      );
+  }
+
+  /* Última red de seguridad para el copy pequeño sobre foto. */
+  .texto-sobre-foto {
+    text-shadow: 0 1px 12px rgb(10 10 10 / 0.85), 0 1px 3px rgb(10 10 10 / 0.7);
+  }
+
   .velo-centro {
     background:
       radial-gradient(

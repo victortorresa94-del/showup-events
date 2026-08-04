@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     url: SITE.dominio,
     images: [
       {
-        url: '/img/og-showup.jpg',
+        url: '/img/hero-plaza.jpg',
         width: 1024,
         height: 768,
-        alt: 'Plaza llena durante una nit de festa major, vista desde el lateral del escenario',
+        alt: 'Público de todas las edades con los brazos en alto en una festa major',
       },
     ],
   },
-  twitter: { card: 'summary_large_image', images: ['/img/og-showup.jpg'] },
+  twitter: { card: 'summary_large_image', images: ['/img/hero-plaza.jpg'] },
   robots: { index: true, follow: true, 'max-image-preview': 'large' },
 }
 
@@ -76,7 +76,7 @@ function SchemaOrganizacion() {
     // forma más barata de perder la confianza de un desambiguador.
     areaServed: { '@type': 'AdministrativeArea', name: 'Cataluña' },
     knowsLanguage: ['es-ES', 'ca-ES'],
-    logo: urlAbsoluta('/img/og-showup.jpg'),
+    logo: urlAbsoluta('/img/hero-plaza.jpg'),
   }
   return (
     <script

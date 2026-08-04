@@ -102,7 +102,7 @@ export function CampoNoche({
               key={a.texto}
               type="button"
               onClick={() => ir(a.valor)}
-              className="rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 text-sm text-hueso backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10"
+              className="rounded-full border border-white/25 bg-negro/45 px-4 py-2 text-sm text-hueso backdrop-blur-md transition-colors hover:border-white/50 hover:bg-negro/65"
             >
               {a.texto}
             </button>
@@ -110,7 +110,7 @@ export function CampoNoche({
         </div>
       )}
 
-      <p className="mt-6 text-center text-sm text-hueso/60">
+      <p className="texto-sobre-foto mt-6 text-center text-sm text-hueso/75">
         2 minutos. En 24 h tienes dos o tres nombres, con vídeo y con precio.
       </p>
     </div>

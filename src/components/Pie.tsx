@@ -40,7 +40,7 @@ export function Pie() {
       <div className="contenedor py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
-            <Logo variante="linea" className="text-3xl" />
+            <Logo className="text-3xl" />
             <p className="mt-4 max-w-xs font-editorial text-xl italic leading-snug text-hueso">
               {CLAIM.promesa}
             </p>

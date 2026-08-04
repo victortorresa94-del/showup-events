@@ -16,7 +16,7 @@ export function Cabecera() {
           className="text-2xl lg:text-[26px]"
           aria-label={`${SITE.nombre} — inicio`}
         >
-          <Logo variante="linea" />
+          <Logo />
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">

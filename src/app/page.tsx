@@ -70,20 +70,20 @@ export default function Home() {
       <section className="relative overflow-hidden bg-negro">
         <div className="grano absolute inset-0 overflow-hidden">
           <Image
-            src="/img/hero-festa-major.jpg"
-            alt="Plaza de un pueblo llena de gente durante una nit de festa major, con guirnaldas de bombillas y el escenario iluminado al fondo"
+            src="/img/hero-plaza.jpg"
+            alt="Público de todas las edades cantando y con los brazos en alto en la plaza de un pueblo durante la festa major, con el campanario y las guirnaldas de bombillas al fondo"
             fill
             priority
             sizes="100vw"
-            className="foto-casa object-cover object-center"
+            className="foto-viva object-cover object-center"
           />
         </div>
-        <div aria-hidden="true" className="velo-centro absolute inset-0" />
+        <div aria-hidden="true" className="velo-hero absolute inset-0" />
         <div aria-hidden="true" className="velo-remate absolute inset-0" />
 
         <div className="contenedor relative flex min-h-[calc(100svh-4rem)] flex-col items-center justify-center py-24 text-center lg:min-h-[calc(100svh-5rem)]">
           <div className="aparece w-full">
-            <p className="text-xs uppercase tracking-[0.22em] text-hueso/60">
+            <p className="texto-sobre-foto text-xs uppercase tracking-[0.22em] text-hueso/75">
               Música en directo y espectáculo · Cataluña
             </p>
 
@@ -91,11 +91,11 @@ export default function Home() {
               El H1 lleva SOLO el gesto de marca. El descriptor de entidad vive
               en el <title>, nunca aquí (docs/07 §D6).
             */}
-            <h1 className="mx-auto mt-6 max-w-4xl font-display text-[3.2rem] uppercase leading-[0.86] tracking-tight sm:text-7xl lg:text-8xl">
+            <h1 className="texto-sobre-foto mx-auto mt-6 max-w-4xl font-display text-[3.2rem] uppercase leading-[0.86] tracking-tight sm:text-7xl lg:text-8xl">
               Dinos qué noche quieres.
             </h1>
 
-            <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hueso/80">
+            <p className="texto-sobre-foto mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hueso/90">
               Orquestas, grupos, magos y monologuistas en toda Cataluña. Tú cuentas la noche;
               nosotros te damos dos o tres nombres y respondemos de que aparezcan.
             </p>
