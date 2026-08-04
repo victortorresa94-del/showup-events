@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Logo } from '@/components/Logo'
 import { CLAIM, SITE } from '@/lib/site'
 
 // Ojo: prohibido el listado de topónimos en el pie (docs/07 §4.3).
@@ -18,8 +19,8 @@ const COLUMNAS = [
     enlaces: [
       { href: '/orquestas-para-festa-major', texto: 'Orquestas' },
       { href: '/grupos-de-versiones', texto: 'Grupos de versiones' },
-      { href: '/havaneres', texto: 'Havaneres' },
       { href: '/cercaviles', texto: 'Cercaviles' },
+      { href: '/monologuistas-para-eventos', texto: 'Monologuistas' },
     ],
   },
   {
@@ -39,7 +40,7 @@ export function Pie() {
       <div className="contenedor py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
-            <p className="font-display text-3xl uppercase leading-none">Show Up</p>
+            <Logo variante="linea" className="text-3xl" />
             <p className="mt-4 max-w-xs font-editorial text-xl italic leading-snug text-hueso">
               {CLAIM.promesa}
             </p>

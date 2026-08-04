@@ -128,39 +128,6 @@ export const ARTISTAS: Artista[] = [
     segmentos: ['festa-major'],
   },
   {
-    slug: 'cor-de-cala',
-    imagen: '/img/cor-de-cala.jpg',
-    imagenAlt: 'Cor de Cala cantando havaneres bajo una farola junto al puerto, con público sentado',
-    nombre: 'Cor de Cala',
-    titular: 'Havaneres de las de siempre. Y el rom cremat lo hacen ellos',
-    formacion: 'Grupo de havaneres',
-    formacionSlug: 'havaneres',
-    base: 'Baix Empordà',
-    paraQueNocheSirve:
-      'Cor de Cala es para la primera hora de la noche, con la gente sentada y de todas las edades. Cuatro voces, guitarra y acordeón, volumen de conversación. No es un concierto: es el acto que hace que un programa de festa major parezca un programa y no una lista de bolos.',
-    sirvePara: [
-      'Actos de tarde-noche de festa major, antes de que empiece el baile.',
-      'Municipios de costa, donde la cantada es casi obligatoria en el programa.',
-      'Homenajes y actos de gente mayor, donde una orquesta sería excesiva.',
-    ],
-    noSirvePara: [
-      'Sustituir el baile de noche. La gente escucha, no baila.',
-      'Espacios con paso de gente o ruido de barra. Necesita atención.',
-      'Público que no conoce la tradición: fuera de contexto no se sostiene.',
-    ],
-    elDetalle:
-      'Preparan el rom cremat en directo mientras cantan la penúltima. Es el momento en que la plaza se calla sola, y no hace falta pedirlo.',
-    formaciones: [
-      { nombre: 'Cuarteto de voces', descripcion: 'El formato habitual de cantada. Una hora y media.' },
-      { nombre: 'Cuarteto + rom cremat', descripcion: 'Incluye la preparación para el público asistente.' },
-    ],
-    repertorio: ['Havaneres tradicionals', 'Cançó marinera', 'El meu avi', 'Repertori de taverna'],
-    dondeHanTocado: ['Festes majors · Costa Brava', 'Cantades · Baix Empordà', 'Actes de barri · Girona'],
-    tecnico:
-      'Con equipo propio para público de hasta 300 personas. Si es más, hace falta el sonido del municipio. Necesitan sillas para el público: una cantada de pie no funciona.',
-    segmentos: ['festa-major', 'privados'],
-  },
-  {
     slug: 'fanfarria-del-bages',
     imagen: '/img/fanfarria-del-bages.jpg',
     imagenAlt: 'La Fanfàrria del Bages tocando en una cercavila por las calles estrechas del casco antiguo',
@@ -258,6 +225,39 @@ export const ARTISTAS: Artista[] = [
     tecnico:
       'No necesita nada: ni sonido, ni luz especial, ni espacio. Solo saber a qué hora quieres que empiece y cuántas mesas hay.',
     segmentos: ['empresa', 'bodas', 'privados'],
+  },
+  {
+    slug: 'cor-de-cala',
+    imagen: '/img/cor-de-cala.jpg',
+    imagenAlt: 'Cor de Cala cantando havaneres bajo una farola junto al puerto, con público sentado',
+    nombre: 'Cor de Cala',
+    titular: 'Havaneres de las de siempre. Y el rom cremat lo hacen ellos',
+    formacion: 'Grupo de havaneres',
+    formacionSlug: 'havaneres',
+    base: 'Baix Empordà',
+    paraQueNocheSirve:
+      'Cor de Cala es para la primera hora de la noche, con la gente sentada y de todas las edades. Cuatro voces, guitarra y acordeón, volumen de conversación. No es un concierto: es el acto que hace que un programa de festa major parezca un programa y no una lista de bolos.',
+    sirvePara: [
+      'Actos de tarde-noche de festa major, antes de que empiece el baile.',
+      'Municipios de costa, donde la cantada es casi obligatoria en el programa.',
+      'Homenajes y actos de gente mayor, donde una orquesta sería excesiva.',
+    ],
+    noSirvePara: [
+      'Sustituir el baile de noche. La gente escucha, no baila.',
+      'Espacios con paso de gente o ruido de barra. Necesita atención.',
+      'Público que no conoce la tradición: fuera de contexto no se sostiene.',
+    ],
+    elDetalle:
+      'Preparan el rom cremat en directo mientras cantan la penúltima. Es el momento en que la plaza se calla sola, y no hace falta pedirlo.',
+    formaciones: [
+      { nombre: 'Cuarteto de voces', descripcion: 'El formato habitual de cantada. Una hora y media.' },
+      { nombre: 'Cuarteto + rom cremat', descripcion: 'Incluye la preparación para el público asistente.' },
+    ],
+    repertorio: ['Havaneres tradicionals', 'Cançó marinera', 'El meu avi', 'Repertori de taverna'],
+    dondeHanTocado: ['Festes majors · Costa Brava', 'Cantades · Baix Empordà', 'Actes de barri · Girona'],
+    tecnico:
+      'Con equipo propio para público de hasta 300 personas. Si es más, hace falta el sonido del municipio. Necesitan sillas para el público: una cantada de pie no funciona.',
+    segmentos: ['festa-major', 'privados'],
   },
 ]
 

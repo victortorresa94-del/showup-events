@@ -53,9 +53,13 @@
     mix-blend-mode: overlay;
   }
 
-  /* Tratamiento fotográfico de la casa — doc 03 §4. */
+  /*
+   * Tratamiento fotográfico de la casa — doc 03 §4.
+   * El brillo sube de 0.8 a 0.95: con el velo encima, bajarlo tanto dejaba
+   * la foto en textura y la web entera se leía apagada.
+   */
   .foto-casa {
-    filter: contrast(1.25) saturate(0.75) brightness(0.8);
+    filter: contrast(1.18) saturate(0.82) brightness(0.95);
   }
 
   /*
@@ -87,6 +91,29 @@
         rgb(10 10 10 / 0.25) 100%
       );
     }
+  }
+
+  /*
+   * Velo del hero centrado. Oscurece el centro —donde va el titular y el
+   * buscador— y deja respirar los bordes, para que la foto siga contando algo
+   * en vez de quedarse en textura. Funciona igual en móvil y en escritorio,
+   * que es la ventaja de centrar.
+   */
+  .velo-centro {
+    background:
+      radial-gradient(
+        105% 80% at 50% 50%,
+        rgb(10 10 10 / 0.72) 0%,
+        rgb(10 10 10 / 0.52) 45%,
+        rgb(10 10 10 / 0.12) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(10 10 10 / 0.5) 0%,
+        transparent 26%,
+        transparent 74%,
+        rgb(10 10 10 / 0.62) 100%
+      );
   }
 
   /* Remate inferior: evita que la foto se corte a cuchillo contra el negro. */

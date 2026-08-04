@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { Logo } from '@/components/Logo'
 import { CLAIM, NAV, SITE } from '@/lib/site'
 
 export function Cabecera() {
@@ -12,10 +13,10 @@ export function Cabecera() {
       <div className="contenedor flex h-16 items-center justify-between gap-6 lg:h-20">
         <Link
           href="/"
-          className="font-display text-2xl uppercase leading-none tracking-tight lg:text-[28px]"
+          className="text-2xl lg:text-[26px]"
           aria-label={`${SITE.nombre} — inicio`}
         >
-          Show Up
+          <Logo variante="linea" />
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">

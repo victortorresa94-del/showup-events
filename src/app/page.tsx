@@ -10,7 +10,7 @@ import { CLAIM } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Show Up Events · Música en directo y artistas para eventos',
   description:
-    'Orquestas, grupos de versiones, havaneres, cercaviles, magos y monologuistas para festa major, eventos de empresa y bodas en toda Cataluña. Nos cuentas la noche y te proponemos dos o tres nombres en 24 h.',
+    'Orquestas, grupos de versiones, cercaviles, magos y monologuistas para festa major, eventos de empresa y bodas en toda Cataluña. Nos cuentas la noche y te proponemos dos o tres nombres en 24 h.',
   alternates: { canonical: '/' },
 }
 
@@ -19,13 +19,13 @@ const MOVIMIENTOS = [
     n: '01',
     titulo: 'Cuéntanos la noche',
     texto:
-      'El sitio, la gente, la hora a la que se sirve el postre y lo que quieres que pase. Escríbelo como se lo contarías a un amigo. No hay veinte campos: hay una conversación.',
+      'El sitio, la gente y lo que quieres que pase. Escríbelo como se lo contarías a un amigo: no hay veinte campos, hay una conversación.',
   },
   {
     n: '02',
     titulo: 'Te proponemos',
     texto:
-      'Dos o tres nombres, no cuarenta fichas. Cada uno con por qué encaja en tu noche —y, si hace falta, con por qué el que tú tenías en la cabeza no. Preferimos decírtelo antes de que lo pagues.',
+      'Dos o tres nombres, no cuarenta fichas. Con por qué encaja cada uno — y, si hace falta, por qué el que tenías en la cabeza no.',
   },
   {
     n: '03',
@@ -35,41 +35,11 @@ const MOVIMIENTOS = [
   },
 ]
 
-const EQUIPO = [
-  {
-    tiempo: 'Antes de decidir',
-    piezas: [
-      ['La Escucha', 'Leemos tu brief y te llamamos si algo no cuadra.'],
-      ['La Terna', 'Dos o tres nombres, cada uno con su porqué.'],
-      ['El Descarte', 'Y por qué hemos dejado fuera al que parecía obvio.'],
-      ['La Prueba', 'Vídeo de directo real, y material sin editar si lo pides.'],
-    ],
-  },
-  {
-    tiempo: 'Al cerrar',
-    piezas: [
-      ['El Contrato', 'Firmado con el artista, con penalización y obligación de aviso.'],
-      ['El Rider Resuelto', 'Lo que necesitan, traducido a lo que tiene tu sitio.'],
-      ['La Llamada al Sitio', 'Accesos, corriente, decibelios y hora de cierre los hablamos nosotros.'],
-      ['Los Papeles', 'Facturas, seguros y SGAE cuando hace falta.'],
-    ],
-  },
-  {
-    tiempo: 'El día',
-    piezas: [
-      ['La Escaleta', 'A qué hora monta, prueba, empieza y acaba. Por escrito.'],
-      ['La Prueba de Sonido', 'Con la sala vacía, cuadrada con el catering.'],
-      ['El Suplente', 'Identificado y reservado desde que firmas. No desde que hay un problema.'],
-      ['El Móvil del Día', 'Un número nuestro que contesta de principio a fin.'],
-    ],
-  },
-]
-
 const OCASIONES = [
   {
     href: '/musica-para-festa-major',
     titulo: 'Festa major',
-    texto: 'Cercavila de día, havaneres al caer la tarde y baile hasta las tres.',
+    texto: 'Cercavila de día y baile hasta las tres. Con escenario propio si el pueblo no tiene.',
   },
   {
     href: '/monologuistas-para-eventos',
@@ -93,10 +63,11 @@ export default function Home() {
     <>
       {/* ── HERO ───────────────────────────────────────────────────────── */}
       {/*
-        El LCP de esta página es la foto, así que va con `priority` y sin
-        vídeo: en móvil no hay vídeo, nunca (enmienda C4 de docs/07).
+        Centrado y con el buscador de protagonista: esto tiene que leerse como
+        un producto de booking, no como un cartel. El LCP es la foto, así que
+        va con `priority` y sin vídeo (enmienda C4 de docs/07).
       */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden bg-negro">
         <div className="grano absolute inset-0 overflow-hidden">
           <Image
             src="/img/hero-festa-major.jpg"
@@ -104,87 +75,107 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="foto-casa object-cover object-[62%_center] lg:object-center"
+            className="foto-casa object-cover object-center"
           />
         </div>
-        <div aria-hidden="true" className="velo-texto absolute inset-0" />
+        <div aria-hidden="true" className="velo-centro absolute inset-0" />
         <div aria-hidden="true" className="velo-remate absolute inset-0" />
 
-        <div className="contenedor relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-20 lg:min-h-[calc(100svh-5rem)]">
-          <div className="aparece">
+        <div className="contenedor relative flex min-h-[calc(100svh-4rem)] flex-col items-center justify-center py-24 text-center lg:min-h-[calc(100svh-5rem)]">
+          <div className="aparece w-full">
+            <p className="text-xs uppercase tracking-[0.22em] text-hueso/60">
+              Música en directo y espectáculo · Cataluña
+            </p>
+
             {/*
-              El H1 lleva SOLO el gesto de marca. El descriptor de entidad
-              vive en el <title>, nunca aquí (docs/07 §D6).
+              El H1 lleva SOLO el gesto de marca. El descriptor de entidad vive
+              en el <title>, nunca aquí (docs/07 §D6).
             */}
-            <h1 className="max-w-4xl font-display text-[3.1rem] uppercase leading-[0.86] tracking-tight sm:text-7xl lg:text-8xl">
-              Dinos qué noche
-              <br />
-              quieres.
+            <h1 className="mx-auto mt-6 max-w-4xl font-display text-[3.2rem] uppercase leading-[0.86] tracking-tight sm:text-7xl lg:text-8xl">
+              Dinos qué noche quieres.
             </h1>
 
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-hueso/80">
-              Orquestas, grupos, havaneres, magos y monologuistas en toda Cataluña. Tú cuentas la
-              noche; nosotros te damos dos o tres nombres y respondemos de que aparezcan.
+            <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hueso/80">
+              Orquestas, grupos, magos y monologuistas en toda Cataluña. Tú cuentas la noche;
+              nosotros te damos dos o tres nombres y respondemos de que aparezcan.
             </p>
 
-            <div className="mt-10">
+            <div className="mt-12">
               <CampoNoche />
             </div>
-
-            <p className="mt-8 text-sm text-gris">
-              ¿Prefieres mirar primero?{' '}
-              <Link href="/artistas" className="text-hueso underline underline-offset-4">
-                Ver artistas
-              </Link>
-            </p>
           </div>
         </div>
       </section>
 
-      {/* ── TRES MOVIMIENTOS ───────────────────────────────────────────── */}
-      <Seccion className="border-t border-white/10">
+      {/* ── ARTISTAS · arriba del todo ─────────────────────────────────── */}
+      <Seccion className="overflow-hidden border-t border-white/10">
+        <div className="contenedor flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <TituloSeccion>Estos ya se han subido con nosotros.</TituloSeccion>
+            <Entradilla>
+              Cada uno está aquí porque lo hemos visto tocar, no porque nos mandara un dossier. En
+              cada ficha pone para qué noche sirve. Y para cuál no.
+            </Entradilla>
+          </div>
+          <Link
+            href="/artistas"
+            className="shrink-0 text-hueso underline underline-offset-4 hover:text-rojo"
+          >
+            Ver todos →
+          </Link>
+        </div>
+
+        {/* Carrusel horizontal, nunca rejilla — docs/01 §9 */}
+        <div className="sin-scrollbar mt-12 flex gap-5 overflow-x-auto px-5 pb-4 sm:px-8 lg:px-12">
+          {ARTISTAS.map((a, i) => (
+            <TarjetaArtista key={a.slug} artista={a} prioridad={i === 0} />
+          ))}
+        </div>
+      </Seccion>
+
+      {/* ── TRES PASOS · papel ─────────────────────────────────────────── */}
+      <Seccion tono="claro">
         <div className="contenedor">
-          <TituloSeccion>Tres pasos. Solo el primero es tuyo.</TituloSeccion>
+          <TituloSeccion tono="claro">Tres pasos. Solo el primero es tuyo.</TituloSeccion>
           <div className="mt-14 grid gap-10 lg:grid-cols-3 lg:gap-12">
             {MOVIMIENTOS.map((m) => (
-              <div key={m.n} className="border-t border-white/15 pt-6">
+              <div key={m.n} className="border-t border-tinta/15 pt-6">
                 <span className="font-display text-4xl text-rojo">{m.n}</span>
-                <h3 className="mt-3 text-xl font-semibold">{m.titulo}</h3>
-                <p className="mt-3 leading-relaxed text-gris">{m.texto}</p>
+                <h3 className="mt-3 text-xl font-semibold text-tinta">{m.titulo}</h3>
+                <p className="mt-3 leading-relaxed text-tintaSuave">{m.texto}</p>
               </div>
             ))}
           </div>
         </div>
       </Seccion>
 
-      {/* ── EL EQUIPO INVISIBLE ────────────────────────────────────────── */}
-      <Seccion className="bg-superficie/40">
+      {/* ── OCASIONES · papel ──────────────────────────────────────────── */}
+      <Seccion tono="claro" className="border-t border-tinta/10">
         <div className="contenedor">
-          <TituloSeccion>Contratas un nombre. Aparece un equipo.</TituloSeccion>
-          <Entradilla>
-            Esto es lo que pasa entre que firmas y que alguien se sube. No lo cobramos aparte: va
-            dentro. Pero conviene que sepas que existe.
+          <TituloSeccion tono="claro">Empieza por la ocasión.</TituloSeccion>
+          <Entradilla tono="claro">
+            Porque nadie se levanta pensando «hoy necesito un trío acústico». Se levanta pensando
+            «tengo la festa major en agosto».
           </Entradilla>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-3">
-            {EQUIPO.map((bloque) => (
-              <div key={bloque.tiempo}>
-                <h3 className="text-xs uppercase tracking-[0.18em] text-rojo">{bloque.tiempo}</h3>
-                <dl className="mt-6 space-y-5">
-                  {bloque.piezas.map(([nombre, texto]) => (
-                    <div key={nombre} className="border-t border-white/10 pt-4">
-                      <dt className="font-semibold">{nombre}</dt>
-                      <dd className="mt-1 text-sm leading-relaxed text-gris">{texto}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-xl bg-tinta/12 sm:grid-cols-2">
+            {OCASIONES.map((o) => (
+              <Link
+                key={o.href}
+                href={o.href}
+                className="group bg-crema p-8 transition-colors hover:bg-cremaSuave"
+              >
+                <h3 className="font-editorial text-2xl text-tinta transition-colors group-hover:text-rojo">
+                  {o.titulo}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-tintaSuave">{o.texto}</p>
+              </Link>
             ))}
           </div>
         </div>
       </Seccion>
 
-      {/* ── GARANTÍA ───────────────────────────────────────────────────── */}
+      {/* ── GARANTÍA · vuelve la noche, y pega ─────────────────────────── */}
       <Seccion>
         <div className="contenedor">
           <div className="rounded-xl hairline bg-superficie p-8 sm:p-12 lg:p-16">
@@ -205,47 +196,20 @@ export default function Home() {
         </div>
       </Seccion>
 
-      {/* ── ARTISTAS ───────────────────────────────────────────────────── */}
-      <Seccion className="overflow-hidden">
+      {/* ── LA PUERTA GRANDE · papel ───────────────────────────────────── */}
+      <Seccion tono="claro">
         <div className="contenedor">
-          <TituloSeccion>Estos ya se han subido con nosotros.</TituloSeccion>
-          <Entradilla>
-            Cada uno está aquí porque lo hemos visto tocar, no porque nos mandara un dossier.
-            Míralos con calma: en cada ficha pone para qué noche sirve. Y para cuál no.
-          </Entradilla>
-        </div>
-
-        {/* Carrusel horizontal, nunca rejilla — docs/01 §9 */}
-        <div className="sin-scrollbar mt-12 flex gap-5 overflow-x-auto px-5 pb-4 sm:px-8 lg:px-12">
-          {ARTISTAS.map((a, i) => (
-            <TarjetaArtista key={a.slug} artista={a} prioridad={i === 0} />
-          ))}
-        </div>
-
-        <div className="contenedor mt-10">
-          <Link
-            href="/artistas"
-            className="text-hueso underline underline-offset-4 hover:text-rojo"
-          >
-            Ver todos los artistas →
-          </Link>
-        </div>
-      </Seccion>
-
-      {/* ── LA PUERTA GRANDE ───────────────────────────────────────────── */}
-      <Seccion className="border-y border-white/10 bg-superficie/40">
-        <div className="contenedor">
-          <TituloSeccion>¿No está el que buscas?</TituloSeccion>
-          <p className="mt-8 max-w-2xl font-editorial text-3xl italic leading-tight text-hueso sm:text-4xl">
+          <TituloSeccion tono="claro">¿No está el que buscas?</TituloSeccion>
+          <p className="mt-8 max-w-2xl font-editorial text-3xl italic leading-tight text-tinta sm:text-4xl">
             Perfecto. Ahí es donde empieza nuestro trabajo.
           </p>
-          <p className="mt-8 max-w-lectura leading-relaxed text-gris">
+          <p className="mt-8 max-w-lectura leading-relaxed text-tintaSuave">
             Dinos qué tienes en la cabeza —el tributo que viste en YouTube, una cercavila para el
             día del pregón, una orquesta que traiga su propio escenario, un cuarteto de cuerda para
             la ceremonia, un mago que vaya mesa por mesa, un monologuista que no se pase de la
             raya— y lo buscamos, lo escuchamos y te decimos si merece la pena.
           </p>
-          <p className="mt-5 max-w-lectura leading-relaxed text-gris">
+          <p className="mt-5 max-w-lectura leading-relaxed text-tintaSuave">
             Si toca en Cataluña, llegamos. Y si te dijéramos que sí a todo tampoco te fiarías:
             cuando algo no se puede, también te lo decimos.
           </p>
@@ -255,72 +219,26 @@ export default function Home() {
         </div>
       </Seccion>
 
-      {/* ── EMPIEZA POR LA OCASIÓN ─────────────────────────────────────── */}
-      <Seccion>
-        <div className="contenedor">
-          <TituloSeccion>Empieza por la ocasión.</TituloSeccion>
-          <Entradilla>
-            Porque nadie se levanta pensando «hoy necesito un trío acústico». Se levanta pensando
-            «tengo las fiestas en agosto».
-          </Entradilla>
-
-          <div className="mt-12 grid gap-px overflow-hidden rounded-lg bg-white/10 sm:grid-cols-2">
-            {OCASIONES.map((o) => (
-              <Link
-                key={o.href}
-                href={o.href}
-                className="group bg-negro p-8 transition-colors hover:bg-superficie"
-              >
-                <h3 className="font-editorial text-2xl transition-colors group-hover:text-rojo">
-                  {o.titulo}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-gris">{o.texto}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </Seccion>
-
-      {/* ── PRUEBA SOCIAL · variante B ─────────────────────────────────── */}
-      {/*
-        Regla dura de docs/06 §9: esta sección NO muestra testimonios hasta que
-        haya uno real con nombre, evento, ciudad y fecha. Una cita inventada
-        cuesta la marca entera. Mientras tanto se dice la verdad, que además
-        es algo que nadie del sector dice.
-      */}
-      <Seccion className="border-t border-white/10">
-        <div className="contenedor">
-          <TituloSeccion>Todavía no te vamos a enseñar testimonios.</TituloSeccion>
-          <Entradilla>
-            Llevamos poco y preferimos esperar a tenerlos de verdad. Lo que sí podemos enseñarte son
-            las noches: fotos de directos nuestros, sin retocar la sala para que parezca más llena de
-            lo que estaba.
-          </Entradilla>
-        </div>
-      </Seccion>
-
       {/* ── CIERRE ─────────────────────────────────────────────────────── */}
-      <Seccion className="relative overflow-hidden border-t border-white/10">
+      <Seccion className="relative overflow-hidden">
         <div
           aria-hidden="true"
           className="grano absolute inset-0"
           style={{
             background:
-              'radial-gradient(70% 100% at 50% 100%, rgba(232,69,43,0.22) 0%, rgba(10,10,10,0) 62%)',
+              'radial-gradient(75% 110% at 50% 100%, rgba(232,69,43,0.22) 0%, rgba(10,10,10,0) 62%)',
           }}
         />
-        <div className="contenedor relative">
-          <h2 className="font-display text-5xl uppercase leading-[0.88] sm:text-6xl lg:text-7xl">
-            Dinos qué noche
-            <br />
-            quieres.
+        <div className="contenedor relative text-center">
+          <h2 className="mx-auto max-w-3xl font-display text-5xl uppercase leading-[0.88] sm:text-6xl lg:text-7xl">
+            Dinos qué noche quieres.
           </h2>
-          <p className="mt-7 max-w-xl leading-relaxed text-gris">
-            Escríbelo aquí abajo como te salga. Te contestamos en menos de 24 h con dos o tres
-            nombres. A partir de ahí, aparecemos nosotros.
+          <p className="mx-auto mt-7 max-w-xl leading-relaxed text-gris">
+            Escríbelo como te salga. Te contestamos en menos de 24 h con dos o tres nombres. A
+            partir de ahí, aparecemos nosotros.
           </p>
-          <div className="mt-10">
-            <CampoNoche id="campo-noche-cierre" />
+          <div className="mt-12">
+            <CampoNoche id="campo-noche-cierre" conAtajos={false} />
           </div>
           <p className="mt-16 font-editorial text-3xl italic leading-tight sm:text-4xl">
             {CLAIM.promesa}
