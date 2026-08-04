@@ -147,3 +147,42 @@ está decidida en `docs/03` y no se renegocia por parecerse a otro proyecto.
 | 3 · Forma | Sin empezar |
 | 4 · Contenido | Solo la guía de ayuntamientos |
 | 5 · Después del lead | Sin empezar |
+
+---
+
+## Nota de sesión · 4 de agosto de 2026
+
+**Fase 0 desbloqueada por Víctor:** tiene los permisos de todos los artistas y
+los del Drive son reales. El bloqueo de `docs/09 §0` se cierra sustituyendo el
+roster inventado por el real, no publicando los seis de muestra.
+
+**Cómo está montado el Drive** (carpeta `WEB`, de `antonio.lorente.musics@gmail.com`,
+id `1JRCANvpdTNFomL0XshesWeO37ztu_hdY`). No es un listado de artistas: es un
+catálogo por **género y formato**, con una carpeta por acto y el nombre de pila
+del músico entre paréntesis. Eso encaja mejor con las páginas de `/[formacion]`
+que con las fichas de artista.
+
+| Carpeta | Actos dentro |
+|---|---|
+| 1. Rumba | Rumba 1 (Victor), 2 (Enrique), 3 (Marigeles), 4 (Ivan), 5 (Paquillo) |
+| 2. Xaranga | Xaranga pel barri'l |
+| 2. Versiones | Versiones 1 (coco), Versiones 2 (pájaros) |
+| 4. Tributos | Luis Miguel, María Jiménez |
+| 5. Soul | Soul 1 |
+| 6. Batucada | Batucada 1 (Erick), Batucada + vientos |
+| 7. Copla | Copla 1 (Marigeles) |
+| 8. Salsa | Salsa 1 (Jairo) |
+| 9. Instrumentos | Duo/trío/cuarteto, Trompeta, Saxo |
+
+Unos 17 actos reales — bastantes más que los 6 de muestra. Falta abrir cada
+carpeta para ver qué material hay (Víctor avisa de que hay poco).
+
+**Pendiente de Víctor:** su web o carpeta con los vídeos de **Lady Jarana**, su
+propio proyecto, que también está en Show Up.
+
+**Por dónde se sigue mañana:**
+1. Abrir las 17 carpetas y anotar qué material real hay en cada una.
+2. Decidir la unidad de publicación: si hay poco material por acto, el catálogo
+   se publica por formación (que es como está el Drive) con los actos dentro,
+   en vez de 17 fichas de artista medio vacías.
+3. Reescribir `src/data/artistas.ts` con lo real y retirar los seis inventados.
