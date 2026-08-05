@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CampoNoche } from '@/components/CampoNoche'
+import { FondoHero } from '@/components/FondoHero'
 import { TarjetaArtista } from '@/components/TarjetaArtista'
 import { BotonPrimario, Entradilla, Seccion, TituloSeccion } from '@/components/Seccion'
 import { ARTISTAS } from '@/data/artistas'
@@ -64,20 +64,12 @@ export default function Home() {
       {/* ── HERO ───────────────────────────────────────────────────────── */}
       {/*
         Centrado y con el buscador de protagonista: esto tiene que leerse como
-        un producto de booking, no como un cartel. El LCP es la foto, así que
-        va con `priority` y sin vídeo (enmienda C4 de docs/07).
+        un producto de booking, no como un cartel. El LCP sigue siendo una
+        imagen —el póster, con `priority`— y el vídeo entra por encima solo
+        cuando puede reproducirse: ver `FondoHero`.
       */}
       <section className="relative overflow-hidden bg-negro">
-        <div className="grano absolute inset-0 overflow-hidden">
-          <Image
-            src="/img/hero-plaza.jpg"
-            alt="Público de todas las edades cantando y con los brazos en alto en la plaza de un pueblo durante la festa major, con el campanario y las guirnaldas de bombillas al fondo"
-            fill
-            priority
-            sizes="100vw"
-            className="foto-viva object-cover object-center"
-          />
-        </div>
+        <FondoHero className="grano" />
         <div aria-hidden="true" className="velo-hero absolute inset-0" />
         <div aria-hidden="true" className="velo-remate absolute inset-0" />
 
