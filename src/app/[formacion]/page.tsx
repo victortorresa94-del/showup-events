@@ -104,7 +104,7 @@ export default async function PaginaFormacion({
               <div className="relative aspect-video overflow-hidden rounded-xl hairline">
                 <VideoAmbiente
                   className="grano"
-                  video={f.video.archivo}
+                  videos={[f.video.archivo]}
                   poster={f.video.poster}
                   alt={f.video.alt}
                 />

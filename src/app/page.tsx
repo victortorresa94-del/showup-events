@@ -69,18 +69,29 @@ export default function Home() {
         cuando puede reproducirse: ver `VideoAmbiente`.
       */}
       <section className="relative overflow-hidden bg-negro">
+        {/*
+          La cadena de clips: plaza de noche, txaranga de día, grupo de rock y
+          monologuista. El orden alterna noche y día para que el corte se lea
+          como cambio de escena y no como un fallo de reproducción.
+          Solo se descarga el primero; los demás llegan justo antes de salir.
+        */}
         <VideoAmbiente
           className="grano"
           claseMedia="foto-viva"
-          video="/video/hero-fiesta.mp4"
-          poster="/img/hero-fiesta.jpg"
+          videos={[
+            '/video/hero-fiesta-v2.mp4',
+            '/video/txaranga.mp4',
+            '/video/grupo-rock.mp4',
+            '/video/monologuista.mp4',
+          ]}
+          poster="/img/hero-fiesta-v2.jpg"
           alt="Gente de todas las edades cantando y con los brazos en alto en la calle durante una festa major, bajo guirnaldas de bombillas"
           prioridad
         />
         <div aria-hidden="true" className="velo-hero absolute inset-0" />
         <div aria-hidden="true" className="velo-remate absolute inset-0" />
 
-        <div className="contenedor relative flex min-h-[calc(100svh-4rem)] flex-col items-center justify-center py-24 text-center lg:min-h-[calc(100svh-5rem)]">
+        <div className="contenedor relative flex min-h-svh flex-col items-center justify-center py-24 text-center">
           <div className="aparece w-full">
             <p className="texto-sobre-foto text-xs uppercase tracking-[0.22em] text-hueso/75">
               Música en directo y espectáculo · Cataluña
