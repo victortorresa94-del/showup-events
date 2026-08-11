@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { BotonPrimario, Entradilla, Seccion, TituloSeccion } from '@/components/Seccion'
 import { TarjetaArtista } from '@/components/TarjetaArtista'
+import { VideoAmbiente } from '@/components/VideoAmbiente'
 import { ARTISTAS } from '@/data/artistas'
 import { FORMACIONES, formacionPorSlug } from '@/data/formaciones'
 import { urlAbsoluta } from '@/lib/site'
@@ -89,6 +90,30 @@ export default async function PaginaFormacion({
           <p className="mt-8 max-w-lectura font-editorial text-2xl italic leading-snug text-hueso/90">
             {f.entradilla}
           </p>
+
+          {/*
+            Qué pinta tiene esto, antes de explicarlo.
+            Va contenido y en 16:9, no a sangre: la enmienda C4 de docs/07
+            prohíbe la foto a sangre fuera de home, fichas y territorio — no
+            prohíbe las imágenes, que es como se había estado leyendo.
+            El LCP sigue siendo el <h1>: el póster no lleva `priority` y el
+            vídeo ni se pide hasta que se acerca a la pantalla.
+          */}
+          {f.video && (
+            <figure className="mt-14">
+              <div className="relative aspect-video overflow-hidden rounded-xl hairline">
+                <VideoAmbiente
+                  className="grano"
+                  video={f.video.archivo}
+                  poster={f.video.poster}
+                  alt={f.video.alt}
+                />
+              </div>
+              <figcaption className="mt-3 text-sm text-gris">
+                Así se ve el formato. No es ninguno de nuestros artistas.
+              </figcaption>
+            </figure>
+          )}
         </div>
       </Seccion>
 

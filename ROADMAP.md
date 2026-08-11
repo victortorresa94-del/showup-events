@@ -93,7 +93,10 @@ bandas sin trabajo asignado es lo que produjo el problema.
 - [ ] Rehacer las bandas 3, 4, 6 y 7 de la home (`docs/09 §2`).
 - [ ] Dar forma a `/musica-para-festa-major`: 439 líneas de buen contenido sin
       una sola imagen.
-- [ ] Foto y prueba en las 8 páginas de `/[formacion]`.
+- [~] Foto y prueba en las 8 páginas de `/[formacion]`. Hechas 3 con vídeo
+      de ambiente: `/cercaviles`, `/grupos-de-versiones`,
+      `/monologuistas-para-eventos`. Faltan orquestas, tributos, magos,
+      humoristas y havaneres.
 - [ ] Pasada de accesibilidad y de Core Web Vitals con las imágenes dentro.
 - [ ] Panel de diseño + panel de neurodiseño sobre el conjunto, no por página.
 

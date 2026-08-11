@@ -25,6 +25,17 @@ export type Formacion = {
   cuandoNo: string[]
   queDetermina: string[]
   relacionadas: string[]
+  /**
+   * Vídeo de ambiente de la formación. OPCIONAL a propósito: solo lo tienen
+   * las que hemos podido ilustrar sin mentir.
+   *
+   * QUÉ ES Y QUÉ NO ES: ilustra el FORMATO —qué pinta tiene una cercavila,
+   * qué pinta tiene un bolo de versiones—, no a un artista nuestro. Por eso
+   * vive aquí, en el clúster de producto, y NUNCA en una ficha de artista ni
+   * junto a un nombre propio: ahí dejaría de ser ilustración y pasaría a ser
+   * una afirmación que hoy no podemos sostener (docs/09 §0).
+   */
+  video?: { archivo: string; poster: string; alt: string }
 }
 
 export const FORMACIONES: Formacion[] = [
@@ -86,6 +97,11 @@ export const FORMACIONES: Formacion[] = [
       'El número y la duración de los pases.',
     ],
     relacionadas: ['orquestas-para-festa-major', 'bandas-tributo'],
+    video: {
+      archivo: '/video/grupo-rock.mp4',
+      poster: '/img/grupo-rock.jpg',
+      alt: 'Un guitarrista tocando en un escenario al aire libre de noche, visto desde el lateral, con el público delante',
+    },
   },
   {
     slug: 'havaneres',
@@ -144,6 +160,11 @@ export const FORMACIONES: Formacion[] = [
       'La orografía del recorrido y si hace falta transporte entre puntos.',
     ],
     relacionadas: ['havaneres', 'orquestas-para-festa-major'],
+    video: {
+      archivo: '/video/txaranga.mp4',
+      poster: '/img/txaranga.jpg',
+      alt: 'Una txaranga tocando por una calle de piedra de un pueblo, con trombón y bombardino, mientras los vecinos miran desde la acera',
+    },
   },
   {
     slug: 'bandas-tributo',
@@ -202,6 +223,11 @@ export const FORMACIONES: Formacion[] = [
       'Si se pide material adaptado a la empresa.',
     ],
     relacionadas: ['magos-para-eventos', 'humoristas-para-eventos'],
+    video: {
+      archivo: '/video/monologuista.mp4',
+      poster: '/img/monologuista.jpg',
+      alt: 'Un monologuista con micrófono en un escenario pequeño, visto desde el público entre las cabezas de la gente',
+    },
   },
   {
     slug: 'humoristas-para-eventos',

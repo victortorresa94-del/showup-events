@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CampoNoche } from '@/components/CampoNoche'
-import { FondoHero } from '@/components/FondoHero'
+import { VideoAmbiente } from '@/components/VideoAmbiente'
 import { TarjetaArtista } from '@/components/TarjetaArtista'
 import { BotonPrimario, Entradilla, Seccion, TituloSeccion } from '@/components/Seccion'
 import { ARTISTAS } from '@/data/artistas'
@@ -66,10 +66,17 @@ export default function Home() {
         Centrado y con el buscador de protagonista: esto tiene que leerse como
         un producto de booking, no como un cartel. El LCP sigue siendo una
         imagen —el póster, con `priority`— y el vídeo entra por encima solo
-        cuando puede reproducirse: ver `FondoHero`.
+        cuando puede reproducirse: ver `VideoAmbiente`.
       */}
       <section className="relative overflow-hidden bg-negro">
-        <FondoHero className="grano" />
+        <VideoAmbiente
+          className="grano"
+          claseMedia="foto-viva"
+          video="/video/hero-fiesta.mp4"
+          poster="/img/hero-fiesta.jpg"
+          alt="Gente de todas las edades cantando y con los brazos en alto en la calle durante una festa major, bajo guirnaldas de bombillas"
+          prioridad
+        />
         <div aria-hidden="true" className="velo-hero absolute inset-0" />
         <div aria-hidden="true" className="velo-remate absolute inset-0" />
 
